@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dairy App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dairy-app.css" />
+</head>
+<body>
+  <div class="mobile-app">
+    <main class="screen" id="login-screen" data-screen="login">
+  <div class="login-container">
+    <div class="login-art">
+  <img src="./images/login-logo.png" alt="M.R Milk Logo" class="login-top-image">
+</div>
+
+    <div class="login-form-area">
+      <label class="login-label">Mobile Number</label>
+      <input type="text" class="login-input" />
+
+      <div class="login-or">OR</div>
+
+      <label class="login-label">E-mail</label>
+      <input type="text" class="login-input" />
+
+      <button class="login-btn" type="button">Get OTP</button>
+
+      <p class="login-policy">
+        By clicking Get OTP , you agree to our Terms of use &amp; Privacy Policy
+      </p>
+
+      <div class="login-footer">
+        <span>Don't have Account</span>
+        <button type="button" class="create-account-link">Create Account</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+    <main class="screen active" id="home-screen" data-screen="home">
+    <header class="home-topbar">
+  <div class="login-brand">
+    <span class="brand-icon">🥛</span>
+    <h1 data-go-screen="login" style="cursor:pointer;">Log In</h1>
+  </div>
+  <div class="home-actions">
+    <button class="icon-btn" aria-label="Bag">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 11H7L6 8Z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Notifications">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 17h11l-1.2-1.8v-4.7a4.3 4.3 0 1 0-8.6 0v4.7L6.5 17Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">FRESH DAILY</span>
+    <h2>Farm to Doorstep<br>Pure Dairy Goodness</h2>
+  </div>
+</section>
+
+<section class="home-section">
+  <div class="section-head">
+    <h3>SUBSCRIPTION PLANS</h3>
+    <button class="section-link" type="button" data-go-screen="orders">See all</button>
+  </div>
+  <div class="subscription-list">
+    <article class="mini-plan-card sky-card">
+      <div class="mini-icon">📅</div>
+      <h4>Monthly<br>Subscription<br>Plan</h4>
+    </article>
+    <article class="mini-plan-card sky-card">
+      <div class="mini-icon">🗓️</div>
+      <h4>15 Days<br>Subscription<br>Plan</h4>
+    </article>
+    <article class="mini-plan-card sky-card">
+      <div class="mini-icon">📆</div>
+      <h4>Weekly<br>Subscription<br>Plan</h4>
+    </article>
+  </div>
+  <button class="custom-plan-banner" type="button" data-go-screen="orders">⚙️&nbsp; Customised Subscription Plan</button>
+</section>
+
+<section class="home-section bordered-section">
+  <div class="section-head">
+    <h3>PRODUCTS CATEGORIES</h3>
+    <button class="section-link" type="button" data-go-screen="products">See all</button>
+  </div>
+  <div class="category-circles">
+    <button class="category-chip blue-ring" data-go-screen="products"><span>🥛</span><small>MILK</small></button>
+    <button class="category-chip blue-ring" data-go-screen="products"><span>🫙</span><small>CHAACH</small></button>
+    <button class="category-chip yellow-ring" data-go-screen="products"><span>🧈</span><small>GHEE</small></button>
+    <button class="category-chip green-ring" data-go-screen="products"><span>🥣</span><small>DAHI</small></button>
+    <button class="category-chip pink-ring" data-go-screen="products"><span>🧀</span><small>PANEER</small></button>
+  </div>
+</section>
+
+<section class="home-section bordered-section featured-section">
+  <div class="section-head">
+    <h3>FEATURED PRODUCTS</h3>
+    <button class="section-link" type="button" data-go-screen="products">See all</button>
+  </div>
+  <div class="featured-row">
+    <article class="featured-card" data-go-screen="products">
+      <div class="featured-visual sky">🥛</div>
+      <div class="featured-body">
+        <h4>RAW BUFFALO MILK</h4>
+        <p>Rs. 72</p>
+        <button class="buy-btn">SUBSCRIBE</button>
+      </div>
+    </article>
+    <article class="featured-card" data-go-screen="products">
+      <div class="featured-visual mint">🥣</div>
+      <div class="featured-body">
+        <h4>THICK DAHI</h4>
+        <p>Rs. 32.5</p>
+        <button class="buy-btn">SUBSCRIBE</button>
+      </div>
+    </article>
+    <article class="featured-card" data-go-screen="products">
+      <div class="featured-visual butter">🧈</div>
+      <div class="featured-body">
+        <h4>COW BILONA GHEE</h4>
+        <p>Rs. 650</p>
+        <button class="buy-btn">ADD TO CART</button>
+      </div>
+    </article>
+  </div>
+</section>
+</main>
+    <main class="screen" id="orders-screen" data-screen="orders">
+      <header class="topbar">
+        <button class="icon-btn" aria-label="Go back" data-go-screen="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19 8.5 12l7-7"/></svg>
+        </button>
+        <h1>Subscription Plans</h1>
+        <span class="topbar-spacer" aria-hidden="true"></span>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-cow">🐄</div>
+        <h2>Choose Your Plan</h2>
+        <p>Fresh dairy delivered to your door daily</p>
+      </section>
+
+      <section class="plans-wrap">
+        <article class="plan-card selected">
+          <div class="plan-icon sky">📅</div>
+          <div class="plan-content">
+            <h3>Monthly Plan</h3>
+            <p>30 days continuous delivery</p>
+            <span>Save up to 15%</span>
+          </div>
+          <button class="radio-pill selected" aria-label="Selected monthly plan"></button>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-icon sky">🗓️</div>
+          <div class="plan-content">
+            <h3>15 Days Plan</h3>
+            <p>Bi-monthly delivery cycle</p>
+            <span>Save up to 8%</span>
+          </div>
+          <button class="radio-pill" aria-label="Choose 15 days plan"></button>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-icon mint">📆</div>
+          <div class="plan-content">
+            <h3>Weekly Plan</h3>
+            <p>7 days fresh delivery</p>
+            <span>Save up to 5%</span>
+          </div>
+          <button class="radio-pill" aria-label="Choose weekly plan"></button>
+        </article>
+
+        <article class="custom-card">
+          <h3><span>⚙️</span> Customised Plan</h3>
+          <div class="quantity-row">
+            <span>Quantity (litres/day)</span>
+            <div class="counter">
+              <button type="button" class="circle-action minus-btn">−</button>
+              <strong id="quantity-value">1</strong>
+              <button type="button" class="circle-action plus-btn">+</button>
+            </div>
+          </div>
+          <div class="days-label">Delivery Days</div>
+          <div class="day-pills">
+            <button type="button" class="day-pill active">Mon</button>
+            <button type="button" class="day-pill active">Tue</button>
+            <button type="button" class="day-pill active">Wed</button>
+            <button type="button" class="day-pill active">Thu</button>
+            <button type="button" class="day-pill active">Fri</button>
+            <button type="button" class="day-pill">Sat</button>
+            <button type="button" class="day-pill">Sun</button>
+          </div>
+        </article>
+      </section>
+
+      <div class="cta-wrap">
+        <button class="primary-cta" type="button">SUBSCRIBE NOW</button>
+        <p class="call-text">📞 Call us: +91 72309 20774</p>
+      </div>
+    </main>
+
+    <main class="screen" id="products-screen" data-screen="products">
+      <header class="topbar">
+        <button class="icon-btn" aria-label="Go back" data-go-screen="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19 8.5 12l7-7"/></svg>
+        </button>
+        <h1>Our Products</h1>
+        <button class="icon-btn" aria-label="Search products">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        </button>
+      </header>
+
+      <div class="category-strip" role="tablist" aria-label="Product categories">
+        <button class="category-pill active" type="button" data-filter="all">All</button>
+        <button class="category-pill" type="button" data-filter="milk">MILK</button>
+        <button class="category-pill" type="button" data-filter="chaach">CHAACH</button>
+        <button class="category-pill" type="button" data-filter="ghee">GHEE</button>
+        <button class="category-pill" type="button" data-filter="dahi">DAHI</button>
+        <button class="category-pill" type="button" data-filter="paneer">PANEER</button>
+      </div>
+
+      <section class="products-page">
+        <div class="product-group" data-section="milk">
+          <h2>MILK</h2>
+          <div class="cards-grid three-up">
+            <article class="product-card">
+              <div class="product-visual sky">🥛</div>
+              <div class="product-body">
+                <h3>RAW BUFFALO MILK</h3>
+                <p>Creamy buffalo milk, rich and wholesome</p>
+                <strong>Rs. 72</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual mint">🐄</div>
+              <div class="product-body">
+                <h3>RAW COW MILK</h3>
+                <p>Pure cow's milk, fresh from farm to home</p>
+                <strong>Rs. 48</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual lilac">✨</div>
+              <div class="product-body">
+                <h3>RAW A2 COW MILK</h3>
+                <p>A2 milk from Sahiwal cows, easy to digest</p>
+                <strong>Rs. 80</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="chaach">
+          <h2>CHAACH</h2>
+          <div class="cards-grid two-up">
+            <article class="product-card">
+              <div class="product-visual sky">🫙</div>
+              <div class="product-body">
+                <h3>BUFFALO BILONA CHAACH</h3>
+                <p>Rich and tasty buttermilk, healthy drink</p>
+                <strong>Rs. 36</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual mint">🥤</div>
+              <div class="product-body">
+                <h3>COW BILONA CHAACH</h3>
+                <p>Traditional tangy buttermilk, refreshing</p>
+                <strong>Rs. 30</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="ghee">
+          <h2>GHEE</h2>
+          <div class="cards-grid three-up">
+            <article class="product-card">
+              <div class="product-visual butter">🧈</div>
+              <div class="product-body">
+                <h3>BUFFALO GHEE</h3>
+                <p>Pure buffalo ghee, traditional strength & aroma</p>
+                <strong>Rs. 850</strong>
+                <button class="buy-btn">ADD TO CART</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual cream">🪔</div>
+              <div class="product-body">
+                <h3>COW GHEE</h3>
+                <p>Traditional cow ghee, rich aroma & authentic taste</p>
+                <strong>Rs. 750</strong>
+                <button class="buy-btn">ADD TO CART</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual pink">⭐</div>
+              <div class="product-body">
+                <h3>RAW A2 COW GHEE</h3>
+                <p>Authentic A2 ghee, bilona method, superior quality</p>
+                <strong>Rs. 1100</strong>
+                <button class="buy-btn">ADD TO CART</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="dahi">
+          <h2>DAHI</h2>
+          <div class="cards-grid single-up">
+            <article class="product-card">
+              <div class="product-visual mint">🥣</div>
+              <div class="product-body">
+                <h3>DAHI</h3>
+                <p>Thick homemade dahi, healthy & delicious</p>
+                <strong>Rs. 32.5</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="paneer">
+          <h2>PANEER</h2>
+          <div class="cards-grid single-up">
+            <article class="product-card">
+              <div class="product-visual pink">🧀</div>
+              <div class="product-body">
+                <h3>PANEER</h3>
+                <p>Soft and creamy, freshly prepared for your dishes</p>
+                <strong>MRP</strong>
+                <button class="buy-btn">ADD TO CART</button>
+                <span class="call-line">Call +91 72309 20774</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-go-screen="home">
+        <span class="nav-badge home-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h4.5v-5h4v5h4.5v-9.5"/></svg>
+        </span>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" data-go-screen="products">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="11" rx="1.8"/><path d="M8 19.5h8"/></svg>
+        <span>Products</span>
+      </button>
+      <button class="nav-item" data-go-screen="orders">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/><path d="M3.5 4h2l2.2 9.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8l1.5-6.2H7.2"/></svg>
+        <span>Orders</span>
+      </button>
+      <button class="nav-item" data-go-screen="profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.5 20a6.5 6.5 0 0 0-13 0"/><circle cx="12" cy="8" r="4"/></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </div>
+
+  <script>
+    const screens = document.querySelectorAll('.screen');
+    const navTriggers = document.querySelectorAll('[data-go-screen]');
+    const bottomNavItems = document.querySelectorAll('.bottom-nav .nav-item');
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const productSections = document.querySelectorAll('[data-section]');
+    const planCards = document.querySelectorAll('.plan-card');
+    const radioPills = document.querySelectorAll('.radio-pill');
+    const dayPills = document.querySelectorAll('.day-pill');
+    const quantityDisplay = document.getElementById('quantity-value');
+    const plusBtn = document.querySelector('.plus-btn');
+    const minusBtn = document.querySelector('.minus-btn');
+    let quantity = Number(quantityDisplay?.textContent || 1);
+
+    function setActiveScreen(screenName) {
+      if (screenName === 'profile') {
+        alert('Profile screen can be added next.');
+        return;
+      }
+
+      screens.forEach((screen) => {
+        screen.classList.toggle('active', screen.dataset.screen === screenName);
+      });
+
+      bottomNavItems.forEach((item) => {
+        item.classList.toggle('active', item.dataset.goScreen === screenName);
+      });
+    }
+
+    navTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const target = trigger.dataset.goScreen;
+        if (target) setActiveScreen(target);
+      });
+    });
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.filter;
+        filterButtons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+
+        productSections.forEach((section) => {
+          section.style.display = selected === 'all' || section.dataset.section === selected ? 'block' : 'none';
+        });
+      });
+    });
+
+    function updatePlanSelection(selectedCard) {
+      planCards.forEach((card, index) => {
+        const isActive = card === selectedCard;
+        card.classList.toggle('selected', isActive);
+        radioPills[index]?.classList.toggle('selected', isActive);
+      });
+    }
+
+    planCards.forEach((card) => {
+      card.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        updatePlanSelection(card);
+      });
+    });
+
+    radioPills.forEach((pill, index) => {
+      pill.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        updatePlanSelection(planCards[index]);
+      });
+    });
+
+    dayPills.forEach((pill) => {
+      pill.addEventListener('click', (event) => {
+        event.preventDefault();
+        pill.classList.toggle('active');
+      });
+    });
+
+    plusBtn?.addEventListener('click', (event) => {
+      event.preventDefault();
+      quantity += 1;
+      quantityDisplay.textContent = quantity;
+    });
+
+    minusBtn?.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (quantity > 1) {
+        quantity -= 1;
+        quantityDisplay.textContent = quantity;
+      }
+    });
+  </script>
+</body>
+</html>
