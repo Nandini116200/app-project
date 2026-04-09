@@ -14,7 +14,7 @@
     <main class="screen" id="login-screen" data-screen="login">
   <div class="login-container">
     <div class="login-art">
-  <img src="./login-logo.png" alt="M.R Milk Logo" class="login-top-image">
+  <img src="./images/login-logo.png" alt="M.R Milk Logo" class="login-top-image">
 </div>
 
     <div class="login-form-area">
@@ -26,7 +26,7 @@
       <label class="login-label">E-mail</label>
       <input type="text" class="login-input" />
 
-      <button class="login-btn" type="button">Get OTP</button>
+      <button class="login-btn get-otp-btn" type="button">Get OTP</button>
 
       <p class="login-policy">
         By clicking Get OTP , you agree to our Terms of use &amp; Privacy Policy
@@ -40,7 +40,129 @@
   </div>
 </main>
 
-    <main class="screen active" id="home-screen" data-screen="home">
+      </main>  <!-- LOGIN SCREEN END -->
+      <main class="screen" id="register-screen" data-screen="register">
+  <div class="register-screen-wrap">
+    <div class="login-art register-art">
+      <img src="./images/login-logo.png" alt="M.R Milk Logo" class="register-top-image">
+    </div>
+
+    <div class="register-card">
+      <input type="text" class="register-line-input" placeholder="Name" />
+      <input type="text" class="register-line-input" placeholder="Mobile Number" />
+      <input type="email" class="register-line-input" placeholder="Email" />
+      <input type="text" class="register-line-input" placeholder="Date of birth" />
+    </div>
+
+    <p class="register-policy">
+      By proceeding , you agree to our Terms of use &amp; Privacy Policy
+    </p>
+
+    <button class="create-btn" type="button">CREATE ACCOUNT</button>
+  </div>
+</main>
+<main class="screen" id="profile-screen" data-screen="profile">
+  <div class="login-container">
+
+    <h2 style="margin-top:10px;">My Profile</h2>
+
+    <div style="background:#7fcdf4; padding:14px; border-radius:10px; margin-top:20px; color:#fff;cursor:pointer;" id="profile-card-click">
+      <strong id="profile-name">Name</strong><br>
+      <small id="profile-mobile">Mobile</small>
+    </div>
+    <div class="profile-card">
+
+  <button class="profile-option">
+    <span>🛒</span>
+    <span>My Orders</span>
+  </button>
+
+  <button class="profile-option">
+    <span>💼</span>
+    <span>My Wallet</span>
+  </button>
+
+  <button class="profile-option">
+    <span>🎧</span>
+    <span>Help & Support</span>
+  </button>
+
+</div>
+<div class="logout-wrap">
+  <button class="logout-btn">Log Out →</button>
+</div>
+
+  </div>
+</main>
+<main class="screen" id="edit-profile-screen" data-screen="editProfile">
+  <div class="login-container">
+
+    <h2>Edit Profile</h2>
+
+    <div style="text-align:center; margin:20px 0;">
+      <div style="width:90px; height:90px; border-radius:50%; background:#7fcdf4; margin:auto;"></div>
+    </div>
+
+    <div class="register-card">
+
+      <input type="text" id="edit-name" class="register-line-input" placeholder="Name" />
+      <input type="text" id="edit-mobile" class="register-line-input" placeholder="Mobile Number" />
+      <input type="email" id="edit-email" class="register-line-input" placeholder="Email" />
+
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+      <button class="update-btn">Update Profile</button>
+    </div>
+
+  </div>
+</main>
+
+<!-- ✅ OTP SCREEN YAHA ADD KARO -->
+<main class="screen" id="otp-screen" data-screen="otp">
+  <div class="login-container">
+
+    <div class="login-art">
+      <img src="./images/login-logo.png" class="login-top-image">
+    </div>
+
+    <div class="login-form-area">
+      <label class="login-label">Enter OTP</label>
+      <input type="text" class="login-input otp-input" maxlength="6" />
+
+      <button class="login-btn">Resend OTP</button>
+
+      <p class="login-policy">
+        By clicking Get OTP , you agree to our Terms of use & Privacy Policy
+      </p>
+
+      <div class="login-footer">
+        <span>Don't have Account</span>
+        <button class="create-account-link">Create Account</button>
+      </div>
+
+    </div>
+  </div>
+</main>
+<main class="screen" id="success-screen" data-screen="success">
+  <div class="login-container" style="text-align:center; padding-top:80px;">
+
+    <img src="./images/login-logo.png" class="login-top-image">
+
+    <div style="margin-top:60px;">
+      <div class="success-tick">
+      <span class="tick-mark">✔</span>
+ 
+</div>
+      <h1 class="success-sub">Log In</h1>
+<h1 class="success-main">Successfully!!!</h1>
+    </div>
+
+  </div>
+</main>
+
+<!-- HOME SCREEN START -->
+<main class="screen active" id="home-screen" data-screen="home">
     <header class="home-topbar">
   <div class="login-brand">
     <span class="brand-icon">🥛</span>
@@ -381,6 +503,19 @@
         <span>Profile</span>
       </button>
     </nav>
+    <div class="logout-modal" id="logoutModal">
+
+  <div class="modal-box">
+    <h3>Confirm Logout</h3>
+    <p>Are you sure you want to log out?</p>
+
+    <div class="modal-actions">
+      <button class="yes-btn">Yes</button>
+      <button class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+</div>
   </div>
 
   <script>
@@ -398,10 +533,10 @@
     let quantity = Number(quantityDisplay?.textContent || 1);
 
     function setActiveScreen(screenName) {
-      if (screenName === 'profile') {
-        alert('Profile screen can be added next.');
-        return;
-      }
+  if (screenName === 'profile') {
+     loadProfileData();
+}
+
 
       screens.forEach((screen) => {
         screen.classList.toggle('active', screen.dataset.screen === screenName);
@@ -475,6 +610,155 @@
         quantityDisplay.textContent = quantity;
       }
     });
+    const loginInputs = document.querySelectorAll('.login-input');
+const otpBtn = document.querySelector('.login-btn');
+
+loginInputs.forEach(input => {
+  input.addEventListener('input', () => {
+    let isFilled = false;
+
+    loginInputs.forEach(inp => {
+      if (inp.value.trim() !== '') {
+        isFilled = true;
+      }
+    });
+
+    if (isFilled) {
+      otpBtn.style.background = "#7fcdf4";
+      otpBtn.style.color = "#fff";
+    } else {
+      otpBtn.style.background = "#d3d3d3";
+      otpBtn.style.color = "#222";
+    }
+  });
+});
+const getOtpBtn = document.querySelector('.get-otp-btn');
+
+getOtpBtn.addEventListener('click', () => {
+  setActiveScreen('otp');
+});
+const otpInput = document.querySelector('.otp-input');
+const successSub = document.querySelector('.success-sub');
+const successMain = document.querySelector('.success-main');
+
+otpInput.addEventListener('input', () => {
+  const value = otpInput.value.trim();
+
+  if (value.length === 6) {
+    successSub.textContent = "Log In";
+    successMain.textContent = "Successfully!!!";
+
+    setActiveScreen('success');
+  }
+});
+const createAccountBtn = document.querySelector('.create-account-link');
+
+createAccountBtn?.addEventListener('click', () => {
+  setActiveScreen('register');
+});
+const registerInputs = document.querySelectorAll('.register-line-input');
+const createBtn = document.querySelector('.create-btn');
+
+registerInputs.forEach(input => {
+  input.addEventListener('input', () => {
+    let allFilled = true;
+
+    registerInputs.forEach(inp => {
+      if (inp.value.trim() === '') {
+        allFilled = false;
+      }
+    });
+
+    if (allFilled) {
+      createBtn.style.background = "#7fcdf4";
+      createBtn.style.color = "#fff";
+    } else {
+      createBtn.style.background = "#d5e4eb";
+      createBtn.style.color = "#8b8b8b";
+    }
+  });
+});
+const successsub = document.querySelector('.success-sub');
+const successmain = document.querySelector('.success-main');
+
+createBtn.addEventListener('click', () => {
+  let allFilled = true;
+
+  registerInputs.forEach(inp => {
+    if (inp.value.trim() === '') {
+      allFilled = false;
+    }
+  });
+
+  if (allFilled) {
+const name = registerInputs[0].value;
+const mobile = registerInputs[1].value;
+
+localStorage.setItem('userName', name);
+localStorage.setItem('userMobile', mobile);
+
+    successSub.textContent = "Account Created";
+    successMain.textContent = "Successfully!!!";
+
+    setActiveScreen('success');
+  }
+});
+function loadProfileData() {
+  const name = localStorage.getItem('userName');
+  const mobile = localStorage.getItem('userMobile');
+
+  if (name && mobile) {
+    document.getElementById('profile-name').textContent = name;
+    document.getElementById('profile-mobile').textContent = mobile;
+  }
+}
+const logoutbtn = document.querySelector('.logout-btn');
+
+const logoutBtn = document.querySelector('.logout-btn');
+const logoutModal = document.getElementById('logoutModal');
+const yesBtn = document.querySelector('.yes-btn');
+const cancelBtn = document.querySelector('.cancel-btn');
+
+// open modal
+logoutBtn.addEventListener('click', () => {
+  logoutModal.classList.add('active');
+});
+
+// YES → logout
+yesBtn.addEventListener('click', () => {
+  localStorage.clear();
+  logoutModal.classList.remove('active');
+  setActiveScreen('login');
+});
+
+// CANCEL → close modal
+cancelBtn.addEventListener('click', () => {
+  logoutModal.classList.remove('active');
+});
+const profileCard = document.getElementById('profile-card-click');
+
+profileCard.addEventListener('click', () => {
+  loadEditProfileData();
+  setActiveScreen('editProfile');
+});
+function loadEditProfileData() {
+  const name = localStorage.getItem('userName');
+  const mobile = localStorage.getItem('userMobile');
+
+  document.getElementById('edit-name').value = name || '';
+  document.getElementById('edit-mobile').value = mobile || '';
+}
+const updateBtn = document.querySelector('.update-btn');
+
+updateBtn.addEventListener('click', () => {
+  const name = document.getElementById('edit-name').value;
+  const mobile = document.getElementById('edit-mobile').value;
+
+  localStorage.setItem('userName', name);
+  localStorage.setItem('userMobile', mobile);
+
+  setActiveScreen('profile');
+});
   </script>
 </body>
 </html>
