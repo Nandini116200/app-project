@@ -14,7 +14,7 @@
     <main class="screen" id="login-screen" data-screen="login">
   <div class="login-container">
     <div class="login-art">
-  <img src="./login-logo.png" alt="M.R Milk Logo" class="login-top-image">
+  <img src="./images/login-logo.png" alt="M.R Milk Logo" class="login-top-image">
 </div>
 
     <div class="login-form-area">
@@ -44,14 +44,14 @@
       <main class="screen" id="register-screen" data-screen="register">
   <div class="register-screen-wrap">
     <div class="login-art register-art">
-      <img src="./login-logo.png" alt="M.R Milk Logo" class="register-top-image">
+      <img src="./images/login-logo.png" alt="M.R Milk Logo" class="register-top-image">
     </div>
 
     <div class="register-card">
       <input type="text" class="register-line-input" placeholder="Name" />
       <input type="text" class="register-line-input" placeholder="Mobile Number" />
       <input type="email" class="register-line-input" placeholder="Email" />
-      <input type="text" class="register-line-input" placeholder="Date of birth" />
+      <input type="date" class="register-line-input"/>
     </div>
 
     <p class="register-policy">
@@ -77,7 +77,7 @@
     <span>My Orders</span>
   </button>
 
-  <button class="profile-option">
+  <button class="profile-option" data-go-screen="wallet">
     <span>💼</span>
     <span>My Wallet</span>
   </button>
@@ -91,6 +91,97 @@
 <div class="logout-wrap">
   <button class="logout-btn">Log Out →</button>
 </div>
+
+  </div>
+</main>
+
+<main class="screen" id="wallet-screen" data-screen="wallet">
+  <div class="login-container">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <button class="icon-btn" data-go-screen="profile">←</button>
+      <h1>My Wallet</h1>
+      <div class="topbar-spacer"></div>
+    </div>
+
+    <!-- BALANCE CARD -->
+    <div class="wallet-card">
+      <p>Total Balance</p>
+      <h2>₹ 0</h2>
+    </div>
+
+    <!-- TRANSACTIONS -->
+    <div class="wallet-option">
+      <span>📄</span>
+      <span>Transactions</span>
+    </div>
+
+    <!-- ADD MONEY BUTTON -->
+     <div class="wallet-btn-wrap">
+      <button class="wallet-btn" data-go-screen="addmoney">Add Money</button>
+    </div>
+    
+
+  </div>
+</main>
+
+<main class="screen" id="addmoney-screen" data-screen="addmoney">
+  <div class="login-container">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <button class="icon-btn" data-go-screen="wallet">←</button>
+      <h1>My Wallet</h1>
+      <div class="topbar-spacer"></div>
+    </div>
+
+    <!-- RECHARGE PACKS -->
+    <h3 style="margin-top:20px;">Popular Recharge Packs</h3>
+
+    <div class="recharge-grid">
+      <div class="recharge-card" data-amount="500">₹ 500</div>
+<div class="recharge-card" data-amount="1000">₹ 1000</div>
+<div class="recharge-card" data-amount="1500">₹ 1500</div>
+<div class="recharge-card" data-amount="2000">₹ 2000</div>
+    </div>
+
+    <!-- BOTTOM INPUT -->
+    <div class="addmoney-bottom">
+      <input type="number" placeholder="Enter Amount" class="amount-input">
+    </div>
+
+    <!-- PAYMENT METHODS -->
+    <h3 style="margin-top:20px;">Payments Methods</h3>
+
+    <div class="payment-box">
+      <div class="payment-grid">
+
+  <div class="payment-card active">UPI</div>
+  <div class="payment-card">Card</div>
+  <div class="payment-card">Net Banking</div>
+
+</div>
+    </div>
+    <div class="upi-row" style="display:none;">
+  <input type="text" placeholder="Enter UPI ID" class="upi-input" maxlength="30">
+  <button class="upi-pay-btn">Pay</button>
+</div>
+<div class="card-form" style="display:none;">
+
+  <input type="text" placeholder="Card Number" class="card-input card-number">
+
+  <input type="text" placeholder="Name on card" class="card-input name-input">
+
+  <div class="card-row">
+    <input type="text" placeholder="MM/YY" class="card-input expiry-input">
+    <input type="text" placeholder="CVV" class="card-input cvv-input">
+  </div>
+
+  <button class="card-pay-btn">Pay Now</button>
+
+</div>
+
 
   </div>
 </main>
@@ -123,7 +214,7 @@
   <div class="login-container">
 
     <div class="login-art">
-      <img src="./login-logo.png" class="login-top-image">
+      <img src="./images/login-logo.png" class="login-top-image">
     </div>
 
     <div class="login-form-area">
@@ -147,7 +238,7 @@
 <main class="screen" id="success-screen" data-screen="success">
   <div class="login-container" style="text-align:center; padding-top:80px;">
 
-    <img src="./login-logo.png" class="login-top-image">
+    <img src="./images/login-logo.png" class="login-top-image">
 
     <div style="margin-top:60px;">
       <div class="success-tick">
@@ -160,36 +251,43 @@
 
   </div>
 </main>
+<main class="screen" id="profile-success-screen" data-screen="profileSuccess">
+  <div class="login-container" style="text-align:center; padding-top:80px;">
+
+    <div style="margin-top:60px;">
+      <div class="success-tick">
+        <span class="tick-mark">✔</span>
+      </div>
+
+      <h1 class="success-sub">Profile Updated</h1>
+      <h1 class="success-main">Successfully!!!</h1>
+    </div>
+
+  </div>
+</main>
 
 <!-- HOME SCREEN START -->
 <main class="screen active" id="home-screen" data-screen="home">
     <header class="home-topbar">
   <div class="login-brand">
-    <span class="brand-icon">🥛</span>
+    <span class="brand-icon">👤</span>
     <h1 data-go-screen="login" style="cursor:pointer;">Log In</h1>
   </div>
   <div class="home-actions">
-    <button class="icon-btn" aria-label="Bag">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 11H7L6 8Z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/></svg>
-    </button>
-    <button class="icon-btn" aria-label="Notifications">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 17h11l-1.2-1.8v-4.7a4.3 4.3 0 1 0-8.6 0v4.7L6.5 17Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-    </button>
+    <button class="icon-btn" data-go-screen="wallet">💸</button>
+    <button class="icon-btn" aria-label="Notifications">🔔</button>
   </div>
 </header>
 
 <section class="hero-banner">
+  <img id="heroImage" src="./images/Banner 1.png">
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <span class="hero-tag">FRESH DAILY</span>
-    <h2>Farm to Doorstep<br>Pure Dairy Goodness</h2>
-  </div>
 </section>
 
 <section class="home-section">
   <div class="section-head">
     <h3>SUBSCRIPTION PLANS</h3>
-    <button class="section-link" type="button" data-go-screen="orders">See all</button>
+    <button class="section-link" type="button" data-go-screen="orders"></button>
   </div>
   <div class="subscription-list">
     <article class="mini-plan-card sky-card">
@@ -211,50 +309,58 @@
 <section class="home-section bordered-section">
   <div class="section-head">
     <h3>PRODUCTS CATEGORIES</h3>
-    <button class="section-link" type="button" data-go-screen="products">See all</button>
+    <button class="section-link" type="button" data-go-screen="products"></button>
   </div>
   <div class="category-circles">
-    <button class="category-chip blue-ring" data-go-screen="products"><span>🥛</span><small>MILK</small></button>
-    <button class="category-chip blue-ring" data-go-screen="products"><span>🫙</span><small>CHAACH</small></button>
-    <button class="category-chip yellow-ring" data-go-screen="products"><span>🧈</span><small>GHEE</small></button>
-    <button class="category-chip green-ring" data-go-screen="products"><span>🥣</span><small>DAHI</small></button>
-    <button class="category-chip pink-ring" data-go-screen="products"><span>🧀</span><small>PANEER</small></button>
+    <button class="category-chip blue-ring" data-go-screen="products" data-category="milk"><span>🥛</span><small>MILK</small></button>
+    <button class="category-chip blue-ring" data-go-screen="products" data-category="chaach"><span>🫙</span><small>CHAACH</small></button>
+    <button class="category-chip yellow-ring" data-go-screen="products" data-category="ghee"><span>🧈</span><small>GHEE</small></button>
+    <button class="category-chip green-ring" data-go-screen="products" data-category="dahi"><span>🥣</span><small>DAHI</small></button>
+    <button class="category-chip pink-ring" data-go-screen="products" data-category="paneer"><span>🧀</span><small>PANEER</small></button>
   </div>
 </section>
 
 <section class="home-section bordered-section featured-section">
   <div class="section-head">
     <h3>FEATURED PRODUCTS</h3>
-    <button class="section-link" type="button" data-go-screen="products">See all</button>
+    <button class="section-link" type="button" data-go-screen="products"></button>
   </div>
-  <div class="featured-row">
-    <article class="featured-card" data-go-screen="products">
-      <div class="featured-visual sky">🥛</div>
-      <div class="featured-body">
-        <h4>RAW BUFFALO MILK</h4>
-        <p>Rs. 72</p>
-        <button class="buy-btn">SUBSCRIBE</button>
-      </div>
-    </article>
-    <article class="featured-card" data-go-screen="products">
-      <div class="featured-visual mint">🥣</div>
-      <div class="featured-body">
-        <h4>THICK DAHI</h4>
-        <p>Rs. 32.5</p>
-        <button class="buy-btn">SUBSCRIBE</button>
-      </div>
-    </article>
-    <article class="featured-card" data-go-screen="products">
-      <div class="featured-visual butter">🧈</div>
-      <div class="featured-body">
-        <h4>COW BILONA GHEE</h4>
-        <p>Rs. 650</p>
-        <button class="buy-btn">ADD TO CART</button>
-      </div>
-    </article>
-  </div>
+
+  <div class="featured-list">
+
+  <article class="featured-card" data-name="MILK">
+    <div class="featured-visual">
+      <img src="./images/Milk.png">
+    </div>
+  </article>
+
+  <article class="featured-card" data-name="CHAACH">
+    <div class="featured-visual">
+      <img src="./images/Chaach.png">
+    </div>
+  </article>
+
+  <article class="featured-card" data-name="GHEE">
+    <div class="featured-visual">
+      <img src="./images/Ghee.png">
+    </div>
+  </article>
+
+  <article class="featured-card" data-name="DAHI">
+    <div class="featured-visual">
+      <img src="./images/Dahi.png">
+    </div>
+  </article>
+
+  <article class="featured-card" data-name="PANEER">
+    <div class="featured-visual">
+      <img src="./images/Paneer.png">
+    </div>
+  </article>
+</div>
 </section>
 </main>
+
     <main class="screen" id="orders-screen" data-screen="orders">
       <header class="topbar">
         <button class="icon-btn" aria-label="Go back" data-go-screen="home">
@@ -355,7 +461,8 @@
           <h2>MILK</h2>
           <div class="cards-grid three-up">
             <article class="product-card">
-              <div class="product-visual sky">🥛</div>
+              <div class="product-visual">
+              <img src="./images/BUFFALO MILK .png" alt="Milk"></div>
               <div class="product-body">
                 <h3>RAW BUFFALO MILK</h3>
                 <p>Creamy buffalo milk, rich and wholesome</p>
@@ -365,7 +472,8 @@
               </div>
             </article>
             <article class="product-card">
-              <div class="product-visual mint">🐄</div>
+              <div class="product-visual">
+              <img src="./images/COW MILK.png" alt="Milk"></div>
               <div class="product-body">
                 <h3>RAW COW MILK</h3>
                 <p>Pure cow's milk, fresh from farm to home</p>
@@ -375,7 +483,8 @@
               </div>
             </article>
             <article class="product-card">
-              <div class="product-visual lilac">✨</div>
+                <div class="product-visual">
+                <img src="./images/A2 MILK.png" alt="Milk"></div>
               <div class="product-body">
                 <h3>RAW A2 COW MILK</h3>
                 <p>A2 milk from Sahiwal cows, easy to digest</p>
@@ -391,7 +500,8 @@
           <h2>CHAACH</h2>
           <div class="cards-grid two-up">
             <article class="product-card">
-              <div class="product-visual sky">🫙</div>
+              <div class="product-visual">
+                <img src="./images/Chaach.png" alt="Milk"></div>
               <div class="product-body">
                 <h3>BUFFALO BILONA CHAACH</h3>
                 <p>Rich and tasty buttermilk, healthy drink</p>
@@ -401,7 +511,8 @@
               </div>
             </article>
             <article class="product-card">
-              <div class="product-visual mint">🥤</div>
+              <div class="product-visual">
+                <img src="./images/COW CHAACH .png" alt="Milk"></div>
               <div class="product-body">
                 <h3>COW BILONA CHAACH</h3>
                 <p>Traditional tangy buttermilk, refreshing</p>
@@ -417,7 +528,8 @@
           <h2>GHEE</h2>
           <div class="cards-grid three-up">
             <article class="product-card">
-              <div class="product-visual butter">🧈</div>
+              <div class="product-visual">
+                <img src="./images/buffalo ghee.png" alt="Milk"></div>
               <div class="product-body">
                 <h3>BUFFALO GHEE</h3>
                 <p>Pure buffalo ghee, traditional strength & aroma</p>
@@ -427,7 +539,8 @@
               </div>
             </article>
             <article class="product-card">
-              <div class="product-visual cream">🪔</div>
+              <div class="product-visual">
+                <img src="./images/COW GHEE .png" alt="Milk"></div>
               <div class="product-body">
                 <h3>COW GHEE</h3>
                 <p>Traditional cow ghee, rich aroma & authentic taste</p>
@@ -437,7 +550,8 @@
               </div>
             </article>
             <article class="product-card">
-              <div class="product-visual pink">⭐</div>
+              <div class="product-visual">
+                <img src="./images/A2 ghee.png" alt="Milk"></div>
               <div class="product-body">
                 <h3>RAW A2 COW GHEE</h3>
                 <p>Authentic A2 ghee, bilona method, superior quality</p>
@@ -453,7 +567,8 @@
           <h2>DAHI</h2>
           <div class="cards-grid single-up">
             <article class="product-card">
-              <div class="product-visual mint">🥣</div>
+              <div class="product-visual">
+                <img src="./images/DAHI (1).png" alt="Milk"></div>
               <div class="product-body">
                 <h3>DAHI</h3>
                 <p>Thick homemade dahi, healthy & delicious</p>
@@ -469,7 +584,8 @@
           <h2>PANEER</h2>
           <div class="cards-grid single-up">
             <article class="product-card">
-              <div class="product-visual pink">🧀</div>
+              <div class="product-visual">
+                <img src="./images/paneer (1).png" alt="Milk"></div>
               <div class="product-body">
                 <h3>PANEER</h3>
                 <p>Soft and creamy, freshly prepared for your dishes</p>
@@ -517,7 +633,26 @@
 
 </div>
   </div>
+<div id="planModal" class="plan-modal">
+  <div class="plan-modal-card">
 
+    <h2 id="planTitle">Monthly Subscription Plan</h2>
+
+    <ul>
+      <li>Slot customization</li>
+      <li>Category and Product Switch</li>
+      <li>Dynamic Pricing</li>
+      <li>Start Date Selection</li>
+      <li>Pause Feature</li>
+      <li>Location Transfer</li>
+      <li>Quality Tracking</li>
+      <li>Refund Policy</li>
+    </ul>
+
+    <button class="plan-btn">Get Started</button>
+
+  </div>
+</div>
   <script>
     const screens = document.querySelectorAll('.screen');
     const navTriggers = document.querySelectorAll('[data-go-screen]');
@@ -548,11 +683,28 @@
     }
 
     navTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const target = trigger.dataset.goScreen;
-        if (target) setActiveScreen(target);
-      });
-    });
+  trigger.addEventListener('click', () => {
+    const target = trigger.dataset.goScreen;
+    const category = trigger.dataset.category;
+
+    if (target) {
+      setActiveScreen(target);
+
+      // 🔥 If category exists → apply filter
+      if (category) {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+
+        const selectedBtn = document.querySelector(`[data-filter="${category}"]`);
+        if (selectedBtn) selectedBtn.classList.add('active');
+
+        productSections.forEach(section => {
+          section.style.display =
+            section.dataset.section === category ? 'block' : 'none';
+        });
+      }
+    }
+  });
+});
 
     filterButtons.forEach((button) => {
       button.addEventListener('click', () => {
@@ -567,7 +719,7 @@
     });
 
     function updatePlanSelection(selectedCard) {
-      planCards.forEach((card, index) => {
+      miniPlanCards.forEach((card, index) => {
         const isActive = card === selectedCard;
         card.classList.toggle('selected', isActive);
         radioPills[index]?.classList.toggle('selected', isActive);
@@ -651,22 +803,21 @@ otpInput.addEventListener('input', () => {
     setActiveScreen('success');
   }
 });
-const createAccountBtn = document.querySelector('.create-account-link');
 
-createAccountBtn?.addEventListener('click', () => {
-  setActiveScreen('register');
-});
-const registerInputs = document.querySelectorAll('.register-line-input');
-const createBtn = document.querySelector('.create-btn');
+const createAccountBtns = document.querySelectorAll(".create-account-link");
+createAccountBtns.forEach(btn =>
+  btn.addEventListener("click", () => setActiveScreen("register"))
+);
 
-registerInputs.forEach(input => {
-  input.addEventListener('input', () => {
+function setupRegisterInputs() {
+  const registerInputs = document.querySelectorAll("#register-screen .register-line-input");
+  const createBtn = document.querySelector(".create-btn");
+
+  function checkRegisterForm() {
     let allFilled = true;
 
     registerInputs.forEach(inp => {
-      if (inp.value.trim() === '') {
-        allFilled = false;
-      }
+      if (!inp.value.trim()) allFilled = false;
     });
 
     if (allFilled) {
@@ -676,33 +827,30 @@ registerInputs.forEach(input => {
       createBtn.style.background = "#d5e4eb";
       createBtn.style.color = "#8b8b8b";
     }
-  });
-});
-const successsub = document.querySelector('.success-sub');
-const successmain = document.querySelector('.success-main');
 
-createBtn.addEventListener('click', () => {
-  let allFilled = true;
+    return allFilled;
+  }
 
-  registerInputs.forEach(inp => {
-    if (inp.value.trim() === '') {
-      allFilled = false;
-    }
+  registerInputs.forEach(input => {
+    input.addEventListener("input", checkRegisterForm);
   });
 
-  if (allFilled) {
-const name = registerInputs[0].value;
-const mobile = registerInputs[1].value;
+  createBtn.addEventListener("click", () => {
+    if (!checkRegisterForm()) return;
 
-localStorage.setItem('userName', name);
-localStorage.setItem('userMobile', mobile);
+    const name = registerInputs[0].value.trim();
+    const mobile = registerInputs[1].value.trim();
+
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userMobile", mobile);
 
     successSub.textContent = "Account Created";
     successMain.textContent = "Successfully!!!";
+    setActiveScreen("success");
+  });
+}
 
-    setActiveScreen('success');
-  }
-});
+setupRegisterInputs();
 function loadProfileData() {
   const name = localStorage.getItem('userName');
   const mobile = localStorage.getItem('userMobile');
@@ -757,7 +905,282 @@ updateBtn.addEventListener('click', () => {
   localStorage.setItem('userName', name);
   localStorage.setItem('userMobile', mobile);
 
-  setActiveScreen('profile');
+  setActiveScreen('profileSuccess');
+
+  // 2 sec baad automatically profile screen pe
+  setTimeout(() => {
+    setActiveScreen('profile');
+  }, 2000);
+});
+const planModal = document.getElementById('planModal');
+const planTitle = document.getElementById('planTitle');
+const miniPlanCards = document.querySelectorAll('.mini-plan-card');
+
+miniPlanCards.forEach((card, index) => {
+  card.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    if (index === 0) {
+      planTitle.textContent = "Monthly Subscription Plan";
+    } 
+    else if (index === 1) {
+      planTitle.textContent = "15 Days Subscription Plan";
+    }
+    else if (index === 2) {
+  planTitle.textContent = "Weekly Subscription Plan";
+}
+
+    planModal.classList.add('active');
+  });
+});
+
+// close on outside click
+planModal.addEventListener('click', (e) => {
+  if (e.target === planModal) {
+    planModal.classList.remove('active');
+  }
+});
+const heroImage = document.getElementById("heroImage");
+
+const images = [
+  "./images/Banner 1.png",
+  "./images/Banner 2.png",
+  "./images/Banner 3.png"
+];
+
+let index = 0;
+
+setInterval(() => {
+
+  // fade out
+  heroImage.style.opacity = 0;
+
+  setTimeout(() => {
+    // image change
+    index = (index + 1) % images.length;
+    heroImage.src = images[index];
+
+    // fade in
+    heroImage.style.opacity = 1;
+
+  }, 400);
+
+}, 3000);
+const paymentcard= document.querySelectorAll('.payment-card');
+
+const upirow = document.querySelector('.upi-row');
+
+paymentcard.forEach(card => {
+  card.addEventListener('click', () => {
+
+    paymentcard.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    // 🔥 UPI logic
+    if (card.textContent.trim() === "UPI") {
+      upiRow.style.display = "flex";
+    } else {
+      upiRow.style.display = "none";
+    }
+
+  });
+});
+const rechargeCards = document.querySelectorAll('.recharge-card');
+const amountInput = document.querySelector('.amount-input');
+
+rechargeCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const amount = card.dataset.amount;
+
+    // input me value daal do
+    amountInput.value = amount;
+
+    // UI highlight (optional but sexy 🔥)
+    rechargeCards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+const paymentCards = document.querySelectorAll('.payment-card');
+
+rechargeCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const amount = card.dataset.amount;
+
+    amountInput.value = amount;
+
+    // highlight recharge
+    rechargeCards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    // glow effect
+    paymentCards.forEach(p => p.classList.add('glow'));
+
+    setTimeout(() => {
+      paymentCards.forEach(p => p.classList.remove('glow'));
+    }, 2000);
+  });
+});
+const upiRow = document.querySelector('.upi-row');
+const cardForm = document.querySelector('.card-form');
+
+paymentcard.forEach(card => {
+  card.addEventListener('click', () => {
+
+    paymentcard.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    const selected = card.textContent.trim();
+
+    if (selected === "UPI") {
+  upiRow.style.display = "flex";
+  cardForm.style.display = "none";
+
+  // 🔥 RESET
+  upiInput.value = "";
+  upiPayBtn.style.opacity = "0.5";
+  upiPayBtn.style.pointerEvents = "none";
+}
+    else if (selected === "Card") {
+      upiRow.style.display = "none";
+      cardForm.style.display = "flex";
+    } 
+    else {
+      upiRow.style.display = "none";
+      cardForm.style.display = "none";
+    }
+
+  });
+});
+const cardNumberInput = document.querySelector('.card-number');
+
+cardNumberInput.addEventListener('input', () => {
+  let value = cardNumberInput.value.replace(/\D/g, ""); // only numbers
+
+  value = value.substring(0, 16); // max 16 digits
+
+  value = value.replace(/(.{4})/g, "$1 ").trim(); // spacing
+
+  cardNumberInput.value = value;
+});
+const cvvInput = document.querySelector('.cvv-input');
+
+cvvInput.addEventListener('input', () => {
+  let value = cvvInput.value.replace(/\D/g, "");
+  cvvInput.value = value.substring(0, 3);
+});
+const expiryInput = document.querySelector('.expiry-input');
+
+expiryInput.addEventListener('input', () => {
+  let value = expiryInput.value.replace(/\D/g, "");
+
+  if (value.length >= 3) {
+    value = value.substring(0, 2) + "/" + value.substring(2, 4);
+  }
+
+  expiryInput.value = value;
+});
+const cardInputs = document.querySelectorAll('.card-form input');
+const payBtn = document.querySelector('.card-pay-btn');
+
+cardInputs.forEach(input => {
+  input.addEventListener('input', () => {
+
+    let allFilled = true;
+
+    cardInputs.forEach(inp => {
+      if (inp.value.trim() === "") {
+        allFilled = false;
+      }
+    });
+
+    if (allFilled) {
+      payBtn.style.opacity = "1";
+      payBtn.style.pointerEvents = "auto";
+    } else {
+      payBtn.style.opacity = "0.5";
+      payBtn.style.pointerEvents = "none";
+    }
+
+  });
+});
+const nameInput = document.querySelector('.name-input');
+
+nameInput.addEventListener('input', () => {
+  let value = nameInput.value;
+
+  // sirf alphabets + space allow
+  value = value.replace(/[^a-zA-Z\s]/g, "");
+
+  nameInput.value = value;
+});
+nameInput.addEventListener('input', () => {
+  let value = nameInput.value.replace(/[^a-zA-Z\s]/g, "");
+
+  // first letter capital
+  value = value.replace(/\b\w/g, char => char.toUpperCase());
+
+  nameInput.value = value;
+});
+const upiInput = document.querySelector('.upi-input');
+const upiPayBtn = document.querySelector('.upi-pay-btn');
+
+upiInput.addEventListener('input', () => {
+  const value = upiInput.value;
+
+  const parts = value.split('@');
+
+  if (parts.length === 2 && parts[1].length > 0) {
+    upiPayBtn.style.opacity = "1";
+    upiPayBtn.style.pointerEvents = "auto";
+  } else {
+    upiPayBtn.style.opacity = "0.5";
+    upiPayBtn.style.pointerEvents = "none";
+  }
+});
+upiInput.addEventListener('input', () => {
+  let value = upiInput.value;
+
+  // 🔥 remove spaces automatically
+  value = value.replace(/\s/g, "");
+  upiInput.value = value;
+
+  const parts = value.split('@');
+
+  if (parts.length === 2 && parts[1].length > 0) {
+    upiPayBtn.style.opacity = "1";
+    upiPayBtn.style.pointerEvents = "auto";
+  } else {
+    upiPayBtn.style.opacity = "0.5";
+    upiPayBtn.style.pointerEvents = "none";
+  }
+});
+amountInput.addEventListener('input', () => {
+  const value = amountInput.value.trim();
+
+  let matched = false;
+
+  rechargeCards.forEach(card => {
+    const amount = card.dataset.amount;
+
+    if (value === amount) {
+      rechargeCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      matched = true;
+    }
+  });
+  // ❌ no match → remove highlight
+  if (!matched) {
+    rechargeCards.forEach(c => c.classList.remove('active'));
+  }
+
+  // 🔥 ALWAYS GLOW (chahe match ho ya na ho)
+  if (value !== "") {
+    paymentCards.forEach(p => p.classList.add('glow'));
+
+    setTimeout(() => {
+      paymentCards.forEach(p => p.classList.remove('glow'));
+    }, 2000);
+  }
 });
   </script>
 </body>
