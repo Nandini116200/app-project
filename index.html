@@ -266,6 +266,21 @@
   </div>
 </main>
 
+<main class="screen" id="cart-success-screen" data-screen="cartSuccess">
+  <div class="login-container" style="text-align:center; padding-top:80px;">
+
+    <div style="margin-top:60px;">
+      <div class="success-tick">
+        <span class="tick-mark">✔</span>
+      </div>
+
+      <h1 class="success-sub">Added to Cart</h1>
+      <h1 class="success-main">Successfully!!!</h1>
+    </div>
+
+  </div>
+</main>
+
 <!-- HOME SCREEN START -->
 <main class="screen active" id="home-screen" data-screen="home">
     <header class="home-topbar">
@@ -287,7 +302,7 @@
 <section class="home-section">
   <div class="section-head">
     <h3>SUBSCRIPTION PLANS</h3>
-    <button class="section-link" type="button" data-go-screen="orders"></button>
+    <button class="section-link" type="button" data-go-screen="plans"></button>
   </div>
   <div class="subscription-list">
     <article class="mini-plan-card sky-card">
@@ -303,7 +318,7 @@
       <h4>Weekly<br>Subscription<br>Plan</h4>
     </article>
   </div>
-  <button class="custom-plan-banner" type="button" data-go-screen="orders">⚙️&nbsp; Customised Subscription Plan</button>
+  <button class="custom-plan-banner" type="button">⚙️&nbsp; Customised Subscription Plan</button>
 </section>
 
 <section class="home-section bordered-section">
@@ -361,7 +376,7 @@
 </section>
 </main>
 
-    <main class="screen" id="orders-screen" data-screen="orders">
+<main class="screen" id="plans-screen" data-screen="plans">
       <header class="topbar">
         <button class="icon-btn" aria-label="Go back" data-go-screen="home">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19 8.5 12l7-7"/></svg>
@@ -436,6 +451,19 @@
       </div>
     </main>
 
+
+   <main class="screen" id="orders-screen" data-screen="orders">
+
+  <header class="topbar">
+    <button class="icon-btn" data-go-screen="home">←</button>
+    <h1>Bag</h1>
+    <span class="topbar-spacer"></span>
+  </header>
+
+  <div id="orders-container"></div>
+
+</main>
+
     <main class="screen" id="products-screen" data-screen="products">
       <header class="topbar">
         <button class="icon-btn" aria-label="Go back" data-go-screen="home">
@@ -466,9 +494,9 @@
               <div class="product-body">
                 <h3>RAW BUFFALO MILK</h3>
                 <p>Creamy buffalo milk, rich and wholesome</p>
-                <strong>Rs. 72</strong>
+                <strong>Rs. 72/L</strong>
                 <button class="buy-btn">SUBSCRIBE</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
             <article class="product-card">
@@ -477,9 +505,9 @@
               <div class="product-body">
                 <h3>RAW COW MILK</h3>
                 <p>Pure cow's milk, fresh from farm to home</p>
-                <strong>Rs. 48</strong>
+                <strong>Rs. 48/L</strong>
                 <button class="buy-btn">SUBSCRIBE</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
             <article class="product-card">
@@ -488,9 +516,9 @@
               <div class="product-body">
                 <h3>RAW A2 COW MILK</h3>
                 <p>A2 milk from Sahiwal cows, easy to digest</p>
-                <strong>Rs. 80</strong>
+                <strong>Rs. 80/L</strong>
                 <button class="buy-btn">SUBSCRIBE</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
           </div>
@@ -505,9 +533,9 @@
               <div class="product-body">
                 <h3>BUFFALO BILONA CHAACH</h3>
                 <p>Rich and tasty buttermilk, healthy drink</p>
-                <strong>Rs. 36</strong>
+                <strong>Rs. 36/L</strong>
                 <button class="buy-btn">SUBSCRIBE</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
             <article class="product-card">
@@ -516,9 +544,9 @@
               <div class="product-body">
                 <h3>COW BILONA CHAACH</h3>
                 <p>Traditional tangy buttermilk, refreshing</p>
-                <strong>Rs. 30</strong>
+                <strong>Rs. 30/L</strong>
                 <button class="buy-btn">SUBSCRIBE</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
           </div>
@@ -533,9 +561,9 @@
               <div class="product-body">
                 <h3>BUFFALO GHEE</h3>
                 <p>Pure buffalo ghee, traditional strength & aroma</p>
-                <strong>Rs. 850</strong>
+                <strong>Rs. 850/Kg</strong>
                 <button class="buy-btn">ADD TO CART</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
             <article class="product-card">
@@ -544,9 +572,9 @@
               <div class="product-body">
                 <h3>COW GHEE</h3>
                 <p>Traditional cow ghee, rich aroma & authentic taste</p>
-                <strong>Rs. 750</strong>
+                <strong>Rs. 750/Kg</strong>
                 <button class="buy-btn">ADD TO CART</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
             <article class="product-card">
@@ -555,9 +583,9 @@
               <div class="product-body">
                 <h3>RAW A2 COW GHEE</h3>
                 <p>Authentic A2 ghee, bilona method, superior quality</p>
-                <strong>Rs. 1100</strong>
+                <strong>Rs. 1100/Kg</strong>
                 <button class="buy-btn">ADD TO CART</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
           </div>
@@ -574,7 +602,7 @@
                 <p>Thick homemade dahi, healthy & delicious</p>
                 <strong>Rs. 32.5</strong>
                 <button class="buy-btn">SUBSCRIBE</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
           </div>
@@ -591,13 +619,84 @@
                 <p>Soft and creamy, freshly prepared for your dishes</p>
                 <strong>MRP</strong>
                 <button class="buy-btn">ADD TO CART</button>
-                <span class="call-line">Call +91 72309 20774</span>
+                
               </div>
             </article>
           </div>
         </div>
       </section>
     </main>
+
+   <main class="screen" id="product-detail-screen" data-screen="productDetail">
+
+  <!-- TOP IMAGE -->
+  <div class="detail-top">
+    <button class="back-btn" data-go-screen="products">←</button>
+    <img id="detail-image" src="">
+  </div>
+
+  <!-- BOTTOM CARD -->
+  <div class="detail-card">
+
+    <h2 id="detail-name">Product Name</h2>
+    <p id="detail-price">Price</p>
+
+    <!-- PLAN -->
+    <div class="plan-box">
+      <p>Choose the Plan</p>
+      <div class="plan-options">
+        <button class="plan-pill active">Monthly</button>
+        <button class="plan-pill">15 Days</button>
+        <button class="plan-pill">Weekly</button>
+        <button class="plan-pill">Customised</button>
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="input-row">
+
+  <!-- Quantity dropdown -->
+  <select id="quantity-select">
+    <option value="">Choose Quantity</option>
+    <option value="0.5">500 ml</option>
+    <option value="1">1 L</option>
+  </select>
+
+  <!-- Packet counter -->
+  <div class="packet-box">
+    <button id="minus">-</button>
+    <span id="packet-count">1</span>
+    <button id="plus">+</button>
+  </div>
+
+</div>
+
+   <div class="input-row">
+  <input type="date" id="start-date">
+  <input type="date" id="end-date">
+</div>
+
+    <div class="input-row full">
+  <select id="slot-select">
+    <option value="">Choose Slot</option>
+    <option>Morning</option>
+    <option>Afternoon</option>
+    <option>Evening</option>
+  </select>
+</div>
+
+    <!-- BUTTONS -->
+    <button class="big-btn" id="buy-btn" disabled>Buy Now</button>
+    <button class="big-btn" id="cart-btn" disabled>Add to Cart</button>
+
+    <h3 style="margin-top:20px;">Product details</h3>
+    <p style="font-size:13px; color:#777;">
+      Lorem ipsum text...
+    </p>
+
+  </div>
+
+</main>
 
     <nav class="bottom-nav" aria-label="Main navigation">
       <button class="nav-item active" data-go-screen="home">
@@ -612,7 +711,7 @@
       </button>
       <button class="nav-item" data-go-screen="orders">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/><path d="M3.5 4h2l2.2 9.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8l1.5-6.2H7.2"/></svg>
-        <span>Orders</span>
+        <span>Cart</span>
       </button>
       <button class="nav-item" data-go-screen="profile">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.5 20a6.5 6.5 0 0 0-13 0"/><circle cx="12" cy="8" r="4"/></svg>
@@ -668,19 +767,17 @@
     let quantity = Number(quantityDisplay?.textContent || 1);
 
     function setActiveScreen(screenName) {
-  if (screenName === 'profile') {
-     loadProfileData();
+  if (screenName === 'orders') loadOrders();
+
+  screens.forEach(screen =>
+    screen.classList.toggle('active', screen.dataset.screen === screenName)
+  );
+
+  bottomNavItems.forEach(item =>
+    item.classList.toggle('active', item.dataset.goScreen === screenName)
+  );
 }
-
-
-      screens.forEach((screen) => {
-        screen.classList.toggle('active', screen.dataset.screen === screenName);
-      });
-
-      bottomNavItems.forEach((item) => {
-        item.classList.toggle('active', item.dataset.goScreen === screenName);
-      });
-    }
+    
 
     navTriggers.forEach((trigger) => {
   trigger.addEventListener('click', () => {
@@ -719,12 +816,12 @@
     });
 
     function updatePlanSelection(selectedCard) {
-      miniPlanCards.forEach((card, index) => {
-        const isActive = card === selectedCard;
-        card.classList.toggle('selected', isActive);
-        radioPills[index]?.classList.toggle('selected', isActive);
-      });
-    }
+  planCards.forEach((card, index) => {
+    const isActive = card === selectedCard;
+    card.classList.toggle('selected', isActive);
+    radioPills[index]?.classList.toggle('selected', isActive);
+  });
+}
 
     planCards.forEach((card) => {
       card.addEventListener('click', (event) => {
@@ -1182,6 +1279,348 @@ amountInput.addEventListener('input', () => {
     }, 2000);
   }
 });
+const getStartedBtn = document.querySelector('.plan-btn');
+const subscribeNowBtn = document.querySelector('.primary-cta');
+
+subscribeNowBtn.addEventListener('click', () => {
+  setActiveScreen('products');
+});
+
+getStartedBtn.addEventListener('click', () => {
+  getStartedBtn.style.transform = "scale(0.95)";
+  getStartedBtn.style.boxShadow = "0 0 15px #7fcdf4";
+
+  setTimeout(() => {
+    getStartedBtn.style.transform = "scale(1)";
+  }, 150);
+
+  planModal.classList.remove('active');
+
+  // 🔥 ADD THIS
+  setActiveScreen('plans');
+});
+const subscribeBtns = document.querySelectorAll('.buy-btn');
+const featuredCards = document.querySelectorAll('.featured-card');
+
+featuredCards.forEach(card => {
+  card.addEventListener('click', () => {
+
+    const name = card.dataset.name;
+
+    // 🔥 DEFAULT mapping (abhi ke liye)
+    if (name === "MILK") {
+
+      document.getElementById('detail-name').textContent = "RAW COW MILK";
+      document.getElementById('detail-price').textContent = "Price: ₹48/L";
+      document.getElementById('detail-image').src = "./images/COW MILK.png";
+
+      setActiveScreen('productDetail');
+    }
+    if (name === "CHAACH") {
+
+  document.getElementById('detail-name').textContent = "BUFFALO BILONA CHAACH";
+  document.getElementById('detail-price').textContent = "Price: ₹36/L";
+  document.getElementById('detail-image').src = "./images/Chaach.png";
+
+  setActiveScreen('productDetail');
+}
+if (name === "GHEE") {
+
+  document.getElementById('detail-name').textContent = "RAW A2 COW GHEE";
+  document.getElementById('detail-price').textContent = "Price: ₹1100/Kg";
+  document.getElementById('detail-image').src = "./images/A2 ghee.png";
+
+  setActiveScreen('productDetail');
+}
+if (name === "DAHI") {
+
+  document.getElementById('detail-name').textContent = "DAHI";
+  document.getElementById('detail-price').textContent = "Price: ₹32.5";
+  document.getElementById('detail-image').src = "./images/Dahi.png";
+
+  setActiveScreen('productDetail');
+}
+if (name === "PANEER") {
+
+  document.getElementById('detail-name').textContent = "PANEER";
+  document.getElementById('detail-price').textContent = "Price: ₹150/Kg";
+  document.getElementById('detail-image').src = "./images/Paneer.png";
+
+  setActiveScreen('productDetail');
+}
+
+  });
+});
+
+subscribeBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+
+    const card = btn.closest('.product-card');
+
+    const name = card.querySelector('h3').textContent;
+    const price = card.querySelector('strong').textContent;
+    const image = card.querySelector('img').src;
+
+    // 🔥 set data in detail screen
+    document.getElementById('detail-name').textContent = name;
+    const cleanPrice = price.replace("Rs.", "").trim();
+document.getElementById('detail-price').textContent = `Price: ₹${cleanPrice}/L`;
+    document.getElementById('detail-image').src = image;
+
+    // 🔥 go to detail screen
+    setActiveScreen('productDetail');
+
+  });
+});
+const planPills = document.querySelectorAll('.plan-pill');
+
+planPills.forEach(btn => {
+  btn.addEventListener('click', () => {
+    planPills.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+let count = 1;
+const countDisplay = document.getElementById('packet-count');
+
+document.getElementById('plus').addEventListener('click', () => {
+  count++;
+  countDisplay.textContent = count;
+});
+
+document.getElementById('minus').addEventListener('click', () => {
+  if (count > 1) {
+    count--;
+    countDisplay.textContent = count;
+  }
+});
+const quantitySelect = document.getElementById('quantity-select');
+const slotSelect = document.getElementById('slot-select');
+const startDate = document.getElementById('start-date');
+const endDate = document.getElementById('end-date');
+const buyBtn = document.getElementById('buy-btn');
+const cartBtn = document.getElementById('cart-btn');
+
+function checkForm() {
+
+  const quantity = quantitySelect.value;
+  const slot = slotSelect.value;
+  const start = startDate.value;
+  const end = endDate.value;
+
+  if (quantity && slot && start && end) {
+    buyBtn.disabled = false;
+    cartBtn.disabled = false;
+
+    buyBtn.style.background = "#7fcdf4";
+    cartBtn.style.background = "#7fcdf4";
+  } else {
+    buyBtn.disabled = true;
+    cartBtn.disabled = true;
+
+    buyBtn.style.background = "#dcdcdc";
+    cartBtn.style.background = "#dcdcdc";
+  }
+}
+quantitySelect.addEventListener('change', checkForm);
+slotSelect.addEventListener('change', checkForm);
+startDate.addEventListener('change', checkForm);
+endDate.addEventListener('change', checkForm);
+const cartBtnClick = document.getElementById('cart-btn');
+
+cartBtnClick.addEventListener('click', () => {
+
+  const productName = document.getElementById('detail-name').textContent;
+  const productPrice = document.getElementById('detail-price').textContent;
+  const productImage = document.getElementById('detail-image').src;
+
+  const quantity = document.getElementById('quantity-select').value;
+  const packets = document.getElementById('packet-count').textContent;
+  const start = document.getElementById('start-date').value;
+  const end = document.getElementById('end-date').value;
+  const slot = document.getElementById('slot-select').value;
+  const plan = document.querySelector('.plan-pill.active').textContent;
+
+  const cartItem = {
+    name: productName,
+    price: productPrice,
+    image: productImage,
+    quantity,
+    packets,
+    start,
+    end,
+    slot,
+    plan
+  };
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// 🔍 check if same product already exists
+const existingItem = cart.find(item =>
+  item.name === cartItem.name &&
+  item.quantity === cartItem.quantity &&
+  item.slot === cartItem.slot &&
+  item.plan === cartItem.plan &&
+  item.start === cartItem.start &&
+  item.end === cartItem.end
+);
+
+// ✅ if exists → increase packets
+if (existingItem) {
+  existingItem.packets = Number(existingItem.packets) + Number(cartItem.packets);
+} else {
+  // ❌ if different → create new card
+  cart.push(cartItem);
+}
+
+// save
+localStorage.setItem('cart', JSON.stringify(cart));
+
+  // success screen
+  setActiveScreen('cartSuccess');
+
+  setTimeout(() => {
+    setActiveScreen('home');
+  }, 1500);
+});
+cartBtnClick.addEventListener('click', () => {
+  cartBtnClick.style.transform = "scale(0.35)";
+
+  setTimeout(() => {
+    cartBtnClick.style.transform = "scale(1)";
+  }, 150);
+});
+const customPlanBanner = document.querySelector('.custom-plan-banner');
+
+customPlanBanner.addEventListener('click', (e) => {
+  e.stopPropagation();
+  planTitle.textContent = "Customised Subscription Plan";
+  planModal.classList.add('active');
+});
+function getBasePrice(priceStr) {
+  return Number(priceStr.replace(/[^0-9.]/g, ""));
+}
+function loadOrders() {
+
+  const container = document.getElementById('orders-container');
+  container.innerHTML = "";
+
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  cart.forEach((item, index) => {
+    const basePrice = getBasePrice(item.price);
+const size = Number(item.quantity);
+const packets = Number(item.packets);
+
+const totalPrice = basePrice * size * packets;
+
+    const card = `
+      <div class="order-card" data-index="${index}">
+        <button class="remove-btn">✖</button>
+
+        <img src="${item.image}" style="width:80px; border-radius:10px;">
+
+        <div style="font-size:12px;">
+          <strong>${item.name}</strong><br>
+           ₹ ${totalPrice}<br>
+          Plan: ${item.plan}<br>
+          Qty: ${item.quantity} × ${item.packets}<br>
+          Start: ${item.start}<br>
+          End: ${item.end}<br>
+          Slot: ${item.slot}
+        </div>
+
+        <!-- 🔥 QUANTITY CONTROL -->
+    <div class="qty-control">
+      <button class="qty-minus">-</button>
+      <span>${item.packets}</span>
+      <button class="qty-plus">+</button>
+    </div>
+
+      <!-- 🔥 SIZE SELECT -->
+  <select class="size-select">
+    <option value="0.5" ${item.quantity == "0.5" ? "selected" : ""}>500 ml</option>
+    <option value="1" ${item.quantity == "1" ? "selected" : ""}>1 L</option>
+  </select>
+
+      
+
+    </div>
+      
+    `;
+
+    container.innerHTML += card; // ✅ IMPORTANT
+  });
+
+  // 🔥 REMOVE LOGIC (LOOP KE BAAD)
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+
+      const card = e.target.closest('.order-card');
+      const index = card.dataset.index;
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      cart.splice(index, 1);
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      loadOrders();
+    });
+  });
+  // ➕ PLUS BUTTON
+document.querySelectorAll('.qty-plus').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+
+    const card = e.target.closest('.order-card');
+    const index = card.dataset.index;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cart[index].packets = Number(cart[index].packets) + 1;
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    loadOrders();
+  });
+});
+
+// ➖ MINUS BUTTON
+document.querySelectorAll('.qty-minus').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+
+    const card = e.target.closest('.order-card');
+    const index = card.dataset.index;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart[index].packets > 1) {
+      cart[index].packets -= 1;
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    loadOrders();
+  });
+});
+// 🔥 SIZE CHANGE
+document.querySelectorAll('.size-select').forEach(select => {
+  select.addEventListener('change', (e) => {
+
+    const card = e.target.closest('.order-card');
+    const index = card.dataset.index;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cart[index].quantity = e.target.value;
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    loadOrders();
+  });
+});
+}
+
   </script>
 </body>
 </html>
