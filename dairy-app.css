@@ -195,10 +195,11 @@ button {
 }
 
 .featured-card {
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.milk-card:hover {
+  transform: none !important;
 }
 
 
@@ -207,7 +208,7 @@ button {
 .category-chip:hover,
 .custom-plan-banner:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
 }
 
 .sky-card {
@@ -396,14 +397,25 @@ button {
   padding: 0 15px;
 }
 
-.plan-card,
-.custom-card,
 .product-card {
-  background: var(--surface);
+  background: #fff;
   border-radius: 20px;
-  box-shadow: var(--shadow);
-}
 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);  /* stronger base */
+
+  transition: all 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 
+    0 18px 35px rgba(0,0,0,0.18),
+    0 6px 12px rgba(0,0,0,0.10);
+}
+.product-card:hover img {
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+}
 .plan-card {
   display: grid;
   grid-template-columns: 54px 1fr 28px;
@@ -1401,8 +1413,32 @@ button {
   padding: 0 10px;
 }
 .featured-visual img {
-  width: 90px;
+  width: 100%;
+  max-width: 140px;   /* 🔥 increase size */
   height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.milk-card img {
+  transform: scale(0.9); /* 🔥 zoom only milk */
+}
+.chaach-card img {
+  transform: scale(0.9); /* 🔥 zoom only chaach */
+}
+.ghee-card img {
+  transform: scale(0.9); /* 🔥 zoom only ghee */
+}
+.paneer-card img {
+  transform: scale(0.9); /* 🔥 zoom only paneer */
+}
+.dahi-card img {
+  transform: scale(0.9); /* 🔥 zoom only dahi */
+}
+.featured-card:hover img {
+  transform: none;
+}
+.featured-visual {
+  height: 130px; /* 🔥 more space for bigger image */
 }
 
 .featured-card {
@@ -1411,15 +1447,40 @@ button {
 /* TOP SECTION */
 .detail-top {
   height: 260px;
-  background: linear-gradient(180deg, #e8dcc4, #f5f1e6);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-}
 
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    to bottom,
+    #cfe6a0 0%,   /* top green */
+    #e9f2d0 50%,  /* middle soft */
+    #ffffff 100%  /* bottom fade */
+  );
+}
+.detail-top::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 60px;
+
+  background: linear-gradient(to bottom, transparent, #ffffff);
+}
 .detail-top img {
-  width: 140px;
+  width: 160px;   /* slightly bigger */
+  height: auto;
+
+  object-fit: contain;
+
+  position: relative;
+  z-index: 1;
 }
 
 .back-btn {
@@ -1651,8 +1712,148 @@ button {
   gap: 1px;
 }
 
+.design-footer {
+  grid-column: 1 / -1;   /* full width */
+  display: flex;
+  justify-content: center;
+  margin-top: -150px;
+  pointer-events: none;  /* ❌ no click */
+}
 
+.design-footer img {
+  width: 380px;   /* fixed size */
+  height: auto;
+  object-fit: contain;
+}
 
+.paneer-card::after {
+  margin-left: 25px; /* adjust this value */
+}
+.product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* 🔥 keeps image inside box */
+}
+/* ✨ hover lift */
+#product-detail-screen .plan-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+/* ✍️ focus highlight */
+#product-detail-screen input:focus,
+#product-detail-screen select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(127,205,244,0.3);
+}
+/* 🎬 screen animation */
+#product-detail-screen {
+  animation: fadeSlide 0.4s ease;
+}
 
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0px rgba(0, 123, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(0, 123, 255, 0);
+  }
+}
 
+.glow-effect {
+  animation: glowPulse 1s ease-in-out infinite;
+  border-radius: 12px;
+}
+.date-glow {
+  animation: glowPulse 1s ease-in-out infinite;
+  border: 2px solid #7fcdf4;
+  box-shadow: 0 0 12px rgba(127, 205, 244, 0.8);
+}
+/* 🔥 ONLY FOR MILK CARD HOVER PREVIEW */
+.milk-card {
+  position: relative;
+  overflow: hidden;
+}
 
+/* hide full card */
+.hover-full-card {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  background:transparent; /* 🔥 subtle white overlay */
+}
+
+/* 🔥 MAIN FIX — SCALE DOWN CARD */
+.hover-full-card .product-card {
+  transform: scale(0.6);   /* 👈 FINAL PERFECT FIT */
+  transform-origin: center;
+
+   box-shadow: 0 12px 25px rgba(0,0,0,0.15); /* 👈 add this */
+}
+
+/* hover animation */
+.milk-card:hover .hover-full-card {
+  opacity: 1;
+}
+
+.milk-card:hover .hover-full-card .product-card {
+  transform: scale(0.65) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+/* 🔥 compact content for perfect fit */
+.hover-full-card .product-body {
+  padding: 6px;
+}
+
+.hover-full-card .product-body h3 {
+  font-size: 9px;
+  margin-bottom: 4px;
+}
+
+.hover-full-card .product-body p {
+  font-size: 9px;
+  margin-bottom: 5px;
+}
+
+.hover-full-card .product-body strong {
+  font-size: 10px;
+  margin-bottom: 6px;
+}
+
+.hover-full-card .buy-btn {
+  height: 22px;
+  font-size: 9px;
+}
+
+.hover-full-card .product-visual {
+  height: 60px;
+}
+.hover-full-card .product-visual img {
+  transition: transform 0.4s ease;
+}
+
+.milk-card:hover .hover-full-card .product-visual img {
+  transform: scale(1.05);
+}
+.hover-full-card .buy-btn:hover {
+  box-shadow: 0 0 10px rgba(127,205,244,0.8);
+}
