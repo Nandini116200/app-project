@@ -1,53 +1,1951 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Daily Progress Tracker</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dairy App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dairy-app.css" />
 </head>
 <body>
-  <div id="toggleBtn" onclick="toggleSidebar()">☰</div>
-
-<div id="sidebar">
-  <h2>Saved Logs</h2>
-  <ul id="savedLogsList"></ul>
+  <div class="mobile-app">
+    <main class="screen" id="login-screen" data-screen="login">
+  <div class="login-container">
+    <div class="login-art">
+  <img src="./images/login-logo.png" alt="M.R Milk Logo" class="login-top-image">
 </div>
 
-<h1>📊Daily Progress Record</h1>
+    <div class="login-form-area">
+      <label class="login-label">Mobile Number</label>
+      <input type="text" class="login-input" />
 
-<div class="container">
+      <div class="login-or">OR</div>
 
-  <!-- Calendar -->
-  <div class="calendar">
-    <input type="date" id="datePicker">
-    <button onclick="loadData()">Load</button>
+      <label class="login-label">E-mail</label>
+      <input type="text" class="login-input" />
+
+      <button class="login-btn get-otp-btn" type="button">Get OTP</button>
+
+      <p class="login-policy">
+        By clicking Get OTP , you agree to our Terms of use &amp; Privacy Policy
+      </p>
+
+      <div class="login-footer">
+        <span>Don't have Account</span>
+        <button type="button" class="create-account-link">Create Account</button>
+      </div>
+    </div>
   </div>
+</main>
 
-  <!-- Work Log -->
-  <div class="log">
-    <h2>Today's Work</h2>
+        <!-- LOGIN SCREEN END -->
+      <main class="screen" id="register-screen" data-screen="register">
+  <div class="register-screen-wrap">
+    <div class="login-art register-art">
+      <img src="./images/login-logo.png" alt="M.R Milk Logo" class="register-top-image">
+    </div>
+
+    <div class="register-card">
+      <input type="text" class="register-line-input" placeholder="Name" />
+      <input type="text" class="register-line-input" placeholder="Mobile Number" />
+      <input type="email" class="register-line-input" placeholder="Email" />
+      <input type="date" class="register-line-input"/>
+    </div>
+
+    <p class="register-policy">
+      By proceeding , you agree to our Terms of use &amp; Privacy Policy
+    </p>
+
+    <button class="create-btn" type="button">CREATE ACCOUNT</button>
+  </div>
+</main>
+<main class="screen" id="profile-screen" data-screen="profile">
+  <div class="login-container">
+
+    <h2 style="margin-top:10px;">My Profile</h2>
+
+    <div style="background:#7fcdf4; padding:14px; border-radius:10px; margin-top:20px; color:#fff;cursor:pointer;" id="profile-card-click">
+      <strong id="profile-name">Name</strong><br>
+      <small id="profile-mobile">Mobile</small>
+    </div>
+    <div class="profile-card">
+
+  <button class="profile-option">
+    <span>🛒</span>
+    <span>My Orders</span>
+  </button>
+
+  <button class="profile-option" data-go-screen="wallet">
+    <span>💼</span>
+    <span>My Wallet</span>
+  </button>
+
+  <button class="profile-option">
+    <span>🎧</span>
+    <span>Help & Support</span>
+  </button>
+
+</div>
+<div class="logout-wrap">
+  <button class="logout-btn">Log Out →</button>
+</div>
+
+  </div>
+</main>
+
+<main class="screen" id="wallet-screen" data-screen="wallet">
+  <div class="login-container">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <button class="icon-btn" data-go-screen="profile">←</button>
+      <h1>My Wallet</h1>
+      <div class="topbar-spacer"></div>
+    </div>
+
+    <!-- BALANCE CARD -->
+    <div class="wallet-card">
+      <p>Total Balance</p>
+      <h2>₹ 0</h2>
+    </div>
+
+    <!-- TRANSACTIONS -->
+    <div class="wallet-option">
+      <span>📄</span>
+      <span>Transactions</span>
+    </div>
+
+    <!-- ADD MONEY BUTTON -->
+     <div class="wallet-btn-wrap">
+      <button class="wallet-btn" data-go-screen="addmoney">Add Money</button>
+    </div>
     
-    <textarea id="workInput" placeholder="What did you do today?"></textarea>
 
-    <h3>Git Links</h3>
-    <input type="text" id="gitLink" placeholder="Paste GitHub link">
-    <button onclick="addGit()">Add Link</button>
+  </div>
+</main>
 
-    <ul id="gitList"></ul>
+<main class="screen" id="addmoney-screen" data-screen="addmoney">
+  <div class="login-container">
 
-    <button class="saveBtn" onclick="saveData()">Save</button>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <button class="icon-btn" data-go-screen="wallet">←</button>
+      <h1>My Wallet</h1>
+      <div class="topbar-spacer"></div>
+    </div>
+
+    <!-- RECHARGE PACKS -->
+    <h3 style="margin-top:20px;">Popular Recharge Packs</h3>
+
+    <div class="recharge-grid">
+      <div class="recharge-card" data-amount="500">₹ 500</div>
+<div class="recharge-card" data-amount="1000">₹ 1000</div>
+<div class="recharge-card" data-amount="1500">₹ 1500</div>
+<div class="recharge-card" data-amount="2000">₹ 2000</div>
+    </div>
+
+    <!-- BOTTOM INPUT -->
+    <div class="addmoney-bottom">
+      <input type="number" placeholder="Enter Amount" class="amount-input">
+    </div>
+
+    <!-- PAYMENT METHODS -->
+    <h3 style="margin-top:20px;">Payments Methods</h3>
+
+    <div class="payment-box">
+      <div class="payment-grid">
+
+  <div class="payment-card active">UPI</div>
+  <div class="payment-card">Card</div>
+  <div class="payment-card">Net Banking</div>
+
+</div>
+    </div>
+    <div class="upi-row" style="display:none;">
+  <input type="text" placeholder="Enter UPI ID" class="upi-input" maxlength="30">
+  <button class="upi-pay-btn">Pay</button>
+</div>
+<div class="card-form" style="display:none;">
+
+  <input type="text" placeholder="Card Number" class="card-input card-number">
+
+  <input type="text" placeholder="Name on card" class="card-input name-input">
+
+  <div class="card-row">
+    <input type="text" placeholder="MM/YY" class="card-input expiry-input">
+    <input type="text" placeholder="CVV" class="card-input cvv-input">
   </div>
 
-  <!-- Review Section -->
-  <div class="review">
-    <h2>Review / Feedback</h2>
-    <textarea id="reviewInput" placeholder="Reviewer can write here..."></textarea>
-    <button onclick="saveReview()">Save Review</button>
+  <button class="card-pay-btn">Pay Now</button>
+
+</div>
+
+
+  </div>
+</main>
+<main class="screen" id="edit-profile-screen" data-screen="editProfile">
+  <div class="login-container">
+
+    <h2>Edit Profile</h2>
+
+    <div style="text-align:center; margin:20px 0;">
+      <div style="width:90px; height:90px; border-radius:50%; background:#7fcdf4; margin:auto;"></div>
+    </div>
+
+    <div class="register-card">
+
+      <input type="text" id="edit-name" class="register-line-input" placeholder="Name" />
+      <input type="text" id="edit-mobile" class="register-line-input" placeholder="Mobile Number" />
+      <input type="email" id="edit-email" class="register-line-input" placeholder="Email" />
+
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+      <button class="update-btn">Update Profile</button>
+    </div>
+
+  </div>
+</main>
+
+<!-- ✅ OTP SCREEN YAHA ADD KARO -->
+<main class="screen" id="otp-screen" data-screen="otp">
+  <div class="login-container">
+
+    <div class="login-art">
+      <img src="./images/login-logo.png" class="login-top-image">
+    </div>
+
+    <div class="login-form-area">
+      <label class="login-label">Enter OTP</label>
+      <input type="text" class="login-input otp-input" maxlength="6" />
+
+      <button class="login-btn">Resend OTP</button>
+
+      <p class="login-policy">
+        By clicking Get OTP , you agree to our Terms of use & Privacy Policy
+      </p>
+
+      <div class="login-footer">
+        <span>Don't have Account</span>
+        <button class="create-account-link">Create Account</button>
+      </div>
+
+    </div>
+  </div>
+</main>
+<main class="screen" id="success-screen" data-screen="success">
+  <div class="login-container" style="text-align:center; padding-top:80px;">
+
+    <img src="./images/login-logo.png" class="login-top-image">
+
+    <div style="margin-top:60px;">
+      <div class="success-tick">
+      <span class="tick-mark">✔</span>
+ 
+</div>
+      <h1 class="success-sub">Log In</h1>
+<h1 class="success-main">Successfully!!!</h1>
+    </div>
+
+  </div>
+</main>
+<main class="screen" id="profile-success-screen" data-screen="profileSuccess">
+  <div class="login-container" style="text-align:center; padding-top:80px;">
+
+    <div style="margin-top:60px;">
+      <div class="success-tick">
+        <span class="tick-mark">✔</span>
+      </div>
+
+      <h1 class="success-sub">Profile Updated</h1>
+      <h1 class="success-main">Successfully!!!</h1>
+    </div>
+
+  </div>
+</main>
+
+<main class="screen" id="cart-success-screen" data-screen="cartSuccess">
+  <div class="login-container" style="text-align:center; padding-top:80px;">
+
+    <div style="margin-top:60px;">
+      <div class="success-tick">
+        <span class="tick-mark">✔</span>
+      </div>
+
+      <h1 class="success-sub">Added to Cart</h1>
+      <h1 class="success-main">Successfully!!!</h1>
+    </div>
+
+  </div>
+</main>
+
+<!-- HOME SCREEN START -->
+<main class="screen active" id="home-screen" data-screen="home">
+    <header class="home-topbar">
+  <div class="login-brand">
+    <span class="brand-icon">👤</span>
+    <h1 data-go-screen="login" style="cursor:pointer;">Log In</h1>
+  </div>
+  <div class="home-actions">
+    <button class="icon-btn" data-go-screen="wallet">💸</button>
+    <button class="icon-btn" aria-label="Notifications">🔔</button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <img id="heroImage" src="./images/Banner 1.png">
+  <div class="hero-overlay"></div>
+</section>
+
+<section class="home-section">
+  <div class="section-head">
+    <h3>SUBSCRIPTION PLANS</h3>
+    <button class="section-link" type="button" data-go-screen="products"></button>
+  </div>
+  <div class="subscription-list">
+    <article class="mini-plan-card sky-card">
+      <div class="mini-icon">📅</div>
+      <h4>Monthly<br>Subscription<br>Plan</h4>
+    </article>
+    <article class="mini-plan-card sky-card">
+      <div class="mini-icon">🗓️</div>
+      <h4>15 Days<br>Subscription<br>Plan</h4>
+    </article>
+    <article class="mini-plan-card sky-card">
+      <div class="mini-icon">📆</div>
+      <h4>Weekly<br>Subscription<br>Plan</h4>
+    </article>
+  </div>
+  <button class="custom-plan-banner" type="button">⚙️&nbsp; Customised Subscription Plan</button>
+</section>
+
+<section class="home-section bordered-section">
+  <div class="section-head">
+    <h3>PRODUCTS CATEGORIES</h3>
+    <button class="section-link" type="button" data-go-screen="products"></button>
+  </div>
+  <div class="category-circles">
+    <button class="category-chip blue-ring" data-go-screen="products" data-category="milk"><span>🥛</span><small>MILK</small></button>
+    <button class="category-chip blue-ring" data-go-screen="products" data-category="chaach"><span>🫙</span><small>CHAACH</small></button>
+    <button class="category-chip yellow-ring" data-go-screen="products" data-category="ghee"><span>🧈</span><small>GHEE</small></button>
+    <button class="category-chip green-ring" data-go-screen="products" data-category="dahi"><span>🥣</span><small>DAHI</small></button>
+    <button class="category-chip pink-ring" data-go-screen="products" data-category="paneer"><span>🧀</span><small>PANEER</small></button>
+  </div>
+</section>
+
+<section class="home-section bordered-section featured-section">
+  <div class="section-head">
+    <h3>FEATURED PRODUCTS</h3>
+    <button class="section-link" type="button" data-go-screen="products"></button>
+  </div>
+
+  <div class="featured-list">
+
+  <article class="featured-card milk-card" data-name="RAW COW MILK">
+
+  <!-- NORMAL VIEW -->
+  <div class="featured-visual normal-view">
+    <img src="./images/Milk.png">
+  </div>
+
+  <!-- 🔥 FULL CARD CLONE -->
+  <div class="hover-full-card">
+    <div class="product-card">
+      <div class="product-visual">
+        <img src="./images/Milk.png">
+      </div>
+      <div class="product-body">
+        <h3>RAW COW MILK</h3>
+        <p>Pure cow's milk, fresh from farm to home</p>
+        <strong>₹51/L</strong>
+        <button class="buy-btn">SUBSCRIBE</button>
+      </div>
+    </div>
+  </div>
+
+</article>
+
+  <article class="featured-card chaach-card" data-name="BUFFALO BILONA CHAACH">
+    <div class="featured-visual">
+      <img src="./images/Chaach.png">
+    </div>
+  </article>
+
+  <article class="featured-card ghee-card" data-name="A2 COW GHEE">
+    <div class="featured-visual">
+      <img src="./images/Ghee.png">
+    </div>
+  </article>
+
+  <article class="featured-card dahi-card" data-name="DAHI">
+    <div class="featured-visual">
+      <img src="./images/Dahi.png">
+    </div>
+  </article>
+  
+
+  <article class="featured-card paneer-card" data-name="PANEER">
+    <div class="featured-visual">
+      <img src="./images/Paneer.png">
+    </div>
+  </article>
+  </div>
+  <div class="design-footer">
+  <img src="./images/DESIGN END.png">
+</div>
+
+</section>
+</main>
+
+<main class="screen" id="plans-screen" data-screen="plans">
+      <header class="topbar">
+        <button class="icon-btn" aria-label="Go back" data-go-screen="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19 8.5 12l7-7"/></svg>
+        </button>
+        <h1>Subscription Plans</h1>
+        <span class="topbar-spacer" aria-hidden="true"></span>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-cow">🐄</div>
+        <h2>Choose Your Plan</h2>
+        <p>Fresh dairy delivered to your door daily</p>
+      </section>
+
+      <section class="plans-wrap">
+        <article class="plan-card selected">
+          <div class="plan-icon sky">📅</div>
+          <div class="plan-content">
+            <h3>Monthly Plan</h3>
+            <p>30 days continuous delivery</p>
+            <span>Save up to 15%</span>
+          </div>
+          <button class="radio-pill selected" aria-label="Selected monthly plan"></button>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-icon sky">🗓️</div>
+          <div class="plan-content">
+            <h3>15 Days Plan</h3>
+            <p>Bi-monthly delivery cycle</p>
+            <span>Save up to 8%</span>
+          </div>
+          <button class="radio-pill" aria-label="Choose 15 days plan"></button>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-icon mint">📆</div>
+          <div class="plan-content">
+            <h3>Weekly Plan</h3>
+            <p>7 days fresh delivery</p>
+            <span>Save up to 5%</span>
+          </div>
+          <button class="radio-pill" aria-label="Choose weekly plan"></button>
+        </article>
+
+        <article class="custom-card">
+          <h3><span>⚙️</span> Customised Plan</h3>
+          <div class="quantity-row">
+            <span>Quantity (litres/day)</span>
+            <div class="counter">
+              <button type="button" class="circle-action minus-btn">−</button>
+              <strong id="quantity-value">1</strong>
+              <button type="button" class="circle-action plus-btn">+</button>
+            </div>
+          </div>
+          <div class="days-label">Delivery Days</div>
+          <div class="day-pills">
+            <button type="button" class="day-pill active">Mon</button>
+            <button type="button" class="day-pill active">Tue</button>
+            <button type="button" class="day-pill active">Wed</button>
+            <button type="button" class="day-pill active">Thu</button>
+            <button type="button" class="day-pill active">Fri</button>
+            <button type="button" class="day-pill">Sat</button>
+            <button type="button" class="day-pill">Sun</button>
+          </div>
+        </article>
+      </section>
+
+      <div class="cta-wrap">
+        <button class="primary-cta" type="button">SUBSCRIBE NOW</button>
+        <p class="call-text">📞 Call us: +91 72309 20774</p>
+      </div>
+    </main>
+
+
+   <main class="screen" id="orders-screen" data-screen="orders">
+
+  <header class="topbar">
+    <button class="icon-btn" data-go-screen="home">←</button>
+    <h1>Bag</h1>
+    <span class="topbar-spacer"></span>
+  </header>
+
+  <div id="orders-container"></div>
+
+</main>
+
+    <main class="screen" id="products-screen" data-screen="products">
+      <header class="topbar">
+        <button class="icon-btn" aria-label="Go back" data-go-screen="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19 8.5 12l7-7"/></svg>
+        </button>
+        <h1>Our Products</h1>
+        <button class="icon-btn" aria-label="Search products">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        </button>
+      </header>
+
+      <div class="category-strip" role="tablist" aria-label="Product categories">
+        <button class="category-pill active" type="button" data-filter="all">All</button>
+        <button class="category-pill" type="button" data-filter="milk">MILK</button>
+        <button class="category-pill" type="button" data-filter="chaach">CHAACH</button>
+        <button class="category-pill" type="button" data-filter="ghee">GHEE</button>
+        <button class="category-pill" type="button" data-filter="dahi">DAHI</button>
+        <button class="category-pill" type="button" data-filter="paneer">PANEER</button>
+      </div>
+
+      <section class="products-page">
+        <div class="product-group" data-section="milk">
+          <h2>MILK</h2>
+          <div class="cards-grid three-up">
+            <article class="product-card">
+              <div class="product-visual">
+              <img src="./images/BUFFALO MILK .png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>RAW BUFFALO MILK</h3>
+                <p>Creamy buffalo milk, rich and wholesome</p>
+                <strong>₹75/L</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual">
+              <img src="./images/COW MILK.png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>RAW COW MILK</h3>
+                <p>Pure cow's milk, fresh from farm to home</p>
+                <strong>₹51/L</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+            <article class="product-card">
+                <div class="product-visual">
+                <img src="./images/A2 MILK.png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>RAW A2 COW MILK</h3>
+                <p>A2 milk from Sahiwal cows, easy to digest</p>
+                <strong>₹85/L</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="chaach">
+          <h2>CHAACH</h2>
+          <div class="cards-grid two-up">
+            <article class="product-card">
+              <div class="product-visual">
+                <img src="./images/BUFFALO CHAACH .png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>BUFFALO BILONA CHAACH</h3>
+                <p>Rich and tasty buttermilk, healthy drink</p>
+                <strong>₹40/L</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual">
+                <img src="./images/COW CHAACH .png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>COW BILONA CHAACH</h3>
+                <p>Traditional tangy buttermilk, refreshing</p>
+                <strong>₹35/L</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="ghee">
+          <h2>GHEE</h2>
+          <div class="cards-grid three-up">
+            <article class="product-card">
+              <div class="product-visual">
+                <img src="./images/buffalo ghee.png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>BUFFALO GHEE</h3>
+                <p>Pure buffalo ghee, traditional strength & aroma</p>
+                <strong>₹1300/Kg</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual">
+                <img src="./images/COW GHEE .png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>COW GHEE</h3>
+                <p>Traditional cow ghee, rich aroma & authentic taste</p>
+                <strong>₹1100/Kg</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-visual">
+                <img src="./images/A2 ghee.png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>RAW A2 COW GHEE</h3>
+                <p>Authentic A2 ghee, bilona method, superior quality</p>
+                <strong>₹2800/Kg</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="dahi">
+          <h2>DAHI</h2>
+          <div class="cards-grid single-up">
+            <article class="product-card">
+              <div class="product-visual">
+                <img src="./images/DAHI (1).png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>DAHI</h3>
+                <p>Thick homemade dahi, healthy & delicious</p>
+                <strong>₹72/500g</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" data-section="paneer">
+          <h2>PANEER</h2>
+          <div class="cards-grid single-up">
+            <article class="product-card">
+              <div class="product-visual">
+                <img src="./images/paneer (1).png" alt="Milk"></div>
+              <div class="product-body">
+                <h3>PANEER</h3>
+                <p>Soft and creamy, freshly prepared for your dishes</p>
+                <strong>₹450/Kg</strong>
+                <button class="buy-btn">SUBSCRIBE</button>
+                
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+   <main class="screen" id="product-detail-screen" data-screen="productDetail">
+
+  <!-- TOP IMAGE -->
+  <div class="detail-top">
+    <button class="back-btn" data-go-screen="products">←</button>
+    <img id="detail-image" src="">
+  </div>
+
+  <!-- BOTTOM CARD -->
+  <div class="detail-card">
+
+    <h2 id="detail-name">Product Name</h2>
+    <p id="detail-price">Price</p>
+
+    <!-- PLAN -->
+    <div class="plan-box" id="planBox">
+      <p>Choose the Plan</p>
+      <div class="plan-options">
+        <button class="plan-pill">Monthly</button>
+        <button class="plan-pill">15 Days</button>
+        <button class="plan-pill">Weekly</button>
+        <button class="plan-pill">Customised</button>
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="input-row">
+
+  <!-- Quantity dropdown -->
+  <select id="quantity-select">
+    <option value="">Choose Quantity</option>
+    <option value="0.5">500 ml</option>
+    <option value="1">1 L</option>
+  </select>
+
+  <!-- Packet counter -->
+  <div class="packet-box">
+    <button id="minus">-</button>
+    <span id="packet-count">1</span>
+    <button id="plus">+</button>
   </div>
 
 </div>
 
-<script src="script.js"></script>
-</body>
-</html>
+   <div class="input-row">
+  <input type="date" id="start-date" class="date-input">
+  <input type="date" id="end-date" >
+</div>
 
+    <div class="input-row full">
+  <select id="slot-select">
+    <option value="">Choose Delivery Slot</option>
+    <option>Morning</option>
+    <option>Evening</option>
+  </select>
+</div>
+
+    <!-- BUTTONS -->
+    <button class="big-btn" id="buy-btn" disabled>Buy Now</button>
+    <button class="big-btn" id="cart-btn" disabled>Add to Cart</button>
+
+    <h3 style="margin-top:20px;">Product details</h3>
+    <p style="font-size:13px; color:#777;">
+      Lorem ipsum text...
+    </p>
+
+  </div>
+
+</main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-go-screen="home">
+        <span class="nav-badge home-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h4.5v-5h4v5h4.5v-9.5"/></svg>
+        </span>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" data-go-screen="products">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="11" rx="1.8"/><path d="M8 19.5h8"/></svg>
+        <span>Products</span>
+      </button>
+      <button class="nav-item" data-go-screen="orders">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/><path d="M3.5 4h2l2.2 9.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8l1.5-6.2H7.2"/></svg>
+        <span>Cart</span>
+      </button>
+      <button class="nav-item" data-go-screen="profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.5 20a6.5 6.5 0 0 0-13 0"/><circle cx="12" cy="8" r="4"/></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+    <div class="logout-modal" id="logoutModal">
+
+  <div class="modal-box">
+    <h3>Confirm Logout</h3>
+    <p>Are you sure you want to log out?</p>
+
+    <div class="modal-actions">
+      <button class="yes-btn">Yes</button>
+      <button class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+</div>
+  </div>
+<div id="planModal" class="plan-modal">
+  <div class="plan-modal-card">
+
+    <h2 id="planTitle">Monthly Subscription Plan</h2>
+
+    <ul>
+      <li>Slot customization</li>
+      <li>Category and Product Switch</li>
+      <li>Dynamic Pricing</li>
+      <li>Start Date Selection</li>
+      <li>Pause Feature</li>
+      <li>Refund Policy</li>
+    </ul>
+
+    <button class="plan-btn"> Explore Products </button>
+
+  </div>
+</div>
+  <script>
+    const screens = document.querySelectorAll('.screen');
+    let currentProduct = "";
+    let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    let basePrice = 0;
+    const navTriggers = document.querySelectorAll('[data-go-screen]');
+    const bottomNavItems = document.querySelectorAll('.bottom-nav .nav-item');
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const productSections = document.querySelectorAll('[data-section]');
+    const planCards = document.querySelectorAll('.plan-card');
+    const radioPills = document.querySelectorAll('.radio-pill');
+    const dayPills = document.querySelectorAll('.day-pill');
+    const quantityDisplay = document.getElementById('quantity-value');
+    const plusBtn = document.querySelector('.plus-btn');
+    const minusBtn = document.querySelector('.minus-btn');
+    let quantity = Number(quantityDisplay?.textContent || 1);
+
+    function setActiveScreen(screenName) {
+  if (screenName === 'orders') loadOrders();
+
+  screens.forEach(screen =>
+    screen.classList.toggle('active', screen.dataset.screen === screenName)
+  );
+
+  bottomNavItems.forEach(item =>
+    item.classList.toggle('active', item.dataset.goScreen === screenName)
+  );
+
+  // 🔥 ADD THIS BLOCK
+  if (screenName === 'productDetail') {
+    const planBox = document.getElementById('planBox');
+
+    if (planBox) {
+      planBox.classList.add('glow-effect');
+
+      setTimeout(() => {
+        planBox.classList.remove('glow-effect');
+      }, 3000); // 3 seconds
+    }
+  }
+}
+    
+
+    navTriggers.forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+
+    const target = trigger.dataset.goScreen;
+    const category = trigger.dataset.category;
+
+    // 🔥 LOGIN CHECK
+    const protectedScreens = ["wallet", "profile", "orders", "addmoney"];
+
+    if (protectedScreens.includes(target) && !isLoggedIn) {
+      setActiveScreen("login");
+      return;
+    }
+
+    if (target) {
+      setActiveScreen(target);
+
+      if (category) {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+
+        const selectedBtn = document.querySelector(`[data-filter="${category}"]`);
+        if (selectedBtn) selectedBtn.classList.add('active');
+
+        productSections.forEach(section => {
+          section.style.display =
+            section.dataset.section === category ? 'block' : 'none';
+        });
+      }
+    }
+  });
+});
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.filter;
+        filterButtons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+
+        productSections.forEach((section) => {
+          section.style.display = selected === 'all' || section.dataset.section === selected ? 'block' : 'none';
+        });
+      });
+    });
+
+    function updatePlanSelection(selectedCard) {
+  planCards.forEach((card, index) => {
+    const isActive = card === selectedCard;
+    card.classList.toggle('selected', isActive);
+    radioPills[index]?.classList.toggle('selected', isActive);
+  });
+}
+
+    planCards.forEach((card) => {
+      card.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        updatePlanSelection(card);
+      });
+    });
+
+    radioPills.forEach((pill, index) => {
+      pill.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        updatePlanSelection(planCards[index]);
+      });
+    });
+
+    dayPills.forEach((pill) => {
+      pill.addEventListener('click', (event) => {
+        event.preventDefault();
+        pill.classList.toggle('active');
+      });
+    });
+
+    plusBtn?.addEventListener('click', (event) => {
+      event.preventDefault();
+      quantity += 1;
+      quantityDisplay.textContent = quantity;
+    });
+
+    minusBtn?.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (quantity > 1) {
+        quantity -= 1;
+        quantityDisplay.textContent = quantity;
+      }
+    });
+    const loginInputs = document.querySelectorAll('.login-input');
+const otpBtn = document.querySelector('.login-btn');
+
+loginInputs.forEach(input => {
+  input.addEventListener('input', () => {
+    let isFilled = false;
+
+    loginInputs.forEach(inp => {
+      if (inp.value.trim() !== '') {
+        isFilled = true;
+      }
+    });
+
+    if (isFilled) {
+      otpBtn.style.background = "#7fcdf4";
+      otpBtn.style.color = "#fff";
+    } else {
+      otpBtn.style.background = "#d3d3d3";
+      otpBtn.style.color = "#222";
+    }
+  });
+});
+const getOtpBtn = document.querySelector('.get-otp-btn');
+
+getOtpBtn.addEventListener('click', () => {
+  setActiveScreen('otp');
+});
+const otpInput = document.querySelector('.otp-input');
+const successSub = document.querySelector('.success-sub');
+const successMain = document.querySelector('.success-main');
+
+otpInput.addEventListener('input', () => {
+  const value = otpInput.value.trim();
+
+  if (value.length === 6) {
+    successSub.textContent = "Log In";
+    successMain.textContent = "Successfully!!!";
+
+    localStorage.setItem("isLoggedIn", "true");
+    isLoggedIn = true;
+
+    setActiveScreen('success');
+
+    // 🔥 ADD THIS
+    setTimeout(() => {
+      setActiveScreen('home');
+    }, 1000);
+  }
+});
+
+const createAccountBtns = document.querySelectorAll(".create-account-link");
+createAccountBtns.forEach(btn =>
+  btn.addEventListener("click", () => setActiveScreen("register"))
+);
+
+function setupRegisterInputs() {
+  const registerInputs = document.querySelectorAll("#register-screen .register-line-input");
+  const createBtn = document.querySelector(".create-btn");
+
+  function checkRegisterForm() {
+    let allFilled = true;
+
+    registerInputs.forEach(inp => {
+      if (!inp.value.trim()) allFilled = false;
+    });
+
+    if (allFilled) {
+      createBtn.style.background = "#7fcdf4";
+      createBtn.style.color = "#fff";
+    } else {
+      createBtn.style.background = "#d5e4eb";
+      createBtn.style.color = "#8b8b8b";
+    }
+
+    return allFilled;
+  }
+
+  registerInputs.forEach(input => {
+    input.addEventListener("input", checkRegisterForm);
+  });
+
+  createBtn.addEventListener("click", () => {
+    if (!checkRegisterForm()) return;
+
+    const name = registerInputs[0].value.trim();
+    const mobile = registerInputs[1].value.trim();
+
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userMobile", mobile);
+
+    successSub.textContent = "Account Created";
+    successMain.textContent = "Successfully!!!";
+
+    localStorage.setItem("isLoggedIn", "true");
+    isLoggedIn = true;
+    setActiveScreen("success");
+
+    setTimeout(() => {
+      setActiveScreen("home");
+    }, 1000);
+  });
+}
+
+setupRegisterInputs();
+function loadProfileData() {
+  const name = localStorage.getItem('userName');
+  const mobile = localStorage.getItem('userMobile');
+
+  if (name && mobile) {
+    document.getElementById('profile-name').textContent = name;
+    document.getElementById('profile-mobile').textContent = mobile;
+  }
+}
+
+const logoutBtn = document.querySelector('.logout-btn');
+const logoutModal = document.getElementById('logoutModal');
+const yesBtn = document.querySelector('.yes-btn');
+const cancelBtn = document.querySelector('.cancel-btn');
+
+// open modal
+logoutBtn.addEventListener('click', () => {
+  logoutModal.classList.add('active');
+});
+
+// YES → logout
+yesBtn.addEventListener('click', () => {
+  localStorage.clear();
+  isLoggedIn = false;
+  logoutModal.classList.remove('active');
+  setActiveScreen('login');
+});
+
+// CANCEL → close modal
+cancelBtn.addEventListener('click', () => {
+  logoutModal.classList.remove('active');
+});
+const profileCard = document.getElementById('profile-card-click');
+
+profileCard.addEventListener('click', () => {
+  loadEditProfileData();
+  setActiveScreen('editProfile');
+});
+function loadEditProfileData() {
+  const name = localStorage.getItem('userName');
+  const mobile = localStorage.getItem('userMobile');
+
+  document.getElementById('edit-name').value = name || '';
+  document.getElementById('edit-mobile').value = mobile || '';
+}
+const updateBtn = document.querySelector('.update-btn');
+
+updateBtn.addEventListener('click', () => {
+  const name = document.getElementById('edit-name').value;
+  const mobile = document.getElementById('edit-mobile').value;
+
+  localStorage.setItem('userName', name);
+  localStorage.setItem('userMobile', mobile);
+
+  setActiveScreen('profileSuccess');
+
+  // 2 sec baad automatically profile screen pe
+  setTimeout(() => {
+    setActiveScreen('profile');
+  }, 2000);
+});
+const planModal = document.getElementById('planModal');
+const planTitle = document.getElementById('planTitle');
+const miniPlanCards = document.querySelectorAll('.mini-plan-card');
+
+miniPlanCards.forEach((card, index) => {
+  card.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    if (index === 0) {
+      planTitle.textContent = "Monthly Subscription Plan";
+    } 
+    else if (index === 1) {
+      planTitle.textContent = "15 Days Subscription Plan";
+    }
+    else if (index === 2) {
+  planTitle.textContent = "Weekly Subscription Plan";
+}
+
+    planModal.classList.add('active');
+  });
+});
+
+// close on outside click
+planModal.addEventListener('click', (e) => {
+  if (e.target === planModal) {
+    planModal.classList.remove('active');
+  }
+});
+const heroImage = document.getElementById("heroImage");
+
+const images = [
+  "./images/Banner 1.png",
+  "./images/Banner 2.png",
+  "./images/Banner 3.png"
+];
+
+let index = 0;
+
+setInterval(() => {
+
+  // fade out
+  heroImage.style.opacity = 0;
+
+  setTimeout(() => {
+    // image change
+    index = (index + 1) % images.length;
+    heroImage.src = images[index];
+
+    // fade in
+    heroImage.style.opacity = 1;
+
+  }, 400);
+
+}, 3000);
+const paymentcard= document.querySelectorAll('.payment-card');
+
+const upirow = document.querySelector('.upi-row');
+
+paymentcard.forEach(card => {
+  card.addEventListener('click', () => {
+
+    paymentcard.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    // 🔥 UPI logic
+    if (card.textContent.trim() === "UPI") {
+      upiRow.style.display = "flex";
+    } else {
+      upiRow.style.display = "none";
+    }
+
+  });
+});
+const rechargeCards = document.querySelectorAll('.recharge-card');
+const amountInput = document.querySelector('.amount-input');
+
+rechargeCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const amount = card.dataset.amount;
+
+    // input me value daal do
+    amountInput.value = amount;
+
+    // UI highlight (optional but sexy 🔥)
+    rechargeCards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+const paymentCards = document.querySelectorAll('.payment-card');
+
+rechargeCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const amount = card.dataset.amount;
+
+    amountInput.value = amount;
+
+    // highlight recharge
+    rechargeCards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    // glow effect
+    paymentCards.forEach(p => p.classList.add('glow'));
+
+    setTimeout(() => {
+      paymentCards.forEach(p => p.classList.remove('glow'));
+    }, 2000);
+  });
+});
+const upiRow = document.querySelector('.upi-row');
+const cardForm = document.querySelector('.card-form');
+
+paymentcard.forEach(card => {
+  card.addEventListener('click', () => {
+
+    paymentcard.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+
+    const selected = card.textContent.trim();
+
+    if (selected === "UPI") {
+  upiRow.style.display = "flex";
+  cardForm.style.display = "none";
+
+  // 🔥 RESET
+  upiInput.value = "";
+  upiPayBtn.style.opacity = "0.5";
+  upiPayBtn.style.pointerEvents = "none";
+}
+    else if (selected === "Card") {
+      upiRow.style.display = "none";
+      cardForm.style.display = "flex";
+    } 
+    else {
+      upiRow.style.display = "none";
+      cardForm.style.display = "none";
+    }
+
+  });
+});
+const cardNumberInput = document.querySelector('.card-number');
+
+cardNumberInput.addEventListener('input', () => {
+  let value = cardNumberInput.value.replace(/\D/g, ""); // only numbers
+
+  value = value.substring(0, 16); // max 16 digits
+
+  value = value.replace(/(.{4})/g, "$1 ").trim(); // spacing
+
+  cardNumberInput.value = value;
+});
+const cvvInput = document.querySelector('.cvv-input');
+
+cvvInput.addEventListener('input', () => {
+  let value = cvvInput.value.replace(/\D/g, "");
+  cvvInput.value = value.substring(0, 3);
+});
+const expiryInput = document.querySelector('.expiry-input');
+
+expiryInput.addEventListener('input', () => {
+  let value = expiryInput.value.replace(/\D/g, "");
+
+  if (value.length >= 3) {
+    value = value.substring(0, 2) + "/" + value.substring(2, 4);
+  }
+
+  expiryInput.value = value;
+});
+const cardInputs = document.querySelectorAll('.card-form input');
+const payBtn = document.querySelector('.card-pay-btn');
+
+cardInputs.forEach(input => {
+  input.addEventListener('input', () => {
+
+    let allFilled = true;
+
+    cardInputs.forEach(inp => {
+      if (inp.value.trim() === "") {
+        allFilled = false;
+      }
+    });
+
+    if (allFilled) {
+      payBtn.style.opacity = "1";
+      payBtn.style.pointerEvents = "auto";
+    } else {
+      payBtn.style.opacity = "0.5";
+      payBtn.style.pointerEvents = "none";
+    }
+
+  });
+});
+const nameInput = document.querySelector('.name-input');
+
+nameInput.addEventListener('input', () => {
+  let value = nameInput.value;
+
+  // sirf alphabets + space allow
+  value = value.replace(/[^a-zA-Z\s]/g, "");
+
+  nameInput.value = value;
+});
+nameInput.addEventListener('input', () => {
+  let value = nameInput.value.replace(/[^a-zA-Z\s]/g, "");
+
+  // first letter capital
+  value = value.replace(/\b\w/g, char => char.toUpperCase());
+
+  nameInput.value = value;
+});
+const upiInput = document.querySelector('.upi-input');
+const upiPayBtn = document.querySelector('.upi-pay-btn');
+
+upiInput.addEventListener('input', () => {
+  const value = upiInput.value;
+
+  const parts = value.split('@');
+
+  if (parts.length === 2 && parts[1].length > 0) {
+    upiPayBtn.style.opacity = "1";
+    upiPayBtn.style.pointerEvents = "auto";
+  } else {
+    upiPayBtn.style.opacity = "0.5";
+    upiPayBtn.style.pointerEvents = "none";
+  }
+});
+upiInput.addEventListener('input', () => {
+  let value = upiInput.value;
+
+  // 🔥 remove spaces automatically
+  value = value.replace(/\s/g, "");
+  upiInput.value = value;
+
+  const parts = value.split('@');
+
+  if (parts.length === 2 && parts[1].length > 0) {
+    upiPayBtn.style.opacity = "1";
+    upiPayBtn.style.pointerEvents = "auto";
+  } else {
+    upiPayBtn.style.opacity = "0.5";
+    upiPayBtn.style.pointerEvents = "none";
+  }
+});
+amountInput.addEventListener('input', () => {
+  const value = amountInput.value.trim();
+
+  let matched = false;
+
+  rechargeCards.forEach(card => {
+    const amount = card.dataset.amount;
+
+    if (value === amount) {
+      rechargeCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      matched = true;
+    }
+  });
+  // ❌ no match → remove highlight
+  if (!matched) {
+    rechargeCards.forEach(c => c.classList.remove('active'));
+  }
+
+  // 🔥 ALWAYS GLOW (chahe match ho ya na ho)
+  if (value !== "") {
+    paymentCards.forEach(p => p.classList.add('glow'));
+
+    setTimeout(() => {
+      paymentCards.forEach(p => p.classList.remove('glow'));
+    }, 2000);
+  }
+});
+const getStartedBtn = document.querySelector('.plan-btn');
+const subscribeNowBtn = document.querySelector('.primary-cta');
+
+subscribeNowBtn.addEventListener('click', () => {
+  setActiveScreen('products');
+});
+
+getStartedBtn.addEventListener('click', () => {
+  getStartedBtn.style.transform = "scale(0.95)";
+  getStartedBtn.style.boxShadow = "0 0 15px #7fcdf4";
+
+  setTimeout(() => {
+    getStartedBtn.style.transform = "scale(1)";
+  }, 150);
+
+  planModal.classList.remove('active');
+
+  // 🔥 ADD THIS
+  setActiveScreen('products');
+});
+const subscribeBtns = document.querySelectorAll('.buy-btn');
+const featuredCards = document.querySelectorAll('.featured-card');
+
+featuredCards.forEach(card => {
+  card.addEventListener('click', () => {
+    if (!isLoggedIn) {
+  setActiveScreen("login");
+  return;
+}
+
+    const name = card.dataset.name;
+
+    if (name === "RAW COW MILK") {
+      currentProduct = "COW";
+
+      document.getElementById('detail-name').textContent = "RAW COW MILK";
+      document.getElementById('detail-price').textContent = "Price: ₹48/L";
+      document.getElementById('detail-image').src = "./images/Milk.png";
+    }
+
+    else if (name === "BUFFALO BILONA CHAACH") {
+      currentProduct = "CHAACH";
+
+      document.getElementById('detail-name').textContent = "BUFFALO BILONA CHAACH";
+      document.getElementById('detail-price').textContent = "Price: ₹40/L";
+      document.getElementById('detail-image').src = "./images/Chaach.png";
+    }
+
+    else if (name === "A2 COW GHEE") {
+      currentProduct = "";
+
+      document.getElementById('detail-name').textContent = "RAW A2 COW GHEE";
+      document.getElementById('detail-price').textContent = "Price: ₹1100/Kg";
+      document.getElementById('detail-image').src = "./images/Ghee.png";
+    }
+
+    else if (name === "DAHI") {
+      currentProduct = "";
+
+      document.getElementById('detail-name').textContent = "DAHI";
+      document.getElementById('detail-price').textContent = "Price: ₹32.5";
+      document.getElementById('detail-image').src = "./images/Dahi.png";
+    }
+
+    else if (name === "PANEER") {
+      currentProduct = "";
+
+      document.getElementById('detail-name').textContent = "PANEER";
+      document.getElementById('detail-price').textContent = "Price: ₹150/Kg";
+      document.getElementById('detail-image').src = "./images/Paneer.png";
+    }
+
+    setActiveScreen('productDetail');
+    updatePrice(); // 🔥 IMPORTANT
+
+  });
+});
+subscribeBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    if (!isLoggedIn) {
+  setActiveScreen("login");
+  return;
+}
+
+    currentProduct = ""; // 🔥 RESET EVERY TIME
+
+    document.querySelectorAll('.plan-pill').forEach(btn => {
+  btn.classList.remove('active');
+});
+
+    const card = btn.closest('.product-card');
+
+    const name = card.querySelector('h3').textContent;
+    const price = card.querySelector('strong').textContent;
+    let image = "";
+
+if (name === "PANEER") {
+  image = "./images/Paneer.png";
+}
+else if (name === "DAHI") {
+  image = "./images/Dahi.png";
+}
+else if (name === "BUFFALO BILONA CHAACH") {
+  image = "./images/Chaach.png";
+}
+else if (name === "COW BILONA CHAACH") {
+  image = "./images/C chaach .png";
+}
+else if (name === "RAW BUFFALO MILK") {
+  image = "./images/buffalo milk.png";
+}
+else if (name === "RAW COW MILK") {
+  image = "./images/Milk.png";
+}
+else if (name === "RAW A2 COW MILK") {
+  image = "./images/a2 milk (2).png";
+}
+else if (name === "RAW A2 COW GHEE") {
+  image = "./images/Ghee.png";
+}
+else if (name ===  "COW GHEE") {
+  image = "./images/cow ghee.png";
+}
+else if (name === "BUFFALO GHEE") {
+  image = "./images/Ghee.png";
+}
+else {
+  // fallback (just in case)
+  image = card.querySelector('img').src;
+}
+document.getElementById('detail-image').src = image;
+
+    // 🔥 set data in detail screen
+    document.getElementById('detail-name').textContent = name;
+    const cleanPrice = price.replace("Rs.", "").trim();
+
+if (name === "RAW A2 COW MILK") {
+  currentProduct = "A2";
+  basePrice = 80;
+
+  document.getElementById('detail-price').textContent = "Price: ₹85/L";
+}
+else if (name === "RAW COW MILK") {
+  currentProduct = "COW";
+  basePrice = 48;
+
+  document.getElementById('detail-price').textContent = "Price: ₹55/L"; // default (you can change)
+}
+else if (name === "RAW BUFFALO MILK") {
+  currentProduct = "BUFFALO";
+  basePrice = 72;
+
+  document.getElementById('detail-price').textContent = "Price: ₹80/L"; // default (you can change)
+}
+else if (name === "BUFFALO BILONA CHAACH") {
+  currentProduct = "CHAACH";
+  basePrice = 36;
+
+  document.getElementById('detail-price').textContent = "Price: ₹42/L"; // default
+}
+else if (name === "COW BILONA CHAACH") {
+  currentProduct = "COW_CHAACH";
+  basePrice = 30;
+
+  document.getElementById('detail-price').textContent = "Price: ₹35/L"; // default
+}
+else if (name === "DAHI") {
+  currentProduct = "DAHI";
+  basePrice = 32.5;
+
+  document.getElementById('detail-price').textContent = "Price: ₹38/L"; // default
+}
+else {
+  currentProduct = "";
+  document.getElementById('detail-price').textContent = `Price: ₹${cleanPrice}/L`;
+}
+updatePrice();
+    document.getElementById('detail-image').src = image;
+
+    // 🔥 go to detail screen
+    setActiveScreen('productDetail');
+
+  });
+});
+const planPills = document.querySelectorAll('.plan-pill');
+
+const startInput = document.getElementById('start-date');
+const endInput = document.getElementById('end-date');
+
+let selectedPlanType = "";
+
+planPills.forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    // active toggle
+    planPills.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    selectedPlanType = btn.textContent.trim();
+
+    // reset
+    endInput.readOnly = true;
+    startInput.classList.remove('date-glow');
+    endInput.classList.remove('date-glow');
+
+    void startInput.offsetWidth;
+
+    if (selectedPlanType === "Customised") {
+      // 🔥 both glow
+      startInput.classList.add('date-glow');
+      endInput.classList.add('date-glow');
+
+      endInput.readOnly = false; // editable
+    } else {
+      // 🔥 only start glow
+      startInput.classList.add('date-glow');
+    }
+
+    setTimeout(() => {
+      startInput.classList.remove('date-glow');
+      endInput.classList.remove('date-glow');
+    }, 3000);
+
+    updateEndDate(); // 🔥 auto calculation
+    updatePrice();
+  });
+});
+function updateEndDate() {
+
+  if (!startInput.value) return;
+
+  const start = new Date(startInput.value);
+
+  let daysToAdd = 0;
+
+  if (selectedPlanType === "Monthly") daysToAdd = 30;
+  else if (selectedPlanType === "15 Days") daysToAdd = 15;
+  else if (selectedPlanType === "Weekly") daysToAdd = 7;
+  else return; // Custom → skip
+
+  start.setDate(start.getDate() + daysToAdd);
+
+  const year = start.getFullYear();
+  const month = String(start.getMonth() + 1).padStart(2, '0');
+  const day = String(start.getDate()).padStart(2, '0');
+
+  endInput.value = `${year}-${month}-${day}`;
+}
+let count = 1;
+const countDisplay = document.getElementById('packet-count');
+
+document.getElementById('plus').addEventListener('click', () => {
+  count++;
+  countDisplay.textContent = count;
+});
+
+document.getElementById('minus').addEventListener('click', () => {
+  if (count > 1) {
+    count--;
+    countDisplay.textContent = count;
+  }
+});
+const quantitySelect = document.getElementById('quantity-select');
+const slotSelect = document.getElementById('slot-select');
+const startDate = document.getElementById('start-date');
+const endDate = document.getElementById('end-date');
+const buyBtn = document.getElementById('buy-btn');
+const cartBtn = document.getElementById('cart-btn');
+
+function checkForm() {
+
+  const quantity = quantitySelect.value;
+  const slot = slotSelect.value;
+  const start = startDate.value;
+  const end = endDate.value;
+
+  if (quantity && slot && start && end) {
+    buyBtn.disabled = false;
+    cartBtn.disabled = false;
+
+    buyBtn.style.background = "#7fcdf4";
+    cartBtn.style.background = "#7fcdf4";
+  } else {
+    buyBtn.disabled = true;
+    cartBtn.disabled = true;
+
+    buyBtn.style.background = "#dcdcdc";
+    cartBtn.style.background = "#dcdcdc";
+  }
+}
+quantitySelect.addEventListener('change', checkForm);
+quantitySelect.addEventListener('change', updatePrice);
+slotSelect.addEventListener('change', checkForm);
+startDate.addEventListener('change', () => {
+
+  checkForm();
+  updateEndDate(); // 🔥 all plans handle
+});
+endDate.addEventListener('change', checkForm);
+const cartBtnClick = document.getElementById('cart-btn');
+
+cartBtnClick.addEventListener('click', () => {
+  if (!isLoggedIn) {
+  setActiveScreen("login");
+  return;
+}
+
+  const productName = document.getElementById('detail-name').textContent;
+  const productPrice = document.getElementById('detail-price').textContent;
+  const productImage = document.getElementById('detail-image').src;
+
+  const quantity = document.getElementById('quantity-select').value;
+  const packets = document.getElementById('packet-count').textContent;
+  const start = document.getElementById('start-date').value;
+  const end = document.getElementById('end-date').value;
+  const slot = document.getElementById('slot-select').value;
+  let selectedPlanBtn = document.querySelector('.plan-pill.active');
+
+let plan = "One Time Purchase"; // default
+
+if (selectedPlanBtn) {
+  plan = selectedPlanBtn.textContent;
+}
+
+
+  const cartItem = {
+    name: productName,
+    price: productPrice,
+    image: productImage,
+    quantity,
+    packets,
+    start,
+    end,
+    slot,
+    plan
+  };
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// 🔍 check if same product already exists
+const existingItem = cart.find(item =>
+  item.name === cartItem.name &&
+  item.quantity === cartItem.quantity &&
+  item.slot === cartItem.slot &&
+  item.plan === cartItem.plan &&
+  item.start === cartItem.start &&
+  item.end === cartItem.end
+);
+
+// ✅ if exists → increase packets
+if (existingItem) {
+  existingItem.packets = Number(existingItem.packets) + Number(cartItem.packets);
+} else {
+  // ❌ if different → create new card
+  cart.push(cartItem);
+}
+
+// save
+localStorage.setItem('cart', JSON.stringify(cart));
+
+  // success screen
+  setActiveScreen('cartSuccess');
+
+  setTimeout(() => {
+    setActiveScreen('home');
+  }, 1500);
+});
+cartBtnClick.addEventListener('click', () => {
+  cartBtnClick.style.transform = "scale(0.35)";
+
+  setTimeout(() => {
+    cartBtnClick.style.transform = "scale(1)";
+  }, 150);
+});
+const customPlanBanner = document.querySelector('.custom-plan-banner');
+
+customPlanBanner.addEventListener('click', (e) => {
+  e.stopPropagation();
+  planTitle.textContent = "Customised Subscription Plan";
+  planModal.classList.add('active');
+});
+function getBasePrice(priceStr) {
+  return Number(priceStr.replace(/[^0-9.]/g, ""));
+}
+function loadOrders() {
+
+  const container = document.getElementById('orders-container');
+  container.innerHTML = "";
+
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  cart.forEach((item, index) => {
+    const basePrice = getBasePrice(item.price);
+const size = Number(item.quantity);
+const packets = Number(item.packets);
+
+const totalPrice = basePrice * size * packets;
+
+    const card = `
+      <div class="order-card" data-index="${index}">
+        <button class="remove-btn">✖</button>
+
+        <img src="${item.image}" style="width:80px; border-radius:10px;">
+
+        <div style="font-size:12px;">
+          <strong>${item.name}</strong><br>
+           ₹ ${totalPrice}<br>
+          Plan: ${item.plan}<br>
+          Qty: ${item.quantity} × ${item.packets}<br>
+          Start: ${item.start}<br>
+          End: ${item.end}<br>
+          Slot: ${item.slot}
+        </div>
+
+        <!-- 🔥 QUANTITY CONTROL -->
+    <div class="qty-control">
+      <button class="qty-minus">-</button>
+      <span>${item.packets}</span>
+      <button class="qty-plus">+</button>
+    </div>
+
+      <!-- 🔥 SIZE SELECT -->
+  <select class="size-select">
+    <option value="0.5" ${item.quantity == "0.5" ? "selected" : ""}>500 ml</option>
+    <option value="1" ${item.quantity == "1" ? "selected" : ""}>1 L</option>
+  </select>
+
+      
+
+    </div>
+      
+    `;
+
+    container.innerHTML += card; // ✅ IMPORTANT
+  });
+
+  // 🔥 REMOVE LOGIC (LOOP KE BAAD)
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+
+      const card = e.target.closest('.order-card');
+      const index = card.dataset.index;
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      cart.splice(index, 1);
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      loadOrders();
+    });
+  });
+  // ➕ PLUS BUTTON
+document.querySelectorAll('.qty-plus').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+
+    const card = e.target.closest('.order-card');
+    const index = card.dataset.index;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cart[index].packets = Number(cart[index].packets) + 1;
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    loadOrders();
+  });
+});
+
+// ➖ MINUS BUTTON
+document.querySelectorAll('.qty-minus').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+
+    const card = e.target.closest('.order-card');
+    const index = card.dataset.index;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart[index].packets > 1) {
+      cart[index].packets -= 1;
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    loadOrders();
+  });
+});
+// 🔥 SIZE CHANGE
+document.querySelectorAll('.size-select').forEach(select => {
+  select.addEventListener('change', (e) => {
+
+    const card = e.target.closest('.order-card');
+    const index = card.dataset.index;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cart[index].quantity = e.target.value;
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    loadOrders();
+  });
+});
+}
+function updatePrice() {
+
+  let pricePerLitre = 0;
+
+  const selectedPlan = document.querySelector('.plan-pill.active');
+
+  // 🔥 A2 LOGIC
+  if (currentProduct === "A2") {
+
+    pricePerLitre = 85;
+
+    if (selectedPlan) {
+      const plan = selectedPlan.textContent.trim();
+
+      if (plan === "Weekly") pricePerLitre = 83;
+      else if (plan === "15 Days") pricePerLitre = 81;
+      else if (plan === "Monthly") pricePerLitre = 80;
+    }
+  }
+
+  // 🔥 RAW COW MILK LOGIC
+  else if (currentProduct === "COW") {
+
+    pricePerLitre = 51;
+
+    if (selectedPlan) {
+      const plan = selectedPlan.textContent.trim();
+
+      if (plan === "Weekly") pricePerLitre = 50;
+      else if (plan === "15 Days") pricePerLitre = 49;
+      else if (plan === "Monthly") pricePerLitre = 48;
+    }
+  }
+
+  // 🔥 BUFFALO MILK LOGIC
+else if (currentProduct === "BUFFALO") {
+
+  pricePerLitre = 75; // default
+
+  if (selectedPlan) {
+    const plan = selectedPlan.textContent.trim();
+
+    if (plan === "Weekly") pricePerLitre = 74;
+    else if (plan === "15 Days") pricePerLitre = 73;
+    else if (plan === "Monthly") pricePerLitre = 72;
+  }
+}
+
+// 🔥 BUFFALO CHAACH LOGIC
+else if (currentProduct === "CHAACH") {
+
+  pricePerLitre = 40; // default
+
+  if (selectedPlan) {
+    const plan = selectedPlan.textContent.trim();
+
+    if (plan === "Weekly") pricePerLitre = 38;
+    else if (plan === "15 Days") pricePerLitre = 37;
+    else if (plan === "Monthly") pricePerLitre = 36;
+  }
+}
+
+// 🔥 COW CHAACH LOGIC
+else if (currentProduct === "COW_CHAACH") {
+
+  pricePerLitre = 35; // default
+
+  if (selectedPlan) {
+    const plan = selectedPlan.textContent.trim();
+
+    if (plan === "Weekly") pricePerLitre = 33;
+    else if (plan === "15 Days") pricePerLitre = 31;
+    else if (plan === "Monthly") pricePerLitre = 30;
+  }
+}
+
+// 🔥 DAHI LOGIC
+else if (currentProduct === "DAHI") {
+
+  pricePerLitre = 36; // default
+
+  if (selectedPlan) {
+    const plan = selectedPlan.textContent.trim();
+
+    if (plan === "Weekly") pricePerLitre = 35;
+    else if (plan === "15 Days") pricePerLitre = 34;
+    else if (plan === "Monthly") pricePerLitre = 32.5;
+  }
+}
+  else {
+    return;
+  }
+
+  const quantity = document.getElementById('quantity-select').value;
+  const qty = quantity ? Number(quantity) : 1;
+
+  const finalPrice = pricePerLitre * qty;
+
+  document.getElementById('detail-price').textContent =
+    `Price: ₹${finalPrice}/L`;
+}
+
+  </script>
+</body>
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js"></script>
+</html>
