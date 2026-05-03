@@ -271,11 +271,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  margin: 0 auto;
+
   background: #eef8fd;
   border: 2px solid #bfe2f5;
-  box-sizing: border-box;
+
+  overflow: hidden; /* 🔥 IMPORTANT */
+}
+
+.category-chip span img {
+  width: 60%;   /* 🔥 control size */
+  height: 60%;
+  object-fit: contain;
 }
 
 .category-chip small {
@@ -1856,4 +1862,59 @@ button {
 }
 .hover-full-card .buy-btn:hover {
   box-shadow: 0 0 10px rgba(127,205,244,0.8);
+}
+.checkout-product-card {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  padding: 10px;              /* ↓ reduced */
+  border-radius: 10px;
+  width: 90%;                 /* ↓ not full width */
+  margin: 15px auto;          /* center align */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.checkout-product-card img {
+  width: 70px;                /* ↓ smaller image */
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.checkout-product-card h3 {
+  font-size: 14px;            /* ↓ smaller text */
+  margin-bottom: 4px;
+}
+
+.checkout-product-card p {
+  font-size: 11px;
+  margin: 2px 0;
+}
+
+.delivery-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.delivery-form input {
+  padding: 12px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.checkout-btn {
+  margin-top: 20px;
+  padding: 14px;
+  background: #7fcdf4;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
 }
