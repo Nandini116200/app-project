@@ -72,6 +72,11 @@
     </div>
     <div class="profile-card">
 
+      <button class="profile-option">
+    <span>💟</span>
+    <span>Wishlist</span>
+  </button>
+
   <button class="profile-option">
     <span>🛒</span>
     <span>My Orders</span>
@@ -82,9 +87,34 @@
     <span>My Wallet</span>
   </button>
 
+   <button class="profile-option">
+    <span>💳</span>
+    <span>Saved Cards</span>
+  </button>
+
+   <button class="profile-option">
+    <span>🪙</span>
+    <span>Saved UPI</span>
+  </button>
+
+  <button class="profile-option">
+    <span>📍</span>
+    <span>Saved Addresses</span>
+  </button>
+
+  <button class="profile-option">
+    <span>🧾</span>
+    <span>Terms Of Use</span>
+  </button>
+
   <button class="profile-option">
     <span>🎧</span>
     <span>Help & Support</span>
+  </button>
+
+  <button class="profile-option">
+    <span>❌</span>
+    <span>Delete Account</span>
   </button>
 
 </div>
@@ -163,7 +193,7 @@
 
 </div>
     </div>
-    <div class="upi-row" style="display:none;">
+    <div class="upi-row" style="display:flex;">
   <input type="text" placeholder="Enter UPI ID" class="upi-input" maxlength="30">
   <button class="upi-pay-btn">Pay</button>
 </div>
@@ -285,9 +315,9 @@
 <main class="screen active" id="home-screen" data-screen="home">
     <header class="home-topbar">
   <div class="login-brand">
-    <span class="brand-icon">👤</span>
-    <h1 data-go-screen="login" style="cursor:pointer;">Log In</h1>
-  </div>
+  <span class="brand-icon">👤</span>
+  <h1 id="nav-user">Log In</h1> <!-- 🔥 ID add -->
+</div>
   <div class="home-actions">
     <button class="icon-btn" data-go-screen="wallet">💸</button>
     <button class="icon-btn" aria-label="Notifications">🔔</button>
@@ -327,11 +357,31 @@
     <button class="section-link" type="button" data-go-screen="products"></button>
   </div>
   <div class="category-circles">
-    <button class="category-chip blue-ring" data-go-screen="products" data-category="milk"><span>🥛</span><small>MILK</small></button>
-    <button class="category-chip blue-ring" data-go-screen="products" data-category="chaach"><span>🫙</span><small>CHAACH</small></button>
-    <button class="category-chip yellow-ring" data-go-screen="products" data-category="ghee"><span>🧈</span><small>GHEE</small></button>
-    <button class="category-chip green-ring" data-go-screen="products" data-category="dahi"><span>🥣</span><small>DAHI</small></button>
-    <button class="category-chip pink-ring" data-go-screen="products" data-category="paneer"><span>🧀</span><small>PANEER</small></button>
+    <button class="category-chip blue-ring" data-go-screen="products" data-category="milk">
+      <span>
+        <img src="./images/category_milk.png" alt="Milk">
+      </span>
+      <small>MILK</small></button>
+    <button class="category-chip blue-ring" data-go-screen="products" data-category="chaach">
+      <span>
+        <img src="./images/category_chaach.png" alt="Chaach">
+      </span>
+      <small>CHAACH</small></button>
+    <button class="category-chip yellow-ring" data-go-screen="products" data-category="ghee">
+      <span>
+        <img src="./images/category_ghee.png" alt="Ghee">
+    </span>
+    <small>GHEE</small></button>
+    <button class="category-chip green-ring" data-go-screen="products" data-category="dahi">
+      <span>
+        <img src="./images/Dahi.png" alt="Dahi">
+      </span>
+      <small>DAHI</small></button>
+    <button class="category-chip pink-ring" data-go-screen="products" data-category="paneer">
+      <span>
+        <img src="./images/Paneer.png" alt="Paneer">
+      </span>
+      <small>PANEER</small></button>
   </div>
 </section>
 
@@ -349,22 +399,6 @@
   <div class="featured-visual normal-view">
     <img src="./images/Milk.png">
   </div>
-
-  <!-- 🔥 FULL CARD CLONE -->
-  <div class="hover-full-card">
-    <div class="product-card">
-      <div class="product-visual">
-        <img src="./images/Milk.png">
-      </div>
-      <div class="product-body">
-        <h3>RAW COW MILK</h3>
-        <p>Pure cow's milk, fresh from farm to home</p>
-        <strong>₹51/L</strong>
-        <button class="buy-btn">SUBSCRIBE</button>
-      </div>
-    </div>
-  </div>
-
 </article>
 
   <article class="featured-card chaach-card" data-name="BUFFALO BILONA CHAACH">
@@ -720,6 +754,49 @@
 
 </main>
 
+<section id="checkout-screen" class="screen" data-screen="checkout">
+  <div class="topbar">
+  <button class="icon-btn" data-go-screen="productDetail">←</button>
+  <h3 style="margin:0;"></h3>
+  <div class="topbar-spacer"></div>
+</div>
+
+  <!-- 🔹 Product Card -->
+  <div class="checkout-product-card">
+    <img id="checkout-img" src="" />
+    <div>
+      <h3 id="checkout-name"></h3>
+      <p id="checkout-price"></p>
+      <p id="checkout-plan"></p>
+      <p id="checkout-qty"></p>
+      <p id="checkout-date"></p>
+      <p id="checkout-slot"></p>
+    </div>
+  </div>
+
+  <!-- 🔹 Delivery Form -->
+  <div class="delivery-form">
+
+    <div class="input-row">
+      <input type="text" placeholder="Pincode *" id="pincode">
+      <input type="text" placeholder="State *" id="state">
+    </div>
+
+    <input type="text" placeholder="House Number / Tower / Block *" id="house">
+
+    <input type="text" placeholder="Address (Building, Street, Area) *" id="address">
+
+    <input type="text" placeholder="Locality / Town *" id="locality">
+
+    <input type="text" placeholder="City / District *" id="city">
+
+  </div>
+
+  <!-- 🔹 Continue Button -->
+  <button class="checkout-btn">Proceed to Payment</button>
+
+</section>
+
     <nav class="bottom-nav" aria-label="Main navigation">
       <button class="nav-item active" data-go-screen="home">
         <span class="nav-badge home-badge">
@@ -828,9 +905,13 @@
       setActiveScreen("login");
       return;
     }
+    if (target === "profile") {
+      loadProfileData(); // 🔥 ADD THIS
+    }
 
     if (target) {
       setActiveScreen(target);
+
 
       if (category) {
         filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -903,8 +984,10 @@
         quantityDisplay.textContent = quantity;
       }
     });
+    const mobileInput = document.querySelector('.login-input:nth-child(2)');
+    const otpBtn = document.querySelector('.get-otp-btn');
+
     const loginInputs = document.querySelectorAll('.login-input');
-const otpBtn = document.querySelector('.login-btn');
 
 loginInputs.forEach(input => {
   input.addEventListener('input', () => {
@@ -926,9 +1009,33 @@ loginInputs.forEach(input => {
   });
 });
 const getOtpBtn = document.querySelector('.get-otp-btn');
+function updateNavbar() {
+  const navUser = document.getElementById("nav-user");
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const name = localStorage.getItem("userName");
+
+  if (isLoggedIn === "true" && name) {
+    navUser.textContent = "Welcome, " + name;
+  } else {
+    navUser.textContent = "Log In";
+  }
+}
 
 getOtpBtn.addEventListener('click', () => {
+
+  const enteredMobile = document.querySelectorAll('.login-input')[0].value.trim();
+  const enteredEmail = document.querySelectorAll('.login-input')[1].value.trim();
+
+  const savedMobile = localStorage.getItem("userMobile");
+  const savedEmail = localStorage.getItem("userEmail"); // optional if you store later
+
+  // 🔥 check if user exists
+  if (enteredMobile === savedMobile || enteredEmail === savedEmail) {
   setActiveScreen('otp');
+} else {
+  setActiveScreen('register');
+}
 });
 const otpInput = document.querySelector('.otp-input');
 const successSub = document.querySelector('.success-sub');
@@ -948,15 +1055,22 @@ otpInput.addEventListener('input', () => {
 
     // 🔥 ADD THIS
     setTimeout(() => {
+      localStorage.setItem("isLoggedIn", "true");
+      updateNavbar();
+      updateProfile(); // 🔥 ADD THIS
       setActiveScreen('home');
     }, 1000);
   }
 });
 
+
 const createAccountBtns = document.querySelectorAll(".create-account-link");
-createAccountBtns.forEach(btn =>
-  btn.addEventListener("click", () => setActiveScreen("register"))
-);
+
+createAccountBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    setActiveScreen("register");
+  });
+});
 
 function setupRegisterInputs() {
   const registerInputs = document.querySelectorAll("#register-screen .register-line-input");
@@ -989,9 +1103,11 @@ function setupRegisterInputs() {
 
     const name = registerInputs[0].value.trim();
     const mobile = registerInputs[1].value.trim();
+    const email = registerInputs[2].value.trim();
 
     localStorage.setItem("userName", name);
     localStorage.setItem("userMobile", mobile);
+    localStorage.setItem("userEmail", email);
 
     successSub.textContent = "Account Created";
     successMain.textContent = "Successfully!!!";
@@ -1001,8 +1117,10 @@ function setupRegisterInputs() {
     setActiveScreen("success");
 
     setTimeout(() => {
-      setActiveScreen("home");
-    }, 1000);
+  updateNavbar();
+  updateProfile(); // 🔥 ADD THIS
+  setActiveScreen("home");
+}, 1000);
   });
 }
 
@@ -1031,6 +1149,10 @@ logoutBtn.addEventListener('click', () => {
 yesBtn.addEventListener('click', () => {
   localStorage.clear();
   isLoggedIn = false;
+
+  updateNavbar();   // 🔥 ADD
+  updateProfile();  // 🔥 ADD
+
   logoutModal.classList.remove('active');
   setActiveScreen('login');
 });
@@ -1041,10 +1163,12 @@ cancelBtn.addEventListener('click', () => {
 });
 const profileCard = document.getElementById('profile-card-click');
 
-profileCard.addEventListener('click', () => {
-  loadEditProfileData();
-  setActiveScreen('editProfile');
-});
+if (profileCard) {
+  profileCard.addEventListener('click', () => {
+    loadEditProfileData();
+    setActiveScreen('editProfile');
+  });
+}
 function loadEditProfileData() {
   const name = localStorage.getItem('userName');
   const mobile = localStorage.getItem('userMobile');
@@ -1060,6 +1184,10 @@ updateBtn.addEventListener('click', () => {
 
   localStorage.setItem('userName', name);
   localStorage.setItem('userMobile', mobile);
+
+  localStorage.setItem("isLoggedIn", "true"); // 🔥 IMPORTANT
+updateNavbar(); // 🔥 UI update
+updateProfile(); // 🔥 ADD THIS
 
   setActiveScreen('profileSuccess');
 
@@ -1122,40 +1250,9 @@ setInterval(() => {
   }, 400);
 
 }, 3000);
-const paymentcard= document.querySelectorAll('.payment-card');
-
-const upirow = document.querySelector('.upi-row');
-
-paymentcard.forEach(card => {
-  card.addEventListener('click', () => {
-
-    paymentcard.forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-
-    // 🔥 UPI logic
-    if (card.textContent.trim() === "UPI") {
-      upiRow.style.display = "flex";
-    } else {
-      upiRow.style.display = "none";
-    }
-
-  });
-});
 const rechargeCards = document.querySelectorAll('.recharge-card');
 const amountInput = document.querySelector('.amount-input');
 
-rechargeCards.forEach(card => {
-  card.addEventListener('click', () => {
-    const amount = card.dataset.amount;
-
-    // input me value daal do
-    amountInput.value = amount;
-
-    // UI highlight (optional but sexy 🔥)
-    rechargeCards.forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-  });
-});
 const paymentCards = document.querySelectorAll('.payment-card');
 
 rechargeCards.forEach(card => {
@@ -1179,10 +1276,10 @@ rechargeCards.forEach(card => {
 const upiRow = document.querySelector('.upi-row');
 const cardForm = document.querySelector('.card-form');
 
-paymentcard.forEach(card => {
+paymentCards.forEach(card => {
   card.addEventListener('click', () => {
 
-    paymentcard.forEach(c => c.classList.remove('active'));
+    paymentCards.forEach(c => c.classList.remove('active'));
     card.classList.add('active');
 
     const selected = card.textContent.trim();
@@ -1208,7 +1305,7 @@ paymentcard.forEach(card => {
   });
 });
 const cardNumberInput = document.querySelector('.card-number');
-
+if (cardNumberInput) {
 cardNumberInput.addEventListener('input', () => {
   let value = cardNumberInput.value.replace(/\D/g, ""); // only numbers
 
@@ -1217,24 +1314,27 @@ cardNumberInput.addEventListener('input', () => {
   value = value.replace(/(.{4})/g, "$1 ").trim(); // spacing
 
   cardNumberInput.value = value;
-});
+})};
 const cvvInput = document.querySelector('.cvv-input');
 
-cvvInput.addEventListener('input', () => {
-  let value = cvvInput.value.replace(/\D/g, "");
-  cvvInput.value = value.substring(0, 3);
-});
+if (cvvInput) {
+  cvvInput.addEventListener('input', () => {
+    let value = cvvInput.value.replace(/\D/g, "");
+    cvvInput.value = value.substring(0, 3);
+  });
+}
 const expiryInput = document.querySelector('.expiry-input');
+if (expiryInput) {
+  expiryInput.addEventListener('input', () => {
+    let value = expiryInput.value.replace(/\D/g, "");
 
-expiryInput.addEventListener('input', () => {
-  let value = expiryInput.value.replace(/\D/g, "");
+    if (value.length >= 3) {
+      value = value.substring(0, 2) + "/" + value.substring(2, 4);
+    }
 
-  if (value.length >= 3) {
-    value = value.substring(0, 2) + "/" + value.substring(2, 4);
-  }
-
-  expiryInput.value = value;
-});
+    expiryInput.value = value;
+  });
+}
 const cardInputs = document.querySelectorAll('.card-form input');
 const payBtn = document.querySelector('.card-pay-btn');
 
@@ -1261,55 +1361,38 @@ cardInputs.forEach(input => {
 });
 const nameInput = document.querySelector('.name-input');
 
-nameInput.addEventListener('input', () => {
-  let value = nameInput.value;
+if (nameInput) {
+  nameInput.addEventListener('input', () => {
+    let value = nameInput.value;
 
-  // sirf alphabets + space allow
-  value = value.replace(/[^a-zA-Z\s]/g, "");
+    value = value.replace(/[^a-zA-Z\s]/g, "");
+    value = value.replace(/\b\w/g, char => char.toUpperCase());
 
-  nameInput.value = value;
-});
-nameInput.addEventListener('input', () => {
-  let value = nameInput.value.replace(/[^a-zA-Z\s]/g, "");
-
-  // first letter capital
-  value = value.replace(/\b\w/g, char => char.toUpperCase());
-
-  nameInput.value = value;
-});
+    nameInput.value = value;
+  });
+}
 const upiInput = document.querySelector('.upi-input');
 const upiPayBtn = document.querySelector('.upi-pay-btn');
 
-upiInput.addEventListener('input', () => {
-  const value = upiInput.value;
+if (upiInput) {
+  upiInput.addEventListener('input', () => {
+    let value = upiInput.value;
 
-  const parts = value.split('@');
+    value = value.replace(/\s/g, "");
+    upiInput.value = value;
 
-  if (parts.length === 2 && parts[1].length > 0) {
-    upiPayBtn.style.opacity = "1";
-    upiPayBtn.style.pointerEvents = "auto";
-  } else {
-    upiPayBtn.style.opacity = "0.5";
-    upiPayBtn.style.pointerEvents = "none";
-  }
-});
-upiInput.addEventListener('input', () => {
-  let value = upiInput.value;
+    const parts = value.split('@');
 
-  // 🔥 remove spaces automatically
-  value = value.replace(/\s/g, "");
-  upiInput.value = value;
+    if (parts.length === 2 && parts[1].length > 0) {
+      upiPayBtn.style.opacity = "1";
+      upiPayBtn.style.pointerEvents = "auto";
+    } else {
+      upiPayBtn.style.opacity = "0.5";
+      upiPayBtn.style.pointerEvents = "none";
+    }
+  });
+}
 
-  const parts = value.split('@');
-
-  if (parts.length === 2 && parts[1].length > 0) {
-    upiPayBtn.style.opacity = "1";
-    upiPayBtn.style.pointerEvents = "auto";
-  } else {
-    upiPayBtn.style.opacity = "0.5";
-    upiPayBtn.style.pointerEvents = "none";
-  }
-});
 amountInput.addEventListener('input', () => {
   const value = amountInput.value.trim();
 
@@ -1637,6 +1720,36 @@ startDate.addEventListener('change', () => {
   updateEndDate(); // 🔥 all plans handle
 });
 endDate.addEventListener('change', checkForm);
+
+buyBtn.addEventListener('click', () => {
+
+  // 🔹 Product data uthao detail screen se
+  const name = document.getElementById('detail-name').textContent;
+  const price = document.getElementById('detail-price').textContent;
+  const image = document.getElementById('detail-image').src;
+
+  const quantity = document.getElementById('quantity-select').value;
+  const packets = document.getElementById('packet-count').textContent;
+  const start = document.getElementById('start-date').value;
+  const slot = document.getElementById('slot-select').value;
+
+  let selectedPlanBtn = document.querySelector('.plan-pill.active');
+  let plan = selectedPlanBtn ? selectedPlanBtn.textContent : "One Time";
+
+  // 🔥 checkout screen me data set karo
+  document.getElementById("checkout-name").textContent = name;
+  document.getElementById("checkout-price").textContent = price;
+  document.getElementById("checkout-plan").textContent = "Plan: " + plan;
+  document.getElementById("checkout-qty").textContent = "Qty: " + quantity + " × " + packets;
+  document.getElementById("checkout-date").textContent = "Date: " + start;
+  document.getElementById("checkout-slot").textContent = "Slot: " + slot;
+  document.getElementById("checkout-img").src = image;
+
+  // 🔥 checkout screen open
+  setActiveScreen('checkout');
+
+});
+
 const cartBtnClick = document.getElementById('cart-btn');
 
 cartBtnClick.addEventListener('click', () => {
@@ -1931,9 +2044,6 @@ else if (currentProduct === "DAHI") {
     else if (plan === "Monthly") pricePerLitre = 32.5;
   }
 }
-  else {
-    return;
-  }
 
   const quantity = document.getElementById('quantity-select').value;
   const qty = quantity ? Number(quantity) : 1;
@@ -1942,6 +2052,20 @@ else if (currentProduct === "DAHI") {
 
   document.getElementById('detail-price').textContent =
     `Price: ₹${finalPrice}/L`;
+}
+
+updateNavbar();
+updateProfile();
+
+function updateProfile() {
+  const name = localStorage.getItem("userName");
+  const mobile = localStorage.getItem("userMobile");
+
+  const nameEl = document.getElementById("profile-name");
+  const mobileEl = document.getElementById("profile-mobile");
+
+  if (nameEl) nameEl.textContent = name || "Name";
+  if (mobileEl) mobileEl.textContent = mobile || "Mobile";
 }
 
   </script>
