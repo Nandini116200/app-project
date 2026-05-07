@@ -72,10 +72,11 @@
     </div>
     <div class="profile-card">
 
-      <button class="profile-option">
-    <span>💟</span>
-    <span>Wishlist</span>
-  </button>
+      <button class="profile-option" data-go-screen="wishlist">
+  <span>💟</span>
+  <span>Wishlist</span>
+   <span id="wishlist-count" class="badge">0</span> <!-- 🔥 ADD -->
+</button>
 
   <button class="profile-option">
     <span>🛒</span>
@@ -321,6 +322,11 @@
   <div class="home-actions">
     <button class="icon-btn" data-go-screen="wallet">💸</button>
     <button class="icon-btn" aria-label="Notifications">🔔</button>
+    <button class="icon-btn wishlist-nav-btn" data-go-screen="wishlist">
+  💟
+  <span id="wishlist-count-nav" class="badge small-badge">0</span>
+</button>
+    
   </div>
 </header>
 
@@ -398,24 +404,32 @@
   <!-- NORMAL VIEW -->
   <div class="featured-visual normal-view">
     <img src="./images/Milk.png">
+    <!-- 🔥 ADD THIS -->
+  <span class="wishlist-heart">♡</span>
   </div>
 </article>
 
   <article class="featured-card chaach-card" data-name="BUFFALO BILONA CHAACH">
     <div class="featured-visual">
       <img src="./images/Chaach.png">
+      <!-- 🔥 ADD THIS -->
+      <span class="wishlist-heart">♡</span>
     </div>
   </article>
 
-  <article class="featured-card ghee-card" data-name="A2 COW GHEE">
+  <article class="featured-card ghee-card" data-name="RAW A2 COW GHEE">
     <div class="featured-visual">
       <img src="./images/Ghee.png">
+      <!-- 🔥 ADD THIS -->
+      <span class="wishlist-heart">♡</span>
     </div>
   </article>
 
   <article class="featured-card dahi-card" data-name="DAHI">
     <div class="featured-visual">
       <img src="./images/Dahi.png">
+      <!-- 🔥 ADD THIS -->
+      <span class="wishlist-heart">♡</span>
     </div>
   </article>
   
@@ -423,6 +437,8 @@
   <article class="featured-card paneer-card" data-name="PANEER">
     <div class="featured-visual">
       <img src="./images/Paneer.png">
+      <!-- 🔥 ADD THIS -->
+      <span class="wishlist-heart">♡</span>
     </div>
   </article>
   </div>
@@ -527,9 +543,6 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19 8.5 12l7-7"/></svg>
         </button>
         <h1>Our Products</h1>
-        <button class="icon-btn" aria-label="Search products">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
-        </button>
       </header>
 
       <div class="category-strip" role="tablist" aria-label="Product categories">
@@ -547,7 +560,10 @@
           <div class="cards-grid three-up">
             <article class="product-card">
               <div class="product-visual">
-              <img src="./images/BUFFALO MILK .png" alt="Milk"></div>
+              <img src="./images/BUFFALO MILK .png" alt="Milk">
+              <!-- 🔥 ADD THIS -->
+              <span class="wishlist-heart">♡</span>
+            </div>
               <div class="product-body">
                 <h3>RAW BUFFALO MILK</h3>
                 <p>Creamy buffalo milk, rich and wholesome</p>
@@ -558,7 +574,9 @@
             </article>
             <article class="product-card">
               <div class="product-visual">
-              <img src="./images/COW MILK.png" alt="Milk"></div>
+              <img src="./images/COW MILK.png" alt="Milk">
+              <!-- 🔥 ADD THIS -->
+              <span class="wishlist-heart">♡</span></div>
               <div class="product-body">
                 <h3>RAW COW MILK</h3>
                 <p>Pure cow's milk, fresh from farm to home</p>
@@ -569,7 +587,10 @@
             </article>
             <article class="product-card">
                 <div class="product-visual">
-                <img src="./images/A2 MILK.png" alt="Milk"></div>
+                <img src="./images/A2 MILK.png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>RAW A2 COW MILK</h3>
                 <p>A2 milk from Sahiwal cows, easy to digest</p>
@@ -586,7 +607,10 @@
           <div class="cards-grid two-up">
             <article class="product-card">
               <div class="product-visual">
-                <img src="./images/BUFFALO CHAACH .png" alt="Milk"></div>
+                <img src="./images/BUFFALO CHAACH .png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>BUFFALO BILONA CHAACH</h3>
                 <p>Rich and tasty buttermilk, healthy drink</p>
@@ -597,7 +621,10 @@
             </article>
             <article class="product-card">
               <div class="product-visual">
-                <img src="./images/COW CHAACH .png" alt="Milk"></div>
+                <img src="./images/COW CHAACH .png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>COW BILONA CHAACH</h3>
                 <p>Traditional tangy buttermilk, refreshing</p>
@@ -614,7 +641,10 @@
           <div class="cards-grid three-up">
             <article class="product-card">
               <div class="product-visual">
-                <img src="./images/buffalo ghee.png" alt="Milk"></div>
+                <img src="./images/buffalo ghee.png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>BUFFALO GHEE</h3>
                 <p>Pure buffalo ghee, traditional strength & aroma</p>
@@ -625,7 +655,10 @@
             </article>
             <article class="product-card">
               <div class="product-visual">
-                <img src="./images/COW GHEE .png" alt="Milk"></div>
+                <img src="./images/COW GHEE .png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>COW GHEE</h3>
                 <p>Traditional cow ghee, rich aroma & authentic taste</p>
@@ -636,7 +669,10 @@
             </article>
             <article class="product-card">
               <div class="product-visual">
-                <img src="./images/A2 ghee.png" alt="Milk"></div>
+                <img src="./images/A2 ghee.png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>RAW A2 COW GHEE</h3>
                 <p>Authentic A2 ghee, bilona method, superior quality</p>
@@ -653,7 +689,10 @@
           <div class="cards-grid single-up">
             <article class="product-card">
               <div class="product-visual">
-                <img src="./images/DAHI (1).png" alt="Milk"></div>
+                <img src="./images/DAHI (1).png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>DAHI</h3>
                 <p>Thick homemade dahi, healthy & delicious</p>
@@ -670,7 +709,10 @@
           <div class="cards-grid single-up">
             <article class="product-card">
               <div class="product-visual">
-                <img src="./images/paneer (1).png" alt="Milk"></div>
+                <img src="./images/paneer (1).png" alt="Milk">
+                <!-- 🔥 ADD THIS -->
+                <span class="wishlist-heart">♡</span>
+              </div>
               <div class="product-body">
                 <h3>PANEER</h3>
                 <p>Soft and creamy, freshly prepared for your dishes</p>
@@ -683,6 +725,49 @@
         </div>
       </section>
     </main>
+
+    <main class="screen" id="wishlist-screen" data-screen="wishlist">
+
+  <header class="topbar">
+    <button class="icon-btn" data-go-screen="profile">←</button>
+    <h1>Wishlist</h1>
+    <span class="topbar-spacer"></span>
+  </header>
+
+  <div class="category-strip wishlist-strip">
+
+  <button class="category-pill wishlist-filter active" data-wishlist="all">
+    All
+  </button>
+
+  <button class="category-pill wishlist-filter" data-wishlist="milk">
+    MILK
+  </button>
+
+  <button class="category-pill wishlist-filter" data-wishlist="chaach">
+    CHAACH
+  </button>
+
+  <button class="category-pill wishlist-filter" data-wishlist="ghee">
+    GHEE
+  </button>
+
+  <button class="category-pill wishlist-filter" data-wishlist="dahi">
+    DAHI
+  </button>
+
+  <button class="category-pill wishlist-filter" data-wishlist="paneer">
+    PANEER
+  </button>
+
+</div>
+
+  <div class="products-page">
+  <div class="cards-grid three-up" id="wishlist-container"></div>
+</div>
+    <!-- wishlist items yaha aayenge -->
+
+</main>
 
    <main class="screen" id="product-detail-screen" data-screen="productDetail">
 
@@ -808,10 +893,15 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="11" rx="1.8"/><path d="M8 19.5h8"/></svg>
         <span>Products</span>
       </button>
-      <button class="nav-item" data-go-screen="orders">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/><path d="M3.5 4h2l2.2 9.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8l1.5-6.2H7.2"/></svg>
-        <span>Cart</span>
-      </button>
+      <button class="nav-item cart-nav-btn" data-go-screen="orders">
+  <div class="nav-badge">
+    <svg viewBox="0 0 24 24"><path d="M3.5 4h2l2.2 9.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8l1.5-6.2H7.2"/></svg>
+
+    <!-- 🔥 ADD THIS -->
+    <span id="cart-count" class="badge small-badge">0</span>
+  </div>
+  <span>Cart</span>
+</button>
       <button class="nav-item" data-go-screen="profile">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.5 20a6.5 6.5 0 0 0-13 0"/><circle cx="12" cy="8" r="4"/></svg>
         <span>Profile</span>
@@ -867,10 +957,14 @@
     let quantity = Number(quantityDisplay?.textContent || 1);
 
     function setActiveScreen(screenName) {
-  if (screenName === 'orders') loadOrders();
+      if (screenName === 'orders') loadOrders();
 
-  screens.forEach(screen =>
-    screen.classList.toggle('active', screen.dataset.screen === screenName)
+      if (screenName === 'wishlist') {
+  loadWishlist();
+}
+
+    screens.forEach(screen =>
+      screen.classList.toggle('active', screen.dataset.screen === screenName)
   );
 
   bottomNavItems.forEach(item =>
@@ -917,7 +1011,15 @@
         filterButtons.forEach(btn => btn.classList.remove('active'));
 
         const selectedBtn = document.querySelector(`[data-filter="${category}"]`);
-        if (selectedBtn) selectedBtn.classList.add('active');
+        if (selectedBtn) {
+  selectedBtn.classList.add('active');
+
+  // 🔥 AUTO SCROLL FIX
+  selectedBtn.scrollIntoView({
+    behavior: "smooth",
+    inline: "center"
+  });
+}
 
         productSections.forEach(section => {
           section.style.display =
@@ -933,6 +1035,11 @@
         const selected = button.dataset.filter;
         filterButtons.forEach((item) => item.classList.remove('active'));
         button.classList.add('active');
+
+        button.scrollIntoView({
+          behavior: "smooth",
+          inline: "center"
+        }); 
 
         productSections.forEach((section) => {
           section.style.display = selected === 'all' || section.dataset.section === selected ? 'block' : 'none';
@@ -1469,7 +1576,7 @@ featuredCards.forEach(card => {
       document.getElementById('detail-image').src = "./images/Chaach.png";
     }
 
-    else if (name === "A2 COW GHEE") {
+    else if (name === "RAW A2 COW GHEE") {
       currentProduct = "";
 
       document.getElementById('detail-name').textContent = "RAW A2 COW GHEE";
@@ -1589,13 +1696,26 @@ else if (name === "COW BILONA CHAACH") {
 }
 else if (name === "DAHI") {
   currentProduct = "DAHI";
-  basePrice = 32.5;
+  basePrice = 72;
 
-  document.getElementById('detail-price').textContent = "Price: ₹38/L"; // default
+  document.getElementById('detail-price').textContent = "Price: ₹72/500g";
 }
-else {
-  currentProduct = "";
-  document.getElementById('detail-price').textContent = `Price: ₹${cleanPrice}/L`;
+
+else if (name === "PANEER") {
+  currentProduct = "PANEER";
+  basePrice = 450;
+
+  document.getElementById('detail-price').textContent = "Price: ₹450/Kg";
+}
+
+else if (name.includes("GHEE")) {
+  currentProduct = "GHEE";
+
+  if (name === "BUFFALO GHEE") basePrice = 1300;
+  else if (name === "COW GHEE") basePrice = 1100;
+  else if (name === "RAW A2 COW GHEE") basePrice = 2800;
+
+  document.getElementById('detail-price').textContent = `Price: ₹${basePrice}/Kg`;
 }
 updatePrice();
     document.getElementById('detail-image').src = image;
@@ -1810,6 +1930,7 @@ if (existingItem) {
 
 // save
 localStorage.setItem('cart', JSON.stringify(cart));
+updateCartBadge(); // 🔥 ADD THIS
 
   // success screen
   setActiveScreen('cartSuccess');
@@ -1899,6 +2020,7 @@ const totalPrice = basePrice * size * packets;
       cart.splice(index, 1);
 
       localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartBadge();
 
       loadOrders();
     });
@@ -1915,6 +2037,7 @@ document.querySelectorAll('.qty-plus').forEach(btn => {
     cart[index].packets = Number(cart[index].packets) + 1;
 
     localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartBadge();
 
     loadOrders();
   });
@@ -1934,6 +2057,7 @@ document.querySelectorAll('.qty-minus').forEach(btn => {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartBadge();
 
     loadOrders();
   });
@@ -1950,6 +2074,7 @@ document.querySelectorAll('.size-select').forEach(select => {
     cart[index].quantity = e.target.value;
 
     localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartBadge();
 
     loadOrders();
   });
@@ -2030,6 +2155,15 @@ else if (currentProduct === "COW_CHAACH") {
     else if (plan === "Monthly") pricePerLitre = 30;
   }
 }
+// 🔥 GHEE
+else if (currentProduct === "GHEE") {
+  pricePerLitre = basePrice;
+}
+
+// 🔥 PANEER
+else if (currentProduct === "PANEER") {
+  pricePerLitre = basePrice;
+}
 
 // 🔥 DAHI LOGIC
 else if (currentProduct === "DAHI") {
@@ -2050,8 +2184,17 @@ else if (currentProduct === "DAHI") {
 
   const finalPrice = pricePerLitre * qty;
 
-  document.getElementById('detail-price').textContent =
-    `Price: ₹${finalPrice}/L`;
+  let unit = "L";
+
+if (currentProduct === "GHEE" || currentProduct === "PANEER") {
+  unit = "Kg";
+}
+else if (currentProduct === "DAHI") {
+  unit = "500g";
+}
+
+document.getElementById('detail-price').textContent =
+  `Price: ₹${finalPrice}/${unit}`;
 }
 
 updateNavbar();
@@ -2067,8 +2210,360 @@ function updateProfile() {
   if (nameEl) nameEl.textContent = name || "Name";
   if (mobileEl) mobileEl.textContent = mobile || "Mobile";
 }
+const hearts = document.querySelectorAll('.product-card .wishlist-heart');
+
+hearts.forEach(heart => {
+  heart.addEventListener('click', (e) => {
+    e.stopPropagation(); // 🔥 product detail me na jaye
+
+
+    const card = e.target.closest('.product-card');
+    const name = card.querySelector('h3').textContent;
+    const price = card.querySelector('strong').textContent;
+    const image = card.querySelector('img').src;
+
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    const existing = wishlist.find(item => item.name === name);
+
+    if (existing) {
+      // ❌ remove
+      wishlist = wishlist.filter(item => item.name !== name);
+      heart.classList.add('animate');
+      setTimeout(() => heart.classList.remove('animate'), 400);
+      heart.classList.remove('active');
+
+      // 🔥 ADD THIS
+      heart.classList.add('animate');
+      setTimeout(() => heart.classList.remove('animate'), 400);
+
+      showToast("Removed from Wishlist ❌"); // 🔥 ADD
+    } else {
+      // ✅ add
+      let category = "";
+
+if (name.includes("MILK")) category = "milk";
+else if (name.includes("CHAACH")) category = "chaach";
+else if (name.includes("GHEE")) category = "ghee";
+else if (name === "DAHI") category = "dahi";
+else if (name === "PANEER") category = "paneer";
+
+wishlist.push({
+  name,
+  price,
+  image,
+  category
+});
+      heart.classList.add('active');
+
+      // 🔥 ADD THIS
+      heart.classList.add('animate');
+      setTimeout(() => heart.classList.remove('animate'), 400);
+
+      showToast("Added to Wishlist ✅"); // 🔥 ADD
+    }
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    updateWishlistBadge(); // 🔥 ADD
+    syncWishlistUI();
+    updateCartBadge();
+  });
+});
+function loadWishlistState() {
+  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    const name = card.querySelector('h3').textContent;
+    const heart = card.querySelector('.wishlist-heart');
+
+    const exists = wishlist.find(item => item.name === name);
+
+    if (exists) {
+      heart.classList.add('active');
+    }
+  });
+}
+
+loadWishlistState();
+updateWishlistBadge();
+syncWishlistUI();
+document.querySelectorAll('.featured-card').forEach(card => {
+  const name = card.dataset.name;
+  const heart = card.querySelector('.wishlist-heart');
+
+  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  const exists = wishlist.find(item => item.name === name);
+
+  if (exists && heart) {
+    heart.classList.add('active');
+  }
+});
+function loadWishlist() {
+
+  const container = document.getElementById('wishlist-container');
+  container.innerHTML = "";
+
+  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  if (wishlist.length === 0) {
+    container.innerHTML = "<p style='padding:20px;'>No items in wishlist</p>";
+    return;
+  }
+
+  wishlist.forEach(item => {
+
+    const card = `
+  <article class="product-card" data-category="${item.category}">
+    
+    <div class="product-visual">
+      <img src="${item.image}">
+      <span class="wishlist-heart active">❤</span>
+    </div>
+
+    <div class="product-body">
+      <h3>${item.name}</h3>
+
+      <strong>${item.price}</strong>
+
+      <button class="wishlist-cart-btn" data-product="${item.name}">
+        ADD TO CART
+      </button>
+    </div>
+
+  </article>
+`;
+
+    container.innerHTML += card;
+  });
+  document.querySelectorAll('#wishlist-container .wishlist-heart').forEach(heart => {
+  heart.addEventListener('click', (e) => {
+
+    const card = e.target.closest('.product-card');
+    const name = card.querySelector('h3').textContent;
+
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    wishlist = wishlist.filter(item => item.name !== name);
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    updateWishlistBadge(); // 🔥 ADD
+    syncWishlistUI();
+
+    showToast("Removed from Wishlist ❌"); // 🔥 ADD THIS
+
+
+    loadWishlist(); // 🔥 reload
+  });
+});
+  document.querySelectorAll('.wishlist-cart-btn').forEach(btn => {
+
+  btn.addEventListener('click', (e) => {
+
+    const productName = e.target.dataset.product;
+
+    // 🔥 RAW COW MILK
+    if (productName === "RAW COW MILK") {
+
+      currentProduct = "COW";
+      basePrice = 48;
+
+      document.getElementById('detail-name').textContent = "RAW COW MILK";
+      document.getElementById('detail-price').textContent = "Price: ₹51/L";
+      document.getElementById('detail-image').src = "./images/Milk.png";
+    }
+
+    // 🔥 BUFFALO CHAACH
+    else if (productName === "BUFFALO BILONA CHAACH") {
+
+      currentProduct = "CHAACH";
+      basePrice = 36;
+
+      document.getElementById('detail-name').textContent = "BUFFALO BILONA CHAACH";
+      document.getElementById('detail-price').textContent = "Price: ₹40/L";
+      document.getElementById('detail-image').src = "./images/Chaach.png";
+    }
+
+    // 🔥 DAHI
+    else if (productName === "DAHI") {
+
+      currentProduct = "DAHI";
+      basePrice = 72;
+
+      document.getElementById('detail-name').textContent = "DAHI";
+      document.getElementById('detail-price').textContent = "Price: ₹72/500g";
+      document.getElementById('detail-image').src = "./images/Dahi.png";
+    }
+
+    // 🔥 A2 GHEE
+    else if (productName === "RAW A2 COW GHEE") {
+
+      currentProduct = "GHEE";
+      basePrice = 1100;
+
+      document.getElementById('detail-name').textContent = "RAW A2 COW GHEE";
+      document.getElementById('detail-price').textContent = "Price: ₹1100/Kg";
+      document.getElementById('detail-image').src = "./images/Ghee.png";
+    }
+
+    // 🔥 OPEN DETAIL SCREEN
+    setActiveScreen('productDetail');
+
+  });
+
+});
+};
+
+const wishlistFilters = document.querySelectorAll('.wishlist-filter');
+
+wishlistFilters.forEach(btn => {
+
+  btn.addEventListener('click', () => {
+
+    wishlistFilters.forEach(b =>
+      b.classList.remove('active')
+    );
+
+    btn.classList.add('active');
+
+    btn.scrollIntoView({
+  behavior: "smooth",
+  inline: "center"
+});
+
+    const selected = btn.dataset.wishlist.toLowerCase();
+
+    document
+      .querySelectorAll('#wishlist-container .product-card')
+      .forEach(card => {
+
+        const category = card.dataset.category?.toLowerCase();
+
+        if (selected === "all" || category === selected) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+  });
+
+});
+const featuredHearts = document.querySelectorAll('.featured-card .wishlist-heart');
+
+featuredHearts.forEach(heart => {
+  heart.addEventListener('click', (e) => {
+
+    e.stopPropagation(); // 🔥 IMPORTANT (product open na ho)
+
+    const card = e.target.closest('.featured-card');
+    const name = card.dataset.name;
+    const image = card.querySelector('img').src;
+
+    let price = "";
+
+    // 🔥 price mapping
+    if (name.includes("MILK")) price = "₹50/L";
+    else if (name.includes("CHAACH")) price = "₹40/L";
+    else if (name.includes("GHEE")) price = "₹1100/Kg";
+    else if (name === "DAHI") price = "₹72/500g";
+    else if (name === "PANEER") price = "₹450/Kg";
+
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    const exists = wishlist.find(item => item.name === name);
+
+    if (exists) {
+      wishlist = wishlist.filter(item => item.name !== name);
+      heart.classList.remove('active');
+
+      heart.classList.add('animate');
+      setTimeout(() => heart.classList.remove('animate'), 400);
+      showToast("Removed from Wishlist ❌"); // 🔥 ADD
+    } else {
+      let category = "";
+
+if (name.includes("MILK")) category = "milk";
+else if (name.includes("CHAACH")) category = "chaach";
+else if (name.includes("GHEE")) category = "ghee";
+else if (name === "DAHI") category = "dahi";
+else if (name === "PANEER") category = "paneer";
+
+wishlist.push({
+  name,
+  price,
+  image,
+  category
+});
+      heart.classList.add('active');
+      heart.classList.add('animate');
+      setTimeout(() => heart.classList.remove('animate'), 400);
+      showToast("Added to Wishlist ✅"); // 🔥 ADD
+    }
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    updateWishlistBadge();
+    syncWishlistUI(); // 🔥 ADD THIS
+  });
+});
+function showToast(message) {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1500);
+}
+function syncWishlistUI() {
+  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  // 🔹 Product cards
+  document.querySelectorAll('.product-card').forEach(card => {
+    const name = card.querySelector('h3')?.textContent;
+    const heart = card.querySelector('.wishlist-heart');
+
+    if (!heart || !name) return;
+
+    const exists = wishlist.find(item => item.name === name);
+
+    heart.classList.toggle('active', !!exists);
+  });
+
+  // 🔹 Featured cards
+  document.querySelectorAll('.featured-card').forEach(card => {
+    const name = card.dataset.name;
+    const heart = card.querySelector('.wishlist-heart');
+
+    if (!heart || !name) return;
+
+    const exists = wishlist.find(item => item.name === name);
+
+    heart.classList.toggle('active', !!exists);
+  });
+}
+function updateWishlistBadge() {
+  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  const badge1 = document.getElementById('wishlist-count');
+  const badge2 = document.getElementById('wishlist-count-nav');
+
+  if (badge1) badge1.textContent = wishlist.length;
+  if (badge2) badge2.textContent = wishlist.length;
+}
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const badge = document.getElementById('cart-count');
+
+  if (!badge) return;
+
+  badge.textContent = cart.length;
+}
 
   </script>
+  <div id="toast"></div>
 </body>
 <script type="module" src="firebase.js"></script>
 <script type="module" src="script.js"></script>
