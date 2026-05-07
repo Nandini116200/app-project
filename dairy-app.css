@@ -623,6 +623,7 @@ button {
   gap: 10px;
   overflow-x: auto;
   padding: 12px 16px;
+  padding-right: 30px;  /* 🔥 ADD THIS LINE */
   background: #fbfbfb;
   border-top: 1px solid #f0ece8;
   border-bottom: 1px solid #f0ece8;
@@ -1917,4 +1918,123 @@ button {
   border: none;
   border-radius: 10px;
   font-weight: bold;
+}
+.category-pill:last-child {
+  margin-right: 20px;
+}
+.product-visual {
+  position: relative;
+}
+
+.wishlist-heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgba(0,0,0,0.4);
+  transition: 0.2s;
+}.featured-visual {
+  position: relative;
+}
+
+.wishlist-heart.active {
+  color: #ff4d6d; /* pink */
+}
+#toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+
+  background: #222;
+  color: #fff;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+@keyframes heartPop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.4); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1.2); }
+}
+
+.wishlist-heart.animate {
+  animation: heartPop 0.4s ease;
+}
+.badge {
+  margin-left: auto;
+  background: #ff4d6d;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+
+  padding: 2px 8px;
+  border-radius: 999px;
+
+  min-width: 20px;
+  text-align: center;
+}
+.wishlist-nav-btn {
+  position: relative;
+}
+
+.small-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+
+  font-size: 9px;
+  padding: 2px 6px;
+  min-width: 16px;
+
+  border-radius: 999px;
+}
+.cart-nav-btn .nav-badge {
+  position: relative;
+}
+.nav-badge svg {
+  width: 22px;
+  height: 22px;
+}
+.wishlist-cart-btn {
+  width: 100%;
+  height: 30px;
+
+  margin-top: 10px;
+
+  border-radius: 999px;
+  background: #7fcdf4;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.wishlist-cart-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 0 10px rgba(127,205,244,0.7);
+}
+
+.wishlist-cart-btn:active {
+  transform: scale(0.96);
 }
