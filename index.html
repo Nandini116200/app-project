@@ -538,12 +538,25 @@
 </main>
 
     <main class="screen" id="products-screen" data-screen="products">
-      <header class="topbar">
-        <button class="icon-btn" aria-label="Go back" data-go-screen="home">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19 8.5 12l7-7"/></svg>
-        </button>
-        <h1>Our Products</h1>
-      </header>
+      <header class="topbar search-topbar">
+
+  <button class="icon-btn" aria-label="Go back" data-go-screen="home">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15.5 19 8.5 12l7-7"/>
+    </svg>
+  </button>
+
+  <div class="animated-search-bar">
+
+    <span class="search-icon">🔍</span>
+
+    <span id="animated-placeholder"></span>
+
+    <span class="cursor">|</span>
+
+  </div>
+
+</header>
 
       <div class="category-strip" role="tablist" aria-label="Product categories">
         <button class="category-pill active" type="button" data-filter="all">All</button>
@@ -818,6 +831,9 @@
   <input type="date" id="end-date" >
 </div>
 
+<!-- CUSTOM DATE BLOCKS -->
+<div id="custom-dates-wrap"></div>
+
     <div class="input-row full">
   <select id="slot-select">
     <option value="">Choose Delivery Slot</option>
@@ -827,61 +843,99 @@
 </div>
 
     <!-- BUTTONS -->
-    <button class="big-btn" id="buy-btn" disabled>Buy Now</button>
+    <button class="big-btn" id="buy-now-btn" disabled>
+  Buy Now
+</button>
     <button class="big-btn" id="cart-btn" disabled>Add to Cart</button>
 
-    <h3 style="margin-top:20px;">Product details</h3>
-    <p style="font-size:13px; color:#777;">
-      Lorem ipsum text...
-    </p>
+    <h3 style="margin-top:20px;">Product Details</h3>
+
+<p id="product-description"
+   style="font-size:13px;
+   color:#777;
+   line-height:1.7;">
+</p>
 
   </div>
 
 </main>
 
-<section id="checkout-screen" class="screen" data-screen="checkout">
-  <div class="topbar">
-  <button class="icon-btn" data-go-screen="productDetail">←</button>
-  <h3 style="margin:0;"></h3>
-  <div class="topbar-spacer"></div>
+</section>
+<main class="screen" id="checkout-screen" data-screen="checkout">
+
+  <header class="topbar">
+    <button class="icon-btn" data-go-screen="productDetail">←</button>
+
+    <h1>Checkout</h1>
+
+    <span class="topbar-spacer"></span>
+  </header>
+
+  <div id="checkout-container"></div>
+  <!-- ADDRESS SECTION -->
+
+<div class="address-wrapper">
+
+  <!-- TOGGLE -->
+  <div class="address-toggle" id="addressToggle">
+
+    <span>+ Add Address</span>
+
+    <span id="addressArrow">⌄</span>
+
+  </div>
+
+  <!-- FORM -->
+  <div class="address-form-wrap" id="addressFormWrap">
+
+    <div class="address-form">
+
+      <h3>CONTACT DETAILS</h3>
+
+      <input type="text" id="addressName" placeholder="Name*">
+
+      <input type="text" id="addressMobile" placeholder="Mobile No*">
+
+      <h3>ADDRESS</h3>
+
+      <input type="text" id="addressPin" placeholder="Pin Code*">
+
+      <input type="text" id="addressHouse" placeholder="House Number/Tower/Block*">
+
+      <input type="text" id="addressStreet" placeholder="Address (locality, building, street)*">
+
+      <input type="text" id="addressTown" placeholder="Locality / Town*">
+
+      <div class="city-state-row">
+
+        <input type="text" id="addressCity" placeholder="City / District*">
+
+        <input type="text" id="addressState" placeholder="State*">
+
+      </div>
+
+      <div class="address-btn-row">
+
+        <button id="cancelAddressBtn">
+          Cancel
+        </button>
+
+        <button id="saveAddressBtn">
+          Save
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SAVED ADDRESSES -->
+  <div id="savedAddresses"></div>
+
 </div>
 
-  <!-- 🔹 Product Card -->
-  <div class="checkout-product-card">
-    <img id="checkout-img" src="" />
-    <div>
-      <h3 id="checkout-name"></h3>
-      <p id="checkout-price"></p>
-      <p id="checkout-plan"></p>
-      <p id="checkout-qty"></p>
-      <p id="checkout-date"></p>
-      <p id="checkout-slot"></p>
-    </div>
-  </div>
-
-  <!-- 🔹 Delivery Form -->
-  <div class="delivery-form">
-
-    <div class="input-row">
-      <input type="text" placeholder="Pincode *" id="pincode">
-      <input type="text" placeholder="State *" id="state">
-    </div>
-
-    <input type="text" placeholder="House Number / Tower / Block *" id="house">
-
-    <input type="text" placeholder="Address (Building, Street, Area) *" id="address">
-
-    <input type="text" placeholder="Locality / Town *" id="locality">
-
-    <input type="text" placeholder="City / District *" id="city">
-
-  </div>
-
-  <!-- 🔹 Continue Button -->
-  <button class="checkout-btn">Proceed to Payment</button>
-
-</section>
-
+</main>
     <nav class="bottom-nav" aria-label="Main navigation">
       <button class="nav-item active" data-go-screen="home">
         <span class="nav-badge home-badge">
@@ -958,6 +1012,9 @@
 
     function setActiveScreen(screenName) {
       if (screenName === 'orders') loadOrders();
+      if (screenName === 'checkout') {
+  loadCheckout();
+}
 
       if (screenName === 'wishlist') {
   loadWishlist();
@@ -1552,59 +1609,37 @@ const subscribeBtns = document.querySelectorAll('.buy-btn');
 const featuredCards = document.querySelectorAll('.featured-card');
 
 featuredCards.forEach(card => {
+
   card.addEventListener('click', () => {
+
     if (!isLoggedIn) {
-  setActiveScreen("login");
-  return;
-}
+      setActiveScreen("login");
+      return;
+    }
 
     const name = card.dataset.name;
 
-    if (name === "RAW COW MILK") {
-      currentProduct = "COW";
+    // 🔥 Find same product card from products section
+    const productCards =
+      document.querySelectorAll('.product-card');
 
-      document.getElementById('detail-name').textContent = "RAW COW MILK";
-      document.getElementById('detail-price').textContent = "Price: ₹48/L";
-      document.getElementById('detail-image').src = "./images/Milk.png";
-    }
+    productCards.forEach(product => {
 
-    else if (name === "BUFFALO BILONA CHAACH") {
-      currentProduct = "CHAACH";
+      const productName =
+        product.querySelector('h3').textContent;
 
-      document.getElementById('detail-name').textContent = "BUFFALO BILONA CHAACH";
-      document.getElementById('detail-price').textContent = "Price: ₹40/L";
-      document.getElementById('detail-image').src = "./images/Chaach.png";
-    }
+      if (productName === name) {
 
-    else if (name === "RAW A2 COW GHEE") {
-      currentProduct = "";
+        // 🔥 SAME SUBSCRIBE BUTTON CLICK TRIGGER
+        product.querySelector('.buy-btn').click();
+      }
 
-      document.getElementById('detail-name').textContent = "RAW A2 COW GHEE";
-      document.getElementById('detail-price').textContent = "Price: ₹1100/Kg";
-      document.getElementById('detail-image').src = "./images/Ghee.png";
-    }
-
-    else if (name === "DAHI") {
-      currentProduct = "";
-
-      document.getElementById('detail-name').textContent = "DAHI";
-      document.getElementById('detail-price').textContent = "Price: ₹32.5";
-      document.getElementById('detail-image').src = "./images/Dahi.png";
-    }
-
-    else if (name === "PANEER") {
-      currentProduct = "";
-
-      document.getElementById('detail-name').textContent = "PANEER";
-      document.getElementById('detail-price').textContent = "Price: ₹150/Kg";
-      document.getElementById('detail-image').src = "./images/Paneer.png";
-    }
-
-    setActiveScreen('productDetail');
-    updatePrice(); // 🔥 IMPORTANT
+    });
 
   });
+
 });
+
 subscribeBtns.forEach((btn) => {
   btn.addEventListener('click', (e) => {
     if (!isLoggedIn) {
@@ -1613,6 +1648,30 @@ subscribeBtns.forEach((btn) => {
 }
 
     currentProduct = ""; // 🔥 RESET EVERY TIME
+    // 🔥 RESET PRODUCT DETAIL SCREEN
+
+selectedPlanType = "";
+
+document.querySelectorAll('.plan-pill')
+  .forEach(p => p.classList.remove('active'));
+
+document.getElementById('custom-dates-wrap')
+  .innerHTML = "";
+
+startDate.value = "";
+
+endDate.value = "";
+
+endDate.disabled = true;
+
+slotSelect.value = "";
+
+quantitySelect.selectedIndex = 0;
+
+count = 1;
+
+document.getElementById('packet-count')
+  .textContent = 1;
 
     document.querySelectorAll('.plan-pill').forEach(btn => {
   btn.classList.remove('active');
@@ -1669,59 +1728,193 @@ if (name === "RAW A2 COW MILK") {
   basePrice = 80;
 
   document.getElementById('detail-price').textContent = "Price: ₹85/L";
-}
+document.getElementById('product-description').innerHTML = `
+• Premium quality A2 milk obtained from indigenous Sahiwal cows known for their naturally nutritious milk.<br><br>
+
+• Contains A2 protein which is easier to digest and considered healthier compared to regular milk varieties.<br><br>
+
+• Rich source of calcium, protein, and natural nutrients that help support immunity, digestion, and overall wellness.<br><br>
+
+• Freshly collected and delivered with care to preserve purity, taste, and authentic farm freshness every day.
+`;}
+
 else if (name === "RAW COW MILK") {
   currentProduct = "COW";
   basePrice = 48;
 
   document.getElementById('detail-price').textContent = "Price: ₹55/L"; // default (you can change)
-}
+document.getElementById('product-description').innerHTML = `
+• Pure and fresh cow milk collected daily from trusted farms to ensure natural taste and high quality.<br><br>
+
+• Rich in protein, calcium, vitamins, and essential nutrients that support a healthy and balanced lifestyle.<br><br>
+
+• Light, easy to digest, and suitable for daily consumption for children, adults, and elderly family members.<br><br>
+
+• Ideal for tea, coffee, milkshakes, breakfast, and homemade dairy products with natural farm freshness.
+`;}
+
 else if (name === "RAW BUFFALO MILK") {
   currentProduct = "BUFFALO";
   basePrice = 72;
 
   document.getElementById('detail-price').textContent = "Price: ₹80/L"; // default (you can change)
-}
+document.getElementById('product-description').innerHTML = `
+• Fresh raw buffalo milk sourced directly from healthy farm buffaloes with no added preservatives or chemicals.<br><br>
+
+• Naturally rich in calcium, protein, and healthy fats that help support strong bones, energy, and daily nutrition.<br><br>
+
+• Thick creamy texture and authentic taste make it perfect for tea, coffee, sweets, curd, and traditional dairy recipes.<br><br>
+
+• Hygienically collected and carefully delivered fresh to maintain purity, freshness, and farm-to-home quality.
+`;}
+
 else if (name === "BUFFALO BILONA CHAACH") {
   currentProduct = "CHAACH";
   basePrice = 36;
 
   document.getElementById('detail-price').textContent = "Price: ₹42/L"; // default
-}
+document.getElementById('product-description').innerHTML = `
+• Traditional bilona chaach prepared using authentic methods for a naturally refreshing and healthy drink.<br><br>
+
+• Helps improve digestion, keeps the body cool, and provides natural hydration during daily routines.<br><br>
+
+• Rich creamy taste with balanced texture makes it a perfect healthy refreshment for every meal.<br><br>
+
+• Prepared hygienically from fresh curd without artificial flavors or preservatives for authentic homemade quality.
+`;}
+
 else if (name === "COW BILONA CHAACH") {
   currentProduct = "COW_CHAACH";
   basePrice = 30;
 
   document.getElementById('detail-price').textContent = "Price: ₹35/L"; // default
-}
+document.getElementById('product-description').innerHTML = `
+• Fresh and light bilona chaach made from pure cow curd using traditional preparation techniques.<br><br>
+
+• Supports healthy digestion, gut health, and natural body cooling with refreshing taste and nutrition.<br><br>
+
+• Smooth texture and authentic flavor make it perfect for summer refreshment and daily healthy consumption.<br><br>
+
+• Carefully prepared and packed hygienically to maintain freshness, purity, and traditional homemade goodness.
+`;}
+
 else if (name === "DAHI") {
   currentProduct = "DAHI";
   basePrice = 72;
 
   document.getElementById('detail-price').textContent = "Price: ₹72/500g";
-}
+document.getElementById('product-description').innerHTML = `
+• Fresh homemade-style dahi prepared from pure milk with thick texture and natural creamy taste.<br><br>
+
+• Rich in probiotics and nutrients that help improve digestion, gut health, and daily nutrition.<br><br>
+
+• Smooth consistency and refreshing flavor make it perfect for meals, raita, lassi, and healthy snacks.<br><br>
+
+• Hygienically prepared and packed fresh to maintain purity, freshness, and authentic homemade quality.
+`;}
 
 else if (name === "PANEER") {
   currentProduct = "PANEER";
   basePrice = 450;
 
   document.getElementById('detail-price').textContent = "Price: ₹450/Kg";
-}
+document.getElementById('product-description').innerHTML = `
+• Soft and fresh paneer prepared from pure milk with rich texture and authentic taste.<br><br>
+
+• High in protein and calcium, making it a healthy choice for balanced meals and daily nutrition.<br><br>
+
+• Perfect for curries, snacks, salads, sandwiches, and a variety of homemade dishes.<br><br>
+
+• Freshly prepared under hygienic conditions to ensure softness, freshness, and premium quality.
+`;}
 
 else if (name.includes("GHEE")) {
   currentProduct = "GHEE";
 
-  if (name === "BUFFALO GHEE") basePrice = 1300;
-  else if (name === "COW GHEE") basePrice = 1100;
-  else if (name === "RAW A2 COW GHEE") basePrice = 2800;
+  if (name === "BUFFALO GHEE"){ basePrice = 1300;
+    document.getElementById('product-description').innerHTML = `
+• Pure buffalo ghee prepared using traditional methods to preserve authentic aroma, richness, and nutrition.<br><br>
+
+• Rich in healthy fats and natural energy that enhance the taste and nutrition of everyday meals.<br><br>
+
+• Thick texture and strong flavor make it ideal for cooking, sweets, rotis, and traditional Indian dishes.<br><br>
+
+• Carefully processed from quality milk under hygienic conditions to ensure purity and premium quality.
+`;
+  }
+  else if (name === "COW GHEE"){ basePrice = 1100;
+    document.getElementById('product-description').innerHTML = `
+• Traditional cow ghee made from pure milk with rich aroma, authentic flavor, and natural nutrition.<br><br>
+
+• Contains healthy fats and essential nutrients that support energy, digestion, and balanced daily diet.<br><br>
+
+• Perfect for cooking, frying, sweets, and adding traditional taste to homemade meals and recipes.<br><br>
+
+• Hygienically prepared to maintain freshness, purity, and premium quality in every spoon.
+`;
+  }
+  else if (name === "RAW A2 COW GHEE"){ basePrice = 2800;
+    document.getElementById('product-description').innerHTML = `
+• Premium bilona A2 cow ghee prepared from A2 milk of indigenous cows using traditional techniques.<br><br>
+
+• Known for its rich nutrition, authentic aroma, and natural Ayurvedic benefits for healthy living.<br><br>
+
+• Contains healthy fats and essential nutrients that support digestion, immunity, and daily wellness.<br><br>
+
+• Carefully crafted in hygienic conditions to preserve purity, freshness, and superior traditional quality.
+`;
+  }
 
   document.getElementById('detail-price').textContent = `Price: ₹${basePrice}/Kg`;
 }
 updatePrice();
     document.getElementById('detail-image').src = image;
+    const quantitySelect =
+  document.getElementById('quantity-select');
+
+// 🔥 Default for milk & chaach
+quantitySelect.innerHTML = `
+  <option value="0.5">500 ml</option>
+  <option value="1">1 L</option>
+`;
+
+// 🔥 For ghee, paneer, dahi
+if (
+  name.includes("GHEE") ||
+  name === "PANEER" ||
+  name === "DAHI"
+) {
+
+  if (name === "PANEER") {
+
+  quantitySelect.innerHTML = `
+    <option value="0.1">100 g</option>
+    <option value="0.5">500 g</option>
+    <option value="1">1 Kg</option>
+  `;
+}
+
+else if (name === "DAHI") {
+
+  quantitySelect.innerHTML = `
+    <option value="0.25">250 g</option>
+    <option value="0.5">500 g</option>
+    <option value="1">1 Kg</option>
+  `;
+}
+
+else if (name.includes("GHEE")) {
+
+  quantitySelect.innerHTML = `
+    <option value="0.5">500 g</option>
+    <option value="1">1 Kg</option>
+  `;
+}
+}
 
     // 🔥 go to detail screen
     setActiveScreen('productDetail');
+    syncDetailWishlistButton();
 
   });
 });
@@ -1734,10 +1927,31 @@ let selectedPlanType = "";
 
 planPills.forEach(btn => {
   btn.addEventListener('click', () => {
+    // 🔥 CUSTOMISED PLAN
+if (
+  btn.textContent.trim() === "Customised"
+) {
+
+  endDate.disabled = false;
+
+}
+else {
+
+  endDate.disabled = true;
+
+}
 
     // active toggle
     planPills.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    // 🔥 REMOVE OLD CUSTOM BLOCKS
+if (btn.textContent.trim() !== "Customised") {
+
+  document.getElementById(
+    'custom-dates-wrap'
+  ).innerHTML = "";
+
+}
 
     selectedPlanType = btn.textContent.trim();
 
@@ -1789,6 +2003,80 @@ function updateEndDate() {
 
   endInput.value = `${year}-${month}-${day}`;
 }
+function generateCustomDateBlocks() {
+
+  const wrap =
+    document.getElementById('custom-dates-wrap');
+
+  wrap.innerHTML = "";
+
+  const start =
+    new Date(startInput.value);
+
+  const end =
+    new Date(endInput.value);
+
+  if (!startInput.value || !endInput.value)
+    return;
+
+  let current =
+    new Date(start);
+
+  while (current <= end) {
+
+    const day =
+      current.getDate();
+
+    const month =
+      current.toLocaleString('default', {
+        month: 'short'
+      });
+
+    const fullDate =
+      `${day} ${month}`;
+
+    const block =
+      document.createElement('div');
+
+    block.className = "date-block";
+
+    block.innerHTML = `
+      ${fullDate}
+
+      <div class="date-config">
+
+        <select>
+          <option>Qty 1</option>
+          <option>Qty 2</option>
+          <option>Qty 3</option>
+        </select>
+
+        <select>
+          <option>Morning</option>
+          <option>Evening</option>
+        </select>
+
+      </div>
+    `;
+
+    block.addEventListener('click', () => {
+
+      block.classList.toggle('active');
+
+      const config =
+        block.querySelector('.date-config');
+
+      config.classList.toggle('active');
+
+    });
+
+    wrap.appendChild(block);
+
+    current.setDate(
+      current.getDate() + 1
+    );
+  }
+}
 let count = 1;
 const countDisplay = document.getElementById('packet-count');
 
@@ -1807,8 +2095,7 @@ const quantitySelect = document.getElementById('quantity-select');
 const slotSelect = document.getElementById('slot-select');
 const startDate = document.getElementById('start-date');
 const endDate = document.getElementById('end-date');
-const buyBtn = document.getElementById('buy-btn');
-const cartBtn = document.getElementById('cart-btn');
+const buyNowBtn = document.getElementById('buy-now-btn');
 
 function checkForm() {
 
@@ -1818,16 +2105,16 @@ function checkForm() {
   const end = endDate.value;
 
   if (quantity && slot && start && end) {
-    buyBtn.disabled = false;
+    buyNowBtn.disabled = false;
     cartBtn.disabled = false;
 
-    buyBtn.style.background = "#7fcdf4";
+    buyNowBtn.style.background = "#7fcdf4";
     cartBtn.style.background = "#7fcdf4";
   } else {
-    buyBtn.disabled = true;
+    buyNowBtn.disabled = true;
     cartBtn.disabled = true;
 
-    buyBtn.style.background = "#dcdcdc";
+    buyNowBtn.style.background = "#dcdcdc";
     cartBtn.style.background = "#dcdcdc";
   }
 }
@@ -1836,39 +2123,159 @@ quantitySelect.addEventListener('change', updatePrice);
 slotSelect.addEventListener('change', checkForm);
 startDate.addEventListener('change', () => {
 
+  let selectedPlanBtn =
+    document.querySelector('.plan-pill.active');
+
+  // 🔥 NO PLAN = ONE TIME
+  if (!selectedPlanBtn) {
+
+    endDate.value = startDate.value;
+
+    endDate.disabled = true;
+
+  }
+
+  else {
+
+    const plan =
+      selectedPlanBtn.textContent.trim();
+
+    // 🔥 CUSTOMISED
+    if (plan === "Customised") {
+
+      endDate.disabled = false;
+
+      endDate.value = "";
+
+    }
+
+    // 🔥 WEEKLY
+    else if (plan === "Weekly") {
+
+      let start = new Date(startDate.value);
+
+      start.setDate(start.getDate() + 6);
+
+      endDate.value =
+        start.toISOString().split('T')[0];
+
+      endDate.disabled = true;
+
+    }
+
+    // 🔥 15 DAYS
+    else if (plan === "15 Days") {
+
+      let start = new Date(startDate.value);
+
+      start.setDate(start.getDate() + 14);
+
+      endDate.value =
+        start.toISOString().split('T')[0];
+
+      endDate.disabled = true;
+
+    }
+
+    // 🔥 MONTHLY
+    else if (plan === "Monthly") {
+
+      let start = new Date(startDate.value);
+
+      start.setMonth(start.getMonth() + 1);
+
+      start.setDate(start.getDate() - 1);
+
+      endDate.value =
+        start.toISOString().split('T')[0];
+
+      endDate.disabled = true;
+
+    }
+
+  }
+
   checkForm();
-  updateEndDate(); // 🔥 all plans handle
+
 });
 endDate.addEventListener('change', checkForm);
+endDate.addEventListener('change', () => {
 
-buyBtn.addEventListener('click', () => {
+  const selectedPlan =
+    document.querySelector('.plan-pill.active');
 
-  // 🔹 Product data uthao detail screen se
-  const name = document.getElementById('detail-name').textContent;
-  const price = document.getElementById('detail-price').textContent;
-  const image = document.getElementById('detail-image').src;
+  if (
+    selectedPlan &&
+    selectedPlan.textContent.trim() === "Customised"
+  ) {
 
-  const quantity = document.getElementById('quantity-select').value;
-  const packets = document.getElementById('packet-count').textContent;
-  const start = document.getElementById('start-date').value;
-  const slot = document.getElementById('slot-select').value;
+    generateCustomDateBlocks();
 
-  let selectedPlanBtn = document.querySelector('.plan-pill.active');
-  let plan = selectedPlanBtn ? selectedPlanBtn.textContent : "One Time";
+  }
 
-  // 🔥 checkout screen me data set karo
-  document.getElementById("checkout-name").textContent = name;
-  document.getElementById("checkout-price").textContent = price;
-  document.getElementById("checkout-plan").textContent = "Plan: " + plan;
-  document.getElementById("checkout-qty").textContent = "Qty: " + quantity + " × " + packets;
-  document.getElementById("checkout-date").textContent = "Date: " + start;
-  document.getElementById("checkout-slot").textContent = "Slot: " + slot;
-  document.getElementById("checkout-img").src = image;
+});
+buyNowBtn.addEventListener('click', () => {
 
-  // 🔥 checkout screen open
+  if (!isLoggedIn) {
+    setActiveScreen("login");
+    return;
+  }
+
+  const productName =
+    document.getElementById('detail-name').textContent;
+
+  const productPrice =
+    document.getElementById('detail-price').textContent;
+
+  const productImage =
+    document.getElementById('detail-image').src;
+
+  const quantity =
+    document.getElementById('quantity-select').value;
+
+  const packets =
+    document.getElementById('packet-count').textContent;
+
+  const start =
+    document.getElementById('start-date').value;
+
+  const end =
+    document.getElementById('end-date').value;
+
+  const slot =
+    document.getElementById('slot-select').value;
+
+  let selectedPlanBtn =
+    document.querySelector('.plan-pill.active');
+
+  let plan = "One Time Purchase";
+
+  if (selectedPlanBtn) {
+    plan = selectedPlanBtn.textContent.trim();
+  }
+
+  const buyNowItem = {
+    name: productName,
+    price: productPrice,
+    image: productImage,
+    quantity,
+    packets,
+    start,
+    end,
+    slot,
+    plan
+  };
+
+  localStorage.setItem(
+    'buyNowItem',
+    JSON.stringify(buyNowItem)
+  );
+
   setActiveScreen('checkout');
 
 });
+
+    
 
 const cartBtnClick = document.getElementById('cart-btn');
 
@@ -1879,9 +2286,19 @@ cartBtnClick.addEventListener('click', () => {
 }
 
   const productName = document.getElementById('detail-name').textContent;
-  const productPrice = document.getElementById('detail-price').textContent;
-  const productImage = document.getElementById('detail-image').src;
+  
+const priceText =
+  document.getElementById('detail-price')
+  .textContent;
 
+const productPrice =
+  parseFloat(
+    priceText
+      .replace('Price: ₹', '')
+      .split('/')[0]
+  );
+
+const productImage = document.getElementById('detail-image').src;
   const quantity = document.getElementById('quantity-select').value;
   const packets = document.getElementById('packet-count').textContent;
   const start = document.getElementById('start-date').value;
@@ -1889,10 +2306,10 @@ cartBtnClick.addEventListener('click', () => {
   const slot = document.getElementById('slot-select').value;
   let selectedPlanBtn = document.querySelector('.plan-pill.active');
 
-let plan = "One Time Purchase"; // default
+let plan = "One Time Purchase";
 
 if (selectedPlanBtn) {
-  plan = selectedPlanBtn.textContent;
+  plan = selectedPlanBtn.textContent.trim();
 }
 
 
@@ -1915,9 +2332,7 @@ const existingItem = cart.find(item =>
   item.name === cartItem.name &&
   item.quantity === cartItem.quantity &&
   item.slot === cartItem.slot &&
-  item.plan === cartItem.plan &&
-  item.start === cartItem.start &&
-  item.end === cartItem.end
+  item.plan === cartItem.plan
 );
 
 // ✅ if exists → increase packets
@@ -1964,47 +2379,145 @@ function loadOrders() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   cart.forEach((item, index) => {
-    const basePrice = getBasePrice(item.price);
-const size = Number(item.quantity);
+const basePrice = Number(item.price);
 const packets = Number(item.packets);
 
-const totalPrice = basePrice * size * packets;
+const totalPrice = basePrice * packets;
 
     const card = `
-      <div class="order-card" data-index="${index}">
-        <button class="remove-btn">✖</button>
+<div class="order-card" data-index="${index}">
 
-        <img src="${item.image}" style="width:80px; border-radius:10px;">
+  <!-- remove -->
+  <button class="remove-btn">✕</button>
 
-        <div style="font-size:12px;">
-          <strong>${item.name}</strong><br>
-           ₹ ${totalPrice}<br>
-          Plan: ${item.plan}<br>
-          Qty: ${item.quantity} × ${item.packets}<br>
-          Start: ${item.start}<br>
-          End: ${item.end}<br>
-          Slot: ${item.slot}
-        </div>
+  <!-- LEFT -->
+  <div class="cart-left">
+    <img src="${item.image}" class="cart-product-img">
 
-        <!-- 🔥 QUANTITY CONTROL -->
-    <div class="qty-control">
-      <button class="qty-minus">-</button>
-      <span>${item.packets}</span>
-      <button class="qty-plus">+</button>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="cart-right">
+
+    <h3 class="cart-title">
+      ${item.name}
+    </h3>
+
+    <div class="cart-price">
+      ₹ ${totalPrice}
     </div>
 
-      <!-- 🔥 SIZE SELECT -->
-  <select class="size-select">
-    <option value="0.5" ${item.quantity == "0.5" ? "selected" : ""}>500 ml</option>
-    <option value="1" ${item.quantity == "1" ? "selected" : ""}>1 L</option>
-  </select>
+    <!-- size + qty row -->
+    <div class="cart-select-row">
 
-      
+      <div class="cart-select-group">
+        <span>Size:</span>
+
+        <select class="size-select">
+
+${item.name.includes("MILK") || item.name.includes("CHAACH") ? `
+
+  <option value="500ml"
+    ${item.quantity == "500ml" ? "selected" : ""}>
+    500ml
+  </option>
+
+  <option value="1L"
+    ${item.quantity == "1L" ? "selected" : ""}>
+    1L
+  </option>
+
+` : ""}
+
+${item.name.includes("GHEE") ? `
+
+  <option value="500g"
+    ${item.quantity == "500g" ? "selected" : ""}>
+    500g
+  </option>
+
+  <option value="1Kg"
+    ${item.quantity == "1Kg" ? "selected" : ""}>
+    1Kg
+  </option>
+
+` : ""}
+
+${item.name == "PANEER" ? `
+
+  <option value="100g"
+    ${item.quantity == "100g" ? "selected" : ""}>
+    100g
+  </option>
+
+  <option value="500g"
+    ${item.quantity == "500g" ? "selected" : ""}>
+    500g
+  </option>
+
+  <option value="1Kg"
+    ${item.quantity == "1Kg" ? "selected" : ""}>
+    1Kg
+  </option>
+
+` : ""}
+
+${item.name == "DAHI" ? `
+
+  <option value="250g"
+    ${item.quantity == "250g" ? "selected" : ""}>
+    250g
+  </option>
+
+  <option value="500g"
+    ${item.quantity == "500g" ? "selected" : ""}>
+    500g
+  </option>
+
+  <option value="1Kg"
+    ${item.quantity == "1Kg" ? "selected" : ""}>
+    1Kg
+  </option>
+
+` : ""}
+
+</select>
+      </div>
+
+      <div class="cart-select-group">
+        <span>Qty:</span>
+
+        <select class="qty-dropdown">
+          <option ${item.packets == 1 ? 'selected' : ''}>1</option>
+          <option ${item.packets == 2 ? 'selected' : ''}>2</option>
+          <option ${item.packets == 3 ? 'selected' : ''}>3</option>
+          <option ${item.packets == 4 ? 'selected' : ''}>4</option>
+        </select>
+
+      </div>
 
     </div>
-      
-    `;
 
+    <div class="cart-detail">
+      Plan: ${item.plan}
+    </div>
+
+    <div class="cart-detail">
+      Start: ${item.start}
+    </div>
+
+    <div class="cart-detail">
+      End: ${item.end}
+    </div>
+
+    <div class="cart-detail">
+      Slot: ${item.slot}
+    </div>
+
+  </div>
+
+</div>
+`;
     container.innerHTML += card; // ✅ IMPORTANT
   });
 
@@ -2025,60 +2538,236 @@ const totalPrice = basePrice * size * packets;
       loadOrders();
     });
   });
-  // ➕ PLUS BUTTON
-document.querySelectorAll('.qty-plus').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-
-    const card = e.target.closest('.order-card');
-    const index = card.dataset.index;
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    cart[index].packets = Number(cart[index].packets) + 1;
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartBadge();
-
-    loadOrders();
-  });
-});
-
-// ➖ MINUS BUTTON
-document.querySelectorAll('.qty-minus').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-
-    const card = e.target.closest('.order-card');
-    const index = card.dataset.index;
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    if (cart[index].packets > 1) {
-      cart[index].packets -= 1;
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartBadge();
-
-    loadOrders();
-  });
-});
+  
 // 🔥 SIZE CHANGE
 document.querySelectorAll('.size-select').forEach(select => {
+
   select.addEventListener('change', (e) => {
 
     const card = e.target.closest('.order-card');
+
     const index = card.dataset.index;
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart =
+      JSON.parse(localStorage.getItem('cart')) || [];
 
-    cart[index].quantity = e.target.value;
+    const item = cart[index];
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+    const selectedSize = e.target.value;
+
+    item.quantity = selectedSize;
+
+    // 🔥 PRICE RECALCULATION
+
+    // 🔥 RAW BUFFALO MILK
+if (item.name === "RAW BUFFALO MILK") {
+
+  if (item.plan === "Monthly") {
+    item.price =
+      selectedSize === "500ml" ? 36 : 72;
+  }
+
+  else if (item.plan === "15 Days") {
+    item.price =
+      selectedSize === "500ml" ? 36.5 : 73;
+  }
+
+  else if (item.plan === "Weekly") {
+    item.price =
+      selectedSize === "500ml" ? 37 : 74;
+  }
+    // fallback safety
+  else {
+    item.price =
+      selectedSize === "500ml" ? 37.5 : 75;
+  }
+
+}
+
+// 🔥 RAW COW MILK
+else if (item.name === "RAW COW MILK") {
+
+  if (item.plan === "Monthly") {
+    item.price =
+      selectedSize === "500ml" ? 24 : 48;
+  }
+
+  else if (item.plan === "15 Days") {
+    item.price =
+      selectedSize === "500ml" ? 24.5 : 49;
+  }
+
+  else if (item.plan === "Weekly") {
+    item.price =
+      selectedSize === "500ml" ? 25 : 50;
+  }
+   // fallback safety
+  else {
+    item.price =
+      selectedSize === "500ml" ? 25.5 : 51;
+  }
+
+}
+
+// 🔥 RAW A2 COW MILK
+else if (item.name === "RAW A2 COW MILK") {
+
+  if (item.plan === "Monthly") {
+    item.price =
+      selectedSize === "500ml" ? 40 : 80;
+  }
+
+  else if (item.plan === "15 Days") {
+    item.price =
+      selectedSize === "500ml" ? 40.5 : 81;
+  }
+
+  else if (item.plan === "Weekly") {
+    item.price =
+      selectedSize === "500ml" ? 41.5 : 83;
+  }
+
+  else {
+    item.price =
+      selectedSize === "500ml" ? 42.5 : 85;
+  }
+
+}
+
+// 🔥 BUFFALO CHAACH
+else if (item.name === "BUFFALO BILONA CHAACH") {
+
+  if (item.plan === "Monthly") {
+    item.price =
+      selectedSize === "500ml" ? 18 : 36;
+  }
+
+  else if (item.plan === "15 Days") {
+    item.price =
+      selectedSize === "500ml" ? 18.5 : 37;
+  }
+
+  else if (item.plan === "Weekly") {
+    item.price =
+      selectedSize === "500ml" ? 19 : 38;
+  }
+
+  else {
+    item.price =
+      selectedSize === "500ml" ? 20 : 40;
+  }
+
+}
+
+// 🔥 COW CHAACH
+else if (item.name === "COW BILONA CHAACH") {
+
+  if (item.plan === "Monthly") {
+    item.price =
+      selectedSize === "500ml" ? 15 : 30;
+  }
+
+  else if (item.plan === "15 Days") {
+    item.price =
+      selectedSize === "500ml" ? 15.5 : 31;
+  }
+
+  else if (item.plan === "Weekly") {
+    item.price =
+      selectedSize === "500ml" ? 16.5 : 33;
+  }
+
+  else {
+    item.price =
+      selectedSize === "500ml" ? 17.5 : 35;
+  }
+
+}
+
+     // GHEE'S
+    else if (item.name === "BUFFALO GHEE") {
+
+      if (selectedSize === "500g") {
+        item.price = 650;
+      }
+
+      else {
+        item.price = 1300;
+      }
+
+    }
+    else if (item.name === "COW GHEE") {
+
+      if (selectedSize === "500g") {
+        item.price = 550;
+      }
+
+      else {
+        item.price = 1100;
+      }
+
+    }
+
+    else if (item.name === "RAW A2 COW GHEE") {
+
+      if (selectedSize === "500g") {
+        item.price = 1400;
+      }
+
+      else {
+        item.price = 2800;
+      }
+
+    }
+
+    // PANEER
+    else if (item.name === "PANEER") {
+
+      if (selectedSize === "100g") {
+        item.price = 45;
+      }
+
+      else if (selectedSize === "500g") {
+        item.price = 225;
+      }
+
+      else {
+        item.price = 450;
+      }
+
+    }
+
+    // DAHI
+    else if (item.name === "DAHI") {
+
+      if (selectedSize === "250g") {
+        item.price = 36;
+      }
+
+      else if (selectedSize === "500g") {
+        item.price = 72;
+      }
+
+      else {
+        item.price = 144;
+      }
+
+    }
+
+    localStorage.setItem(
+      'cart',
+      JSON.stringify(cart)
+    );
+
     updateCartBadge();
 
     loadOrders();
+
   });
+
 });
+
+  
 }
 function updatePrice() {
 
@@ -2162,21 +2851,66 @@ else if (currentProduct === "GHEE") {
 
 // 🔥 PANEER
 else if (currentProduct === "PANEER") {
-  pricePerLitre = basePrice;
+
+  const quantity =
+    document.getElementById('quantity-select').value;
+
+  if (quantity == "0.1") {
+    pricePerLitre = 450;
+  } else {
+    pricePerLitre = basePrice;
+  }
 }
 
 // 🔥 DAHI LOGIC
 else if (currentProduct === "DAHI") {
 
-  pricePerLitre = 36; // default
+  const quantity =
+    document.getElementById('quantity-select').value;
+
+  // 🔥 250g pricing
+  if (quantity == "0.25") {
+
+  // 🔥 250g equivalent pricing
+  pricePerLitre = 144;
 
   if (selectedPlan) {
-    const plan = selectedPlan.textContent.trim();
 
-    if (plan === "Weekly") pricePerLitre = 35;
-    else if (plan === "15 Days") pricePerLitre = 34;
-    else if (plan === "Monthly") pricePerLitre = 32.5;
+    const plan =
+      selectedPlan.textContent.trim();
+
+    if (plan === "Weekly")
+      pricePerLitre = 140;
+
+    else if (plan === "15 Days")
+      pricePerLitre = 136;
+
+    else if (plan === "Monthly")
+      pricePerLitre = 130;
   }
+}
+
+  // 🔥 Existing pricing for bigger quantities
+  else {
+
+  // 🔥 1Kg equivalent pricing
+  pricePerLitre = 144;
+
+  if (selectedPlan) {
+
+    const plan =
+      selectedPlan.textContent.trim();
+
+    if (plan === "Weekly")
+      pricePerLitre = 140;
+
+    else if (plan === "15 Days")
+      pricePerLitre = 136;
+
+    else if (plan === "Monthly")
+      pricePerLitre = 130;
+  }
+}
 }
 
   const quantity = document.getElementById('quantity-select').value;
@@ -2193,8 +2927,30 @@ else if (currentProduct === "DAHI") {
   unit = "500g";
 }
 
+let displayUnit = unit;
+
+// 🔥 quantity based display
+if (quantity == "0.1") {
+  displayUnit = "100g";
+}
+
+else if (quantity == "0.25") {
+  displayUnit = "250g";
+}
+
+else if (quantity == "0.5") {
+
+  if (unit === "L") {
+    displayUnit = "500ml";
+  }
+
+  else if (unit === "Kg") {
+    displayUnit = "500g";
+  }
+}
+
 document.getElementById('detail-price').textContent =
-  `Price: ₹${finalPrice}/${unit}`;
+  `Price: ₹${finalPrice}/${displayUnit}`;
 }
 
 updateNavbar();
@@ -2408,6 +3164,7 @@ function loadWishlist() {
 
     // 🔥 OPEN DETAIL SCREEN
     setActiveScreen('productDetail');
+    syncDetailWishlistButton();
 
   });
 
@@ -2554,14 +3311,386 @@ function updateWishlistBadge() {
   if (badge2) badge2.textContent = wishlist.length;
 }
 function updateCartBadge() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const badge = document.getElementById('cart-count');
+
+  const cart =
+    JSON.parse(localStorage.getItem('cart')) || [];
+
+  const badge =
+    document.getElementById('cart-count');
 
   if (!badge) return;
 
-  badge.textContent = cart.length;
+  // 🔥 total packets count
+  let totalItems = 0;
+
+  cart.forEach(item => {
+    totalItems += Number(item.packets);
+  });
+
+  badge.textContent = totalItems;
 }
 
+/* 🔥 ANIMATED SEARCH PLACEHOLDER */
+
+const searchWords = [
+  "Search Milk",
+  "Search Ghee",
+  "Search Paneer",
+  "Search Chaach",
+  "Search Dahi"
+];
+
+const placeholder = document.getElementById("animated-placeholder");
+
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+
+  const currentWord = searchWords[wordIndex];
+
+  if (!isDeleting) {
+    placeholder.textContent =
+      currentWord.substring(0, charIndex + 1);
+
+    charIndex++;
+
+    if (charIndex === currentWord.length) {
+      isDeleting = true;
+
+      setTimeout(typeEffect, 1200);
+      return;
+    }
+  }
+
+  else {
+
+    placeholder.textContent =
+      currentWord.substring(0, charIndex - 1);
+
+    charIndex--;
+
+    if (charIndex === 0) {
+      isDeleting = false;
+
+      wordIndex =
+        (wordIndex + 1) % searchWords.length;
+    }
+  }
+
+  setTimeout(typeEffect, isDeleting ? 60 : 120);
+}
+
+typeEffect();
+function syncDetailWishlistButton() {
+
+  const name =
+    document.getElementById('detail-name').textContent;
+
+  const wishlist =
+    JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  const exists =
+    wishlist.find(item => item.name === name);
+
+  if (exists) {
+    detailWishlistBtn.innerHTML = "Wishlist ❤️";
+  } else {
+    detailWishlistBtn.innerHTML = "Wishlist ♡";
+  }
+}
+updateCartBadge();
+function loadCheckout() {
+
+  const container =
+    document.getElementById('checkout-container');
+
+  const item =
+    JSON.parse(localStorage.getItem('buyNowItem'));
+
+  if (!item) return;
+
+  container.innerHTML = `
+
+    <div class="checkout-product-card">
+
+      <img src="${item.image}">
+
+      <div>
+
+        <h3>${item.name}</h3>
+
+        <p>${item.price}</p>
+
+        <p>Plan: ${item.plan}</p>
+
+        <p>Qty: ${item.packets}</p>
+
+        <p>Slot: ${item.slot}</p>
+
+      </div>
+
+    </div>
+
+    <button class="checkout-btn">
+      Proceed to Checkout
+    </button>
+
+  `;
+}
+renderAddresses();
+/* ADDRESS SYSTEM */
+
+const addressToggle =
+  document.getElementById('addressToggle');
+
+const addressFormWrap =
+  document.getElementById('addressFormWrap');
+
+const saveAddressBtn =
+  document.getElementById('saveAddressBtn');
+
+const cancelAddressBtn =
+  document.getElementById('cancelAddressBtn');
+
+
+// TOGGLE
+
+addressToggle.addEventListener('click', () => {
+
+  addressFormWrap.classList.toggle('active');
+
+});
+
+
+// CANCEL
+
+cancelAddressBtn.addEventListener('click', () => {
+
+  addressFormWrap.classList.remove('active');
+
+});
+
+
+// SAVE ADDRESS
+
+saveAddressBtn.addEventListener('click', () => {
+
+  const name =
+    document.getElementById('addressName').value;
+
+  const mobile =
+    document.getElementById('addressMobile').value;
+
+  const pin =
+    document.getElementById('addressPin').value;
+
+  const house =
+    document.getElementById('addressHouse').value;
+
+  const street =
+    document.getElementById('addressStreet').value;
+
+  const town =
+    document.getElementById('addressTown').value;
+
+  const city =
+    document.getElementById('addressCity').value;
+
+  const state =
+    document.getElementById('addressState').value;
+
+  let addresses =
+    JSON.parse(localStorage.getItem('addresses')) || [];
+
+  // EDIT MODE
+
+  if(window.editingAddressId){
+
+    addresses = addresses.map(item => {
+
+      if(item.id === window.editingAddressId){
+
+        return {
+          ...item,
+          name,
+          mobile,
+          pin,
+          house,
+          street,
+          town,
+          city,
+          state
+        };
+      }
+
+      return item;
+    });
+
+    window.editingAddressId = null;
+
+  } else {
+
+    // NEW ADDRESS
+
+    addresses.push({
+      id: Date.now(),
+      name,
+      mobile,
+      pin,
+      house,
+      street,
+      town,
+      city,
+      state
+    });
+
+  }
+
+  localStorage.setItem(
+    'addresses',
+    JSON.stringify(addresses)
+  );
+
+  addressFormWrap.classList.remove('active');
+
+  renderAddresses();
+
+});
+function renderAddresses() {
+
+  const container =
+    document.getElementById('savedAddresses');
+
+  container.innerHTML = "";
+
+  const addresses =
+    JSON.parse(localStorage.getItem('addresses')) || [];
+
+  addresses.forEach((address,index) => {
+
+    container.innerHTML += `
+
+      <div class="saved-address-card">
+
+        <div class="address-top">
+
+          <input
+            type="radio"
+            name="selectedAddress"
+            class="address-radio"
+            ${index === 0 ? "checked" : ""}
+          >
+
+          <div class="address-info">
+
+            <h3>
+
+              ${address.name}
+
+              <span class="home-badge">
+                HOME
+              </span>
+
+            </h3>
+
+            <p>
+              ${address.house},
+              ${address.street}
+            </p>
+
+            <p>
+              ${address.city},
+              ${address.state}
+              - ${address.pin}
+            </p>
+
+            <p>
+              Mobile:
+              <strong>${address.mobile}</strong>
+            </p>
+
+            <div class="address-actions">
+
+              <button onclick="removeAddress(${address.id})">
+                REMOVE
+              </button>
+
+              <button onclick="editAddress(${address.id})">
+  EDIT
+</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+  });
+
+}
+function removeAddress(id){
+
+  let addresses =
+    JSON.parse(localStorage.getItem('addresses')) || [];
+
+  addresses =
+    addresses.filter(item => item.id !== id);
+
+  localStorage.setItem(
+    'addresses',
+    JSON.stringify(addresses)
+  );
+
+  renderAddresses();
+}
+function editAddress(id){
+
+  const addresses =
+    JSON.parse(localStorage.getItem('addresses')) || [];
+
+  const address =
+    addresses.find(item => item.id === id);
+
+  if(!address) return;
+
+  // FORM OPEN
+  addressFormWrap.classList.add('active');
+
+  // PREFILL VALUES
+
+  document.getElementById('addressName').value =
+    address.name;
+
+  document.getElementById('addressMobile').value =
+    address.mobile;
+
+  document.getElementById('addressPin').value =
+    address.pin;
+
+  document.getElementById('addressHouse').value =
+    address.house;
+
+  document.getElementById('addressStreet').value =
+    address.street;
+
+  document.getElementById('addressTown').value =
+    address.town;
+
+  document.getElementById('addressCity').value =
+    address.city;
+
+  document.getElementById('addressState').value =
+    address.state;
+
+  // SAVE CURRENT EDITING ID
+
+  window.editingAddressId = id;
+}
   </script>
   <div id="toast"></div>
 </body>
