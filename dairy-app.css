@@ -2038,3 +2038,360 @@ button {
 .wishlist-cart-btn:active {
   transform: scale(0.96);
 }
+/* 🔥 SEARCH TOPBAR */
+
+.search-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 16px;
+
+  background: #fbfbfb;
+}
+
+/* SEARCH BAR */
+
+.animated-search-bar {
+  flex: 1;
+
+  height: 42px;
+
+  background: #fff;
+
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  overflow: hidden;
+}
+
+/* ICON */
+
+.search-icon {
+  font-size: 15px;
+  margin-right: 10px;
+  opacity: 0.6;
+}
+
+/* ANIMATED TEXT */
+
+#animated-placeholder {
+  font-size: 14px;
+  color: #777;
+  white-space: nowrap;
+}
+
+/* BLINKING CURSOR */
+
+.cursor {
+  margin-left: 2px;
+
+  color: #7fcdf4;
+
+  font-weight: bold;
+
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+/* =========================
+   NEW CART LAYOUT
+========================= */
+
+.order-card{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.cart-left{
+  width:80px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.cart-product-img{
+  width:115px;
+  height:auto;
+  object-fit:contain;
+}
+
+.cart-right{
+  flex:1;
+}
+
+.cart-title{
+  font-size:15px;
+  font-weight:800;
+  margin:0 0 6px;
+}
+
+.cart-price{
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.cart-select-row{
+  display:flex;
+  gap:14px;
+  margin-bottom:10px;
+}
+
+.cart-select-group{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.cart-select-group span{
+  font-size:12px;
+  color:#555;
+}
+
+.cart-detail{
+  font-size:12px;
+  line-height:1.7;
+  color:#444;
+}
+
+.qty-dropdown,
+.size-select{
+  height:28px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  padding:0 8px;
+  font-size:12px;
+  background:#fff;
+}
+/* 🔥 CUSTOM DATE BLOCKS */
+
+#custom-dates-wrap{
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.date-block{
+  padding:10px 14px;
+  border-radius:12px;
+  background:#ececec;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.date-block.active{
+  background:#7fcdf4;
+  color:#fff;
+}
+
+.date-config{
+  width:100%;
+  margin-top:8px;
+  display:none;
+  gap:10px;
+}
+
+.date-config.active{
+  display:flex;
+}
+
+.date-config select{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  outline:none;
+}
+/* ADDRESS SECTION */
+
+.address-wrapper{
+  padding:16px;
+}
+
+.address-toggle{
+  background:#fff;
+  border:1px solid #ddd;
+
+  border-radius:14px;
+
+  padding:16px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  cursor:pointer;
+
+  font-weight:700;
+
+  margin-top:18px;
+}
+
+.address-form-wrap{
+  display:none;
+  margin-top:14px;
+}
+
+.address-form-wrap.active{
+  display:block;
+}
+
+.address-form{
+  background:#fff;
+
+  padding:18px;
+
+  border-radius:16px;
+
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+.address-form h3{
+  font-size:15px;
+  margin:18px 0 10px;
+}
+
+.address-form input{
+  width:100%;
+
+  height:48px;
+
+  border:1px solid #ddd;
+
+  border-radius:10px;
+
+  padding:0 14px;
+
+  margin-bottom:12px;
+
+  font-size:14px;
+}
+
+.city-state-row{
+  display:flex;
+  gap:10px;
+}
+
+.address-btn-row{
+  display:flex;
+  gap:12px;
+
+  margin-top:18px;
+}
+
+.address-btn-row button{
+  flex:1;
+
+  height:48px;
+
+  border-radius:12px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+#cancelAddressBtn{
+  background:#f2f2f2;
+}
+
+#saveAddressBtn{
+  background:#ff4d6d;
+  color:#fff;
+}
+
+/* SAVED ADDRESS */
+
+.saved-address-card{
+  background:#fff;
+
+  border-radius:12px;
+
+  padding:12px;
+
+  margin-top:12px;
+
+  border:2px solid transparent;
+
+  transition:.3s;
+}
+
+.saved-address-card.active{
+  border-color:#7fcdf4;
+}
+
+.address-top{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.address-radio{
+  margin-top:5px;
+}
+
+.address-info h3{
+  margin:0 0 6px;
+  font-size:15px;
+}
+
+.address-info p{
+  margin:4px 0;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.home-badge{
+  background:#dff7ec;
+
+  color:#00a86b;
+
+  padding:4px 8px;
+
+  border-radius:999px;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  margin-left:8px;
+}
+
+.address-actions{
+  display:flex;
+  gap:8px;
+
+  margin-top:10px;
+}
+
+.address-actions button{
+  padding:8px 14px;
+
+  border-radius:10px;
+
+  border:1px solid #ccc;
+
+  background:#fff;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
