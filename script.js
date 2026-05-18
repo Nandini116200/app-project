@@ -239,12 +239,8 @@ getOtpBtn.addEventListener('click', async () => {
   email: enteredEmail,
 
   options: {
-
-    shouldCreateUser: false,
-
-    emailRedirectTo: null
-
-  }
+  shouldCreateUser: false
+}
 
 });
 
@@ -407,6 +403,17 @@ if (alreadyExists) {
 
   setActiveScreen("login");
 
+  return;
+}
+const { data: authData, error: authError } =
+  await supabaseClient.auth.signUp({
+    email: email,
+    password: mobile
+  });
+
+if (authError) {
+  console.log(authError);
+  alert(authError.message);
   return;
 }
     const { data, error } = await supabaseClient
